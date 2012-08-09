@@ -1,0 +1,43 @@
+
+<table rules="rows"><tr><th>RELAXNG<th>YACC
+<tr valign="top"><td>
+<pre>
+</pre>
+<td>
+</tr>
+</table>
+
+<table rules="rows"><tr><th>RELAXNG<th>YACC
+<tr valign="top"><td>
+<pre>
+&lt;element name="XXX"&gt;
+    &lt;optional&gt;
+      &lt;attribute name="a1"&gt;
+        &lt;data type="string"/&gt;
+      &lt;/attribute&gt;
+    &lt;/optional&gt;
+    &lt;optional&gt;
+      &lt;attribute name="a2"&gt;
+        &lt;data type="string"/&gt;
+      &lt;/attribute&gt;
+    &lt;/optional&gt;
+&lt;/element&gt;
+</pre>
+<td>
+xxx: XXXOPEN xxx_attr_list XXXCLOSE
+<br>
+Version 1:
+xxx_attr_list: A1 | A2 | A1 A2 | A2 A1 ;
+<br>
+Version 2:
+xxx_attr_list:
+	  /*empty*/
+	| xxx_attr_list A1
+	| xxx_attr_list A2
+	;
+</tr>
+</table>
+
+<table rules="rows"><tr><th>RELAXNG<th>YACC
+</table>
+

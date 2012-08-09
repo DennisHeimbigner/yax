@@ -1,0 +1,19 @@
+0: PROLOG: name=|version| value=|1.0|
+21: DOCTYPE: name=|startpoint| value=|SYSTEM "hell...|
+62: DOCTYPE: name=|startpoint| value=|[whatever]|
+146: OPEN: element=|element1|
+156: ATTRIBUTE: name=|name| value=|x&lt;yz|
+171: ATTRIBUTE: name=|value| value=|13|
+180: TEXT text=|&
+&amp;
+&mon...| translation=|&
+&
+&mon;
+&;|
+200: CLOSE: element=|element1|
+217: OPEN: element=|e2|
+221: ATTRIBUTE: name=|a| value=|5|
+227: TEXT text=null translation=||
+240: CLOSE: element=|e2|
+243: EOF
+No error

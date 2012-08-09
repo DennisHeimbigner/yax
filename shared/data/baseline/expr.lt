@@ -1,0 +1,12 @@
+0: COMMENT: text=|e|
+8: OPEN: element=|minus|
+17: TEXT text=|| translation=||
+20: OPEN: element=|number|
+27: ATTRIBUTE: name=|value| value=|5|
+34: EMPTYCLOSE: element=|number|
+36: OPEN: element=|number|
+46: TEXT text=|19| translation=|19|
+50: CLOSE: element=|number|
+61: CLOSE: element=|minus|
+67: EOF
+No error

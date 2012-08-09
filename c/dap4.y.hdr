@@ -1,0 +1,36 @@
+%error-verbose
+%pure-parser
+
+%lex-param {DAP4parser* parser}
+%parse-param {DAP4parser* parser}
+
+%{
+#include "yxlist.h"
+#include "yax.h"
+#include "dap4parse.h"
+
+#define YYDEBUG 1
+#define TRACE
+#define TEST
+
+#ifdef TEST
+#define CHECK(x)
+#else
+#define CHECK(x) {if((x)==NULL) YYABORT;}
+#endif
+
+/* Forward */
+
+union YYSTYPE;
+
+int dap4lex(YYSTYPE* lvalp, DAP4parser* parser);
+int dap4error(DAP4parser* state, const char* msg);
+
+%}
+
+%union {
+   void* object;
+   YXlist* list;
+   yax_token token;
+}
+

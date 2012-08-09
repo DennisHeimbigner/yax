@@ -1,0 +1,55 @@
+0: PROLOG: name=|version| value=|1.0|
+21: DOCTYPE: name=|authors| value=|SYSTEM "book...|
+59: OPEN: element=|authors|
+69: TEXT text=null translation=||
+73: OPEN: element=|author|
+80: ATTRIBUTE: name=|name| value=|J.K. Rowling|
+100: TEXT text=null translation=||
+106: OPEN: element=|book|
+111: ATTRIBUTE: name=|title| value=|Harry Potter...|
+160: ATTRIBUTE: name=|price| value=|119.99|
+175: TEXT text=null translation=||
+183: OPEN: element=|description|
+195: TEXT text=|Harry potter...| translation=|Harry potter...|
+425: CLOSE: element=|description|
+444: CLOSE: element=|book|
+449: OPEN: element=|book|
+460: ATTRIBUTE: name=|title| value=|Harry Potter...|
+508: ATTRIBUTE: name=|price| value=|8.99|
+521: TEXT text=null translation=||
+529: OPEN: element=|description|
+541: TEXT text=|When the Cha...| translation=|When the Cha...|
+777: CLOSE: element=|description|
+796: CLOSE: element=|book|
+801: OPEN: element=|book|
+812: ATTRIBUTE: name=|title| value=|Harry Potter...|
+861: ATTRIBUTE: name=|price| value=|12.99|
+875: TEXT text=null translation=||
+883: OPEN: element=|description|
+895: TEXT text=|Harry Potter...| translation=|Harry Potter...|
+1363: CLOSE: element=|description|
+1382: CLOSE: element=|book|
+1392: CLOSE: element=|author|
+1399: OPEN: element=|author|
+1410: ATTRIBUTE: name=|name| value=|Douglas Adam...|
+1431: TEXT text=null translation=||
+1437: OPEN: element=|book|
+1442: ATTRIBUTE: name=|title| value=|The Hitchhik...|
+1487: ATTRIBUTE: name=|price| value=|15.49|
+1501: TEXT text=null translation=||
+1509: OPEN: element=|description|
+1521: TEXT text=|Join Douglas...| translation=|Join Douglas...|
+1714: CLOSE: element=|description|
+1733: CLOSE: element=|book|
+1738: OPEN: element=|book|
+1749: ATTRIBUTE: name=|title| value=|The Restaura...|
+1800: ATTRIBUTE: name=|price| value=|14.36|
+1814: TEXT text=null translation=||
+1822: OPEN: element=|description|
+1834: TEXT text=|Arthur and F...| translation=|Arthur and F...|
+2183: CLOSE: element=|description|
+2202: CLOSE: element=|book|
+2212: CLOSE: element=|author|
+2222: CLOSE: element=|authors|
+2230: EOF
+No error

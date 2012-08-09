@@ -1,0 +1,101 @@
+<project name="YAX Build" default="all" basedir=".">
+
+<property name="project.dir" value="${basedir}/java"/>
+<property name="build.dir" value="${project.dir}/build"/>
+<property name="out.dir" value="${project.dir}/out"/>
+
+<property name="src.dir" value="${project.dir}/src"/>
+<property name="lib.dir" value="${project.dir}/libs"/>
+<property name="cli.jar" value="${lib.dir}/commons-cli-1.2.jar"/>
+
+<property name="data.dir" value="${basedir}/data"/>
+<property name="tests.dir" value="${basedir}/data/testdata"/>
+<property name="baseline.dir" value="${basedir}/data/baseline"/>
+<property name="results.dir" value="${basedir}/data/results"/>
+
+<property name="results.dir" value="${build.dir}/results"/>
+
+<property name="yax.jar" value="${project.dir}/yax.jar"/>
+
+<property name="main" value="yax.Main"/>
+<property name="cp" value="${cli.jar}"/>
+<property name="test.cp" value="${build.dir};${cli.jar}"/>
+
+<target name="all" depends="test"/>
+
+<target name="init">
+  <mkdir dir="${build.dir}"/>
+  <mkdir dir="${results.dir}"/>
+</target>
+
+<target name="build" depends="init">
+  <javac srcdir="${src.dir}"
+ 	 destdir="${build.dir}"
+         classpath="${cp}"
+	 includeantruntime="false"
+  />
+</target>
+
+<target name="jar" depends="build">
+  <jar jarfile="${yax.jar}">
+    <fileset dir="${build.dir}/yax"/>
+  </jar>
+</target>
+
+<!-- This is so ugly -->
+
+<target name="test" depends="jar,testclean">
+  <antcall target="testeach"><param name="TESTCASE" value="d"/></antcall>
+</target>
+
+<target name="testclean">
+  <delete dir="${results.dir}"/>
+  <mkdir dir="${results.dir}"/>
+</target>
+
+<!--property name="TESTCASE" value="..."/-->
+<!--property name="EXT" value="..."/-->
+<target name="testeach">
+  <antcall target="exec"><param name="EXT" value="lt"/></antcall>
+  <antcall target="compare"><param name="EXT" value="lt"/></antcall>
+</target>
+
+<target name="lt">
+  <java fork="true" classpath="${test.cp}" classname="yax.LexTest"
+        output="${results.dir}/${TESTCASE}.lt">
+    <arg value="-te"/><arg value="${tests.dir}/${TESTCASE}.xml"/>
+  </java>
+</target>
+
+<target name="diff">
+  <exec executable="diff" failonerror="false" resultproperty="diff-result">
+    <arg value="-w"/><arg value="-b"/><arg value="-B"/>
+    <arg value="${baseline.dir}/${TESTCASE}.${EXT}"/>
+    <arg value="${results.dir}/${TESTCASE}.${EXT}"/>
+  </exec>
+  <condition property="${EXT}" value="true">
+    <not><equals arg1="${diff-result}" arg2="1"/></not>
+  </condition>
+</target>
+
+<target name="compare" depends="diff,if-true,if-false"/>
+
+<target name="if">
+  <condition property="${EXT}">
+    <filesmatch file1="${baseline.dir}/${TESTCASE}.${EXT}" file2="${results.dir}/${TESTCASE}.${EXT}"/>
+  </condition>
+</target>
+
+<target name="if-true" if="${EXT}">
+  <echo message="*** Pass: ${TESTCASE}.${EXT}"/>
+</target>
+<target name="if-false" unless="${EXT}">
+  <echo message="*** Fail: ${TESTCASE}.${EXT}"/>
+</target>
+
+
+<target name="clean" depends="testclean">
+    <delete dir="${build.dir}"/>
+</target>
+
+</project>
