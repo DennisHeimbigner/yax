@@ -10,8 +10,7 @@ clean::
 	rm -fr expr.tab.c expr.output
 	rm -fr dap4.tab.c dap4.tab.h dap4.output
 
-#tests:: lex_test${X} expr${X} dap4${X}
-tests:: dap4${X}
+tests:: lex_test${X} expr${X} dap4${X}
 	./run_tests.sh
 
 libyax.a: yax.c yax.h yxlist.c yxlist.h
