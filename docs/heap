@@ -1,0 +1,92 @@
+<h3 class="break"><a name="lists"><u>Handling Lists in Bison</u></a></h3>
+Consider this grammar rule in Bison.
+<pre>
+list:
+          /*empty*/
+        | list x1
+        | list x2
+        ;
+x1: ... ;
+01: ... ;
+x2: ... ;
+</pre>
+It defines a list of instances of x1 or x2.
+<p>
+The functions defined in <i>yxlist.h</i> (part of the yax
+library) can be used to construct a list on the fly and pass
+it along as rules are reduced by the parser.
+<pre>
+list:
+          /*empty*/ {$$=yxlistnew();}
+        | list x1   {$$=yxlistpush($1,(void*)$2);}
+        | list x2   {$$=yxlistpush($1,(void*)$2);}
+        ;
+</pre>
+In the first rule, an empty list is created. In the second and third
+rules, a new value (that of x1 or x2) is pushed (appended)
+to the end of the list.
+This turns out to be a frequent cliche and is very useful.
+<p>
+Occasionally it is useful to create a list of instances of yax_token:
+when constructing a list of xml attributes, for example.
+The proper code for this might looks like this.
+<pre>
+tokenlist:
+          /*empty*/ {$$=yxlistnew();}
+        | tokenlist ATTR1   {$$=yxlistpush($1,(void*)yax_tokendup($2));}
+	...
+        | tokenlist ATTR2   {$$=yxlistpush($1,(void*)yax_tokendup($2));}
+        ;
+</pre>
+In this case, the value of $2 is a token on the Bison internal
+parser stack. Hence, it must be copied (using yax_tokendup)
+in order to save it in the list. One must remember, however,
+to free up the resulting duplicated token instance.
+
+
+<h3><a name="lexer"><u>Structure of yylex()</u></a></h3>
+A Bison generated grammar requires access to a Bison-level 
+lexer for returning Bison-level tokens as listed in the Bison
+.y grammar file. The user must create this lexer.
+The created lexer in turn uses the yax xml lexer to convert
+yax-level tokens into Bison tokens. WARNING: do not confuse the two
+lexers. The Bison-level lexer is built as a wrapper around
+the yax lexer.
+<p>
+The code described here is taken from the file "xml
+in the source tree.
+
+<h3>Converting an Element Name to a Token</h3>
+<pre>
+	/* Remove any leading namespace */
+	if((p=strchr(tokenstate->name,':')) != NULL) {
+	    tokenstate->name = p+1;
+	}
+
+        if(tokenstate->name != NULL)
+            keyword = dap4_keyword_lookup(tokenstate->name,
+                                          strlen(tokenstate->name));
+</pre>
+The first step is to deal with namespaces.
+For the dap4 example, namespaces are suppressed to simplify
+the later code. This is optional and your lexer may choose
+to do something with namespaces.
+<p>
+The second step is to map the element (or attribute) name
+(minus any namespace) to an instance of dap4_keyword. This
+in effect tells us the two tags of interest with respect to
+this element: the open token and the close token. For
+attributes, only the open token is needed.
+<p>
+If the result of calling dap4_keyword_lookup is NULL, then that
+means that the name is not known. This should be handled in
+the appropriate arms of the following switch statement.
+If instead, such unknown names are not allowed, then yytoken should be set
+to some kind of error token (e.g. ERROR, see below) to cause the parser to start error processing.
+In some cases, however, the user may be allowed to use unexpected
+attribute or element names.
+In the dap4 example, the top-level group element is allowed
+to have namespace specifying attributes.
+In this situation, the fact that the keyword is null is
+ignored until later in the processing.
+

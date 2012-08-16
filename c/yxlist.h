@@ -11,14 +11,12 @@
 #define EXTERNC extern
 #endif
 
-typedef void* yxelem;
-
-EXTERNC int yxlistnull(yxelem);
+EXTERNC int yxlistnull(void*);
 
 typedef struct YXlist {
   unsigned int alloc;
   unsigned int length;
-  yxelem* content;
+  void** content;
 } YXlist;
 
 EXTERNC YXlist* yxlistnew(void);
@@ -27,27 +25,27 @@ EXTERNC int yxlistsetalloc(YXlist*,unsigned int);
 EXTERNC int yxlistsetlength(YXlist*,unsigned int);
 
 /* Set the ith element */
-EXTERNC int yxlistset(YXlist*,unsigned int,yxelem);
+EXTERNC int yxlistset(YXlist*,unsigned int,void*);
 /* Get value at position i */
-EXTERNC yxelem yxlistget(YXlist*,unsigned int);/* Return the ith element of l */
+EXTERNC void* yxlistget(YXlist*,unsigned int);/* Return the ith element of l */
 /* Insert at position i; will push up elements i..|seq|. */
-EXTERNC int yxlistinsert(YXlist*,unsigned int,yxelem);
+EXTERNC int yxlistinsert(YXlist*,unsigned int,void*);
 /* Remove element at position i; will move higher elements down */
-EXTERNC yxelem yxlistremove(YXlist* l, unsigned int i);
+EXTERNC void* yxlistremove(YXlist* l, unsigned int i);
 
 /* Tail operations */
-EXTERNC int yxlistpush(YXlist*,yxelem); /* Add at Tail */
-EXTERNC yxelem yxlistpop(YXlist*);
-EXTERNC yxelem yxlisttop(YXlist*);
+EXTERNC int yxlistpush(YXlist*,void*); /* Add at Tail */
+EXTERNC void* yxlistpop(YXlist*);
+EXTERNC void* yxlisttop(YXlist*);
 
 /* Duplicate and return the content (null terminate) */
-EXTERNC yxelem* yxlistdup(YXlist*);
+EXTERNC void** yxlistdup(YXlist*);
 
 /* Look for value match */
-EXTERNC int yxlistcontains(YXlist*, yxelem);
+EXTERNC int yxlistcontains(YXlist*, void*);
 
 /* Remove element by value; only removes first encountered */
-EXTERNC int yxlistelemremove(YXlist* l, yxelem elem);
+EXTERNC int yxlistelemremove(YXlist* l, void* elem);
 
 /* remove duplicates */
 EXTERNC int yxlistunique(YXlist*);

@@ -44,6 +44,19 @@
   </jar>
 </target>
 
+<target name="dap4.y">
+  <copy file="${grammars.dir}/dap4.y.core" tofile="./dap4.y.core"/>
+  <concat destfile="dap4.y">
+    <filelist dir="." files="dap4.y.hdr,dap4.y.core"/>
+  </concat>
+  <replace file="dap4.y" token="YYABORT" value="return YYABORT"/>
+  <replace file="dap4.y" token="YYACCEPT" value="return YYACCEPT"/>
+  <replace file="dap4.y" token="CHECK($$)" value=""/>
+  <replace file="dap4.y" token="&lt;token&gt;" value="&lt;YaxToken&gt;"/>
+  <replace file="dap4.y" token="&lt;list&gt;" value="&lt;List&gt;"/>
+  <replace file="dap4.y" token="&lt;object&gt;" value="&lt;Object&gt;"/>
+</target>
+
 <!-- This is so ugly -->
 
 <target name="test" depends="jar,testclean">
@@ -70,11 +83,15 @@
 </target>
 
 <target name="expr">
-  <antcall target="bison><param name="GRAMMAR" value="expr.y"/>
+  <antcall target="bison"><param name="GRAMMAR" value="expr.y"/></antcall>
   <java fork="true" classpath="${test.cp}" classname="yax.LexTest"
         output="${results.dir}/${TESTCASE}.lt">
     <arg value="-te"/><arg value="${tests.dir}/${TESTCASE}.xml"/>
   </java>
+</target>
+
+<target name="dap4" depends="dap4.y">
+  <antcall target="bison"><param name="GRAMMAR" value="dap4.y"/></antcall>
 </target>
 
 <target name="diff">
@@ -106,14 +123,18 @@
 <!--property name="GRAMMAR" value="..."/-->
 <target name="bison">
   <exec executable="bison">
-    <arg value="-t"/>
-    <arg value="-v"/>
-    <arg value="${grammars.dir}/${GRAMMAR}"/>
+    <arg value="-Ljava"/>
+    <arg value="-pDAP4"/>
+    <arg value="dap4.y"/>
+    <arg value="-o"/>
+    <arg value="DAP4Parser.java"/>
   </exec>
 </target>
 
 <target name="clean" depends="testclean">
     <delete dir="${build.dir}"/>
+    <delete file="tmp"/>
+    <delete file="dap4.y.core"/>
 </target>
 
 </project>

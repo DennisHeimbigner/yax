@@ -7,7 +7,7 @@
 
 #define YAX_MAX_ATTRIBUTES 16
 #define YAX_MAX_ERROR_STRING 1024
-
+#define YAX_MAX_TEXT 16
 
 /* Define the return error codes;
    use negative values to reserve
@@ -31,22 +31,22 @@ YAX_EPROLOG	= (-13),
 YAX_EDOCTYPE	= (-14),
 YAX_ENAMENULL	= (-15),
 YAX_ETEXT	= (-16),
-
 } yax_err;
 
 
 /* Define the token types */
 typedef enum yax_tokentype { /* assign number for trace function */
-YAX_EOF		=  0,
-YAX_OPEN	=  1, /* <element...> */
-YAX_CLOSE	=  2, /* </element> */
-YAX_EMPTYCLOSE	=  3, /* <element.../> */
-YAX_ATTRIBUTE	=  4,
-YAX_TEXT	=  5,
-YAX_CDATA	=  6,
-YAX_PROLOG	=  7,
-YAX_DOCTYPE	=  8,
-YAX_COMMENT	=  9,
+YAX_UNDEFINED	=  0,
+YAX_EOF		=  1,
+YAX_OPEN	=  2, /* <element...> */
+YAX_CLOSE	=  3, /* </element> */
+YAX_EMPTYCLOSE	=  4, /* <element.../> */
+YAX_ATTRIBUTE	=  5,
+YAX_TEXT	=  6,
+YAX_CDATA	=  7,
+YAX_PROLOG	=  8,
+YAX_DOCTYPE	=  9,
+YAX_COMMENT	= 10,
 } yax_tokentype;
 
 
@@ -69,13 +69,14 @@ YAX_COMMENT	=  9,
 typedef struct yax_token {
     yax_tokentype tokentype;
     /* Depending on token type, only some of these will have values */
+    char* namespace;
     char *name; /* element or attribute name; null terminated */
     char *text; /* stext or attribute value; null terminated */
     int charno;
 } yax_token;
 
 /* Define an empty token */
-extern yax_token emptytoken;
+extern yax_token yax_emptytoken;
 
 /* effectively opaque */
 typedef struct yax_lexer yax_lexer;
@@ -118,6 +119,8 @@ extern yax_token* yax_tokendup(yax_token);
 */
 extern char* yax_trace(yax_lexer*, yax_token*);
 
+/* Obtain the string space from the lexer */
+extern char* yax_strings(yax_lexer*);
 
 #endif /*YAX_H*/
 

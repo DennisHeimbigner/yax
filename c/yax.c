@@ -18,7 +18,7 @@ Limitations vis-a-vis true xml:
 #undef XDEBUG
 
 /* Alias for '\0' */
-#define EOFCHAR '\0'
+#define EOS '\0'
 
 /* Whitespace characters */
 #define whitespace(c) ((c) > '\0' && (c) <= ' ')
@@ -59,8 +59,8 @@ Limitations vis-a-vis true xml:
 #define ENDPROLOGTAG  "?>"
 #define ENDDOCTYPETAG  ">"
 
-#define inprolog(lexer)  match(lexer,PROLOGTAG)
-#define incdata(lexer)   match(lexer,CDATATAG)
+#define inprolog(lexer)	 match(lexer,PROLOGTAG)
+#define incdata(lexer)	 match(lexer,CDATATAG)
 #define indoctype(lexer) match(lexer,DOCTYPETAG)
 #define incomment(lexer) match(lexer,INCOMMENTTAG)
 #define atcomment(lexer) match(lexer,ATCOMMENTTAG)
@@ -80,19 +80,18 @@ Limitations vis-a-vis true xml:
 
 #define MAXTRACESIZE (1<<16)
 #define MAXBACKUP (16)
-#define MAXTEXT (12)
 
 /**************************************************/
-yax_token emptytoken = {0,NULL,NULL,0};
+yax_token yax_emptytoken = {0,NULL,NULL,0};
 
-/* Define the lexer contexts vis-a-vis the tokenization  */
+/* Define the lexer contexts vis-a-vis the tokenization	 */
 typedef enum yax_context { /* assign numbers for debugging */
-YX_EOF = 0,             /* EOF^ */
-YX_OPEN = 1,    /* ^<... */
-YX_TEXT = 2,    /* >^... */
-YX_EMPTYCLOSE = 3,      /* ^/>... */
-YX_ATTRIBUTE = 4,   /* ...^aname=value... */
-YX_UNDEFINED = 5,       /* need to search for a state */
+YX_EOF = 0,	   /* EOF^ */
+YX_OPEN = 1,	   /* ^<... */
+YX_TEXT = 2,	   /* >^... */
+YX_EMPTYCLOSE = 3, /* ^/>... */
+YX_ATTRIBUTE = 4,  /* ...^aname=value... */
+YX_UNDEFINED = 5,  /* need to search for a state */
 } yax_context;
 
 struct yax_lexer {
@@ -102,6 +101,7 @@ struct yax_lexer {
     char* spos; /* next character to write into strings*/
     yax_context context;
     char* lastelement;
+    char* lastnamespace;
     int flags;
 };
 
@@ -175,14 +175,14 @@ skipwhitespace(yax_lexer* lexer)
 {
     int c;
     for(;;) {
-        c = nextch(lexer);
-        if(!whitespace(c)) {backup(lexer); break;}
+	c = nextch(lexer);
+	if(!whitespace(c)) {backup(lexer); break;}
     }
 }
 
 /* Strings field Management */
 
-#define terminate(lexer) {*((lexer)->spos++) = EOFCHAR;}
+#define terminate(lexer) {*((lexer)->spos++) = EOS;}
 
 /**************************************************/
 /* Forward */
@@ -195,12 +195,22 @@ static yax_err collectprolog(yax_lexer*, yax_token*);
 static yax_err collectdoctype(yax_lexer*, yax_token*);
 static yax_err collectcomment(yax_lexer*, yax_token*);
 static int match(yax_lexer* lexer, const char* s);
+static yax_err collectnamespace(yax_token* token);
 
 /**************************************************/
 /*
 Strings found in the input are copied into a single buffer
 and are null terminated.
 */
+
+/* Obtain the string space from the lexer */
+char*
+yax_strings(yax_lexer* lexer)
+{
+    char* strings = lexer->strings;
+    lexer->strings = NULL;
+    return strings;
+}
 
 yax_err
 yax_nexttoken(yax_lexer* lexer, yax_token* token)
@@ -216,127 +226,131 @@ yax_nexttoken(yax_lexer* lexer, yax_token* token)
     token->charno = charoffset(lexer); /* default */
 
     if(lexer->context == YX_UNDEFINED) {
-        err = findcontext(lexer);
-        if(err) {XFAIL(err);}
+	err = findcontext(lexer);
+	if(err) {XFAIL(err);}
     }
     XASSERT(lexer->context != YX_UNDEFINED);
 
     switch (lexer->context) {
 
     case YX_OPEN: /*case: <^...*/
-        /*case: <^...*/
-        /* Check for comments, CDATA, prolog and DOCTYPE */
-        if(incomment(lexer)) {
-            /*cases:  <^!--*/
-            err = collectcomment(lexer,token);
-            if(err) XFAIL(err);
-            lexer->context = YX_UNDEFINED;
+	/*case: <^...*/
+	/* Check for comments, CDATA, prolog and DOCTYPE */
+	if(incomment(lexer)) {
+	    /*cases:  <^!--*/
+	    err = collectcomment(lexer,token);
+	    if(err) XFAIL(err);
+	    lexer->context = YX_UNDEFINED;
 	    break;
-        } else if(incdata(lexer)) {
-            /*cases:  <^![CDATA...*/
-            err = collectcdata(lexer,token);
-            if(err) XFAIL(err);
-            /* collect cdata will set the next state */
-            break;
-        } else if(inprolog(lexer)) {
-            /*cases:  <^?xml...*/
-            err = collectprolog(lexer,token);
-            if(err) XFAIL(err);
-            break;
-        } else if(indoctype(lexer)) {
-            /*cases:  <^!DOCTYPE...*/
-            err = collectdoctype(lexer,token);
-            if(err) XFAIL(err);
-            break;
-        }
-	/* cases: <^...   |>*/
+	} else if(incdata(lexer)) {
+	    /*cases:  <^![CDATA...*/
+	    err = collectcdata(lexer,token);
+	    if(err) XFAIL(err);
+	    /* collect cdata will set the next state */
+	    break;
+	} else if(inprolog(lexer)) {
+	    /*cases:  <^?xml...*/
+	    err = collectprolog(lexer,token);
+	    if(err) XFAIL(err);
+	    break;
+	} else if(indoctype(lexer)) {
+	    /*cases:  <^!DOCTYPE...*/
+	    err = collectdoctype(lexer,token);
+	    if(err) XFAIL(err);
+	    break;
+	}
+	/* cases: <^...	  |>*/
 	c = nextch(lexer);
-        if(c == EOFCHAR) {XFAIL(YAX_EEOF);}
-        /*cases: <n^ame... , </^name... */
-        closure = (c == '/' ? 1 : 0);
-        if(closure) {
+	if(c == EOS) {XFAIL(YAX_EEOF);}
+	/*cases: <n^ame... , </^name... */
+	closure = (c == '/' ? 1 : 0);
+	if(closure) {
 	    token->charno = charoffset(lexer);
 	    c = nextch(lexer);
 	}
-        /*cases: <n^ame... , </n^ame... */
-        if(!namechar1(c)) {
-            XFAIL(YAX_ENAMECHAR);
-        }               
+	/*cases: <n^ame... , </n^ame... */
+	if(!namechar1(c)) {
+	    XFAIL(YAX_ENAMECHAR);
+	}		
 	/* capture the name in lexer->strings */
-        token->name = SPOS;
+	token->name = SPOS;
 	do {
 	    *SPOS++ = (char)c;
-            c = nextch(lexer);
-            if(c==EOFCHAR) XFAIL(YAX_EEOF);
-        } while(namecharn(c));
+	    c = nextch(lexer);
+	    if(c==EOS) XFAIL(YAX_EEOF);
+	} while(namecharn(c));
 	terminate(lexer); /* null terminate the name in lexer->strings */
-        /*cases: <name?^... , </name?^...; ? is any char */     
-        if(whitespace(c)) {
-            skipwhitespace(lexer);
-            c = nextch(lexer);
-        }
-        /*cases: ...a^ttr=value, .../^>, ...>^ */
-        if(c == '/' && peek(0,lexer) == CGT) {
-            if(closure) {XFAIL(YAX_EGT);}
-            c = nextch(lexer);
-            /*case: />^ */
-            lexer->context = YX_EMPTYCLOSE; 
+	/*cases: <name?^... , </name?^...; ? is any char */	
+	if(whitespace(c)) {
+	    skipwhitespace(lexer);
+	    c = nextch(lexer);
+	}
+	/*cases: ...a^ttr=value, .../^>, ...>^ */
+	if(c == '/' && peek(0,lexer) == CGT) {
+	    if(closure) {XFAIL(YAX_EGT);}
+	    c = nextch(lexer);
+	    /*case: />^ */
+	    lexer->context = YX_EMPTYCLOSE;
 	    XTRACE(lexer);
-        } else if(c == CGT) {
-            if(closure) {
-                /* closures have no trailing text, only whitespace or comment*/
-                lexer->context = YX_UNDEFINED;
-	        XTRACE(lexer);
-            } else              
-                lexer->context = YX_TEXT;
-	        XTRACE(lexer);
-        } else {/* test for case: ...a^ttr=value */
-            if(namechar1(c)) {
-                /*cases: a^ttr=value */
-                lexer->context = YX_ATTRIBUTE;             
-	        XTRACE(lexer);
-                backup(lexer);
-                /*cases: ^attr=value */
-            } else {
-                XFAIL(YAX_ECLOSURE);
-            }
-        }
-        token->tokentype = (closure ? YAX_CLOSE : YAX_OPEN);
-        lexer->lastelement = token->name;
-        if(strlen(token->name) == 0)
-            XFAIL(YAX_ENAMENULL);
-        break;
+	} else if(c == CGT) {
+	    lexer->context = YX_TEXT;
+	    XTRACE(lexer);
+	} else {/* test for case: ...a^ttr=value */
+	    if(namechar1(c)) {
+		/*cases: a^ttr=value */
+		lexer->context = YX_ATTRIBUTE;		   
+		XTRACE(lexer);
+		backup(lexer);
+		/*cases: ^attr=value */
+	    } else {
+		XFAIL(YAX_ECLOSURE);
+	    }
+	}
+	token->tokentype = (closure ? YAX_CLOSE : YAX_OPEN);
+	err = collectnamespace(token);
+	if(err != YAX_OK) XFAIL(err);
+	if(closure) {
+	    lexer->lastelement = NULL;
+	    lexer->lastnamespace = NULL;
+	} else {
+	    lexer->lastelement = token->name;
+	    lexer->lastnamespace = token->namespace;
+	}
+	break;
 
     case YX_EMPTYCLOSE: /*case: />^  */
-        token->charno = charoffset(lexer) - 2;
-        token->tokentype = YAX_EMPTYCLOSE;
-        /* Reuse the last element name */
-        token->name = lexer->lastelement;
-        lexer->context = YX_UNDEFINED;
+	token->charno = charoffset(lexer) - 2;
+	token->tokentype = YAX_EMPTYCLOSE;
+	/* Reuse the last element name */
+	token->name = lexer->lastelement;
+	token->namespace = lexer->lastnamespace;
+	lexer->lastelement = NULL;
+	lexer->lastnamespace = NULL;
+	lexer->context = YX_TEXT;
 	XTRACE(lexer);
-        break;  
+	break;	
 
     case YX_TEXT: /*case: >^ */
-        token->tokentype = YAX_TEXT;
-        err = collecttext(lexer,token);
-        if(err) XFAIL(err);
-        /* collect text will set the next state */
-        break;
+	token->tokentype = YAX_TEXT;
+	err = collecttext(lexer,token);
+	if(err) XFAIL(err);
+	/* collect text will set the next state */
+	break;
 
     case YX_ATTRIBUTE: /*case: <element...^attr=value...*/
-        err = collectattribute(lexer,token);
-        /* collect attribute will have properly set the state */
-        if(err) XFAIL(err);
-        token->tokentype = YAX_ATTRIBUTE;
-        if(strlen(token->name)==0)
-            XFAIL(YAX_ENAMENULL);
-        break;  
+	err = collectattribute(lexer,token);
+	/* collect attribute will have properly set the state */
+	if(err) XFAIL(err);
+	token->tokentype = YAX_ATTRIBUTE;
+	err = collectnamespace(token);
+	if(err != YAX_OK) XFAIL(err);
+	break;	
 
     case YX_EOF:
-        token->tokentype = YAX_EOF;
-        lexer->context = YX_EOF;
+	token->tokentype = YAX_EOF;
+	lexer->context = YX_EOF;
 	XTRACE(lexer);
-        break;
+	break;
 
     default: XASSERT(0); break;
     }
@@ -353,13 +367,13 @@ match(yax_lexer* lexer, const char* s)
     const char* q;
     if(s == NULL)
 	return 0;
-    p = lexer->ipos;       
+    p = lexer->ipos;	   
     q = s;
     while(*q && (*p == *q)) {p++; q++;}
-    if(*q == EOFCHAR)
+    if(*q == EOS)
 	return 1;
     /* else *p != *q */
-    return 0;    
+    return 0;	 
 }
 
 /* set the lexer context properly */
@@ -368,13 +382,13 @@ findcontext(yax_lexer* lexer)
 {
     yax_err err = YAX_OK;
     int c;
-    skipwhitespace(lexer);
+    assert(lexer->context == YX_UNDEFINED);
     c = nextch(lexer);
     if(c == CLT) lexer->context = YX_OPEN;
-    else if(c == EOFCHAR) lexer->context = YX_EOF;
-    else {XFAIL(YAX_ELT);}
+    else if(c == EOS) lexer->context = YX_EOF;
+    else lexer->context = YX_TEXT;
     XTRACE(lexer);
-done:
+
     return err;
 }
 
@@ -391,18 +405,18 @@ collectcomment(yax_lexer* lexer, yax_token* token)
     token->text = SPOS;
     /* scan for end of comment */
     for(;;) {
-        if(match(lexer,ENDCOMMENTTAG)) {
-            /*case: <!--...^--> */
-            break;
-        }
-        c = nextch(lexer);
-        /*case: <!--...X^, <!--...EOF */
-        if(c == EOFCHAR) XFAIL(YAX_ECOMMENT);
+	if(match(lexer,ENDCOMMENTTAG)) {
+	    /*case: <!--...^--> */
+	    break;
+	}
+	c = nextch(lexer);
+	/*case: <!--...X^, <!--...EOF */
+	if(c == EOS) XFAIL(YAX_ECOMMENT);
 	*SPOS++ = (char)c;
     }
     terminate(lexer);
     /*case: <!--...^--> */
-    skipn(3,lexer);      
+    skipn(3,lexer);	 
     /*case: <!--...-->^_ */
     token->tokentype = YAX_COMMENT;
     lexer->context = YX_UNDEFINED;    
@@ -425,14 +439,14 @@ collectcdata(yax_lexer* lexer, yax_token* token)
     for(;;) {
 	if(match(lexer,ENDCDATATAG))
 	    break;
-        c = nextch(lexer);
-        /*case: <![CDATA[...X^, <![CDATA[...EOF */
-        if(c == EOFCHAR) XFAIL(YAX_ECDATA);
+	c = nextch(lexer);
+	/*case: <![CDATA[...X^, <![CDATA[...EOF */
+	if(c == EOS) XFAIL(YAX_ECDATA);
 	*SPOS++ = (char)c;
     }
     /*case: <![CDATA[...^]]> */
     terminate(lexer);
-    skipn(3,lexer);      
+    skipn(3,lexer);	 
     /*case: <![CDATA[...]]>^ */
     token->tokentype = YAX_CDATA;
     /* Set the state to undefined */
@@ -460,8 +474,8 @@ collectprolog(yax_lexer* lexer, yax_token* token)
     for(;;) {
 	if(match(lexer,ENDPROLOGTAG))
 	    break;
-        c = nextch(lexer);
-        if(c == EOFCHAR) XFAIL(YAX_EPROLOG);
+	c = nextch(lexer);
+	if(c == EOS) XFAIL(YAX_EPROLOG);
     }
     /*case: <?xml...^?> */
     skipn(2,lexer);
@@ -486,71 +500,71 @@ collectdoctype(yax_lexer* lexer, yax_token* token)
     /*case: <!DOCTYPE^ */
     /* Scan for starting name */
     skipwhitespace(lexer);
-    c = nextch(lexer);    
+    c = nextch(lexer);	  
     if(!namechar1(c)) XFAIL(YAX_EDOCTYPE);
     token->name = SPOS;
     for(;;) {
 	*SPOS++ = (char)c;
-        c = nextch(lexer);
-        if(c == EOFCHAR) XFAIL(YAX_EDOCTYPE);
-        if(!namecharn(c)) break;
+	c = nextch(lexer);
+	if(c == EOS) XFAIL(YAX_EDOCTYPE);
+	if(!namecharn(c)) break;
     }
     terminate(lexer);
     /* check for empty start name */
     if(strlen(token->name)==0)
-        XFAIL(YAX_EDOCTYPE);
+	XFAIL(YAX_EDOCTYPE);
 
     /*case: ...name?^... */
 
     if(whitespace(c)) {
-        skipwhitespace(lexer);
-        c = nextch(lexer);
+	skipwhitespace(lexer);
+	c = nextch(lexer);
     }
 
     /*<|expected cases: ...[^..., ...>^, ...N^NNN... |]*/
     if(c == CLB) {
-        /*[| collect everything upto the final ']'
-           and make it be the text field of the token */
-        /*<|case: ...[^...>   |]*/
-        token->text = SPOS;
-        /*[| scan for ']' */
-        for(;;) {
-            c = nextch(lexer);
-            if(c == EOFCHAR) XFAIL(YAX_EDOCTYPE);
-            if(c == CRB) break;
+	/*[| collect everything upto the final ']'
+	   and make it be the text field of the token */
+	/*<|case: ...[^...>   |]*/
+	token->text = SPOS;
+	/*[| scan for ']' */
+	for(;;) {
+	    c = nextch(lexer);
+	    if(c == EOS) XFAIL(YAX_EDOCTYPE);
+	    if(c == CRB) break;
 	    *SPOS++ = (char)c;
-        }
+	}
 	terminate(lexer);
-        /*[<|case: ...]^> */
-        skipwhitespace(lexer);
-        /*[<|case: ...]_^> */
-        c = nextch(lexer);
-        /*[<|case: ...]_>^ */
-        if(c != CGT) XFAIL(YAX_EDOCTYPE);
+	/*[<|case: ...]^> */
+	skipwhitespace(lexer);
+	/*[<|case: ...]_^> */
+	c = nextch(lexer);
+	/*[<|case: ...]_>^ */
+	if(c != CGT) XFAIL(YAX_EDOCTYPE);
     } else if(c == CGT) {
-        /*<|case: ...>^*/
-        token->text = "";
+	/*<|case: ...>^*/
+	token->text = "";
     } else if(namechar1(c)) {
-        /*case: ...N^NN...*/
+	/*case: ...N^NN...*/
 	backup(lexer);
 	token->text = SPOS;
-        /*case: ...^NNN...*/
-        /* ID must be either "SYSTEM" or "PUBLIC" */
-        if(!match(lexer,"SYSTEM") && !match(lexer,"PUBLIC")) {
-            XFAIL(YAX_EDOCTYPE);
-        }
-        /* collect everything upto the final CGT
-           and make it be the text field of the token */
-        for(;;) {
-            c = nextch(lexer);
-            if(c == EOFCHAR) XFAIL(YAX_EDOCTYPE);
-            if(c == CGT) break;
+	/*case: ...^NNN...*/
+	/* ID must be either "SYSTEM" or "PUBLIC" */
+	if(!match(lexer,"SYSTEM") && !match(lexer,"PUBLIC")) {
+	    XFAIL(YAX_EDOCTYPE);
+	}
+	/* collect everything upto the final CGT
+	   and make it be the text field of the token */
+	for(;;) {
+	    c = nextch(lexer);
+	    if(c == EOS) XFAIL(YAX_EDOCTYPE);
+	    if(c == CGT) break;
 	    *SPOS++ = (char)c;
-        }
-        assert(c == CGT);
-        /*<case: ...ID....>^ */
+	}
+	assert(c == CGT);
+	/*<case: ...ID....>^ */
     } else {
-        XFAIL(YAX_EDOCTYPE);
+	XFAIL(YAX_EDOCTYPE);
     }
     token->tokentype = YAX_DOCTYPE;
     /* Set the state to undefined */
@@ -573,48 +587,41 @@ collecttext(yax_lexer* lexer, yax_token* token)
     token->text = SPOS;
     nonwhite = 0;
     for(;;) {
-        c = nextch(lexer);
-        if(c == EOFCHAR)
-            break;
-        if(c == CLT)
-            break;
-        if(!whitespace(c))
-            nonwhite = 1;
-        /* capture character */
+	c = nextch(lexer);
+	if(c == EOS)
+	    break;
+	if(c == CLT)
+	    break;
+	if(!whitespace(c))
+	    nonwhite = 1;
+	/* capture character */
 	*SPOS++ = (char)c;
     }/*for*/
     terminate(lexer);
-    if(c == EOFCHAR) {
-        if(nonwhite) XFAIL(YAX_ETEXT);
-        /* all white space => treat as eof instead of text*/
-        token->tokentype = YAX_EOF;
-        lexer->context = YX_EOF;
-    } else {
-        assert(c == CLT);
-        if(flags & YXFLAG_TRIMTEXT) {
-            if(nonwhite) {
-	        char* pos;
-                /* remove prefixed whitespace */
-                while(whitespace(*token->text)) {
-                    ++token->text;
-                }
-                /* remove suffixed whitespace */
-	        pos = token->text + strlen(token->text);
-		do {pos--;} while(whitespace(*pos));
-                /* now move forward 1 char */
-		pos++;
-		/* re-terminate */
-		*pos = EOFCHAR;
-            } else {
-                /* a zero-length trimmed text is treated as empty */
-                token->text = "";
-            }
-        }
-        /* In this case, we know the next state */
-        lexer->context = YX_OPEN;
+    assert(c == CLT || c == EOS);
+    if(flags & YXFLAG_TRIMTEXT) {
+	if(nonwhite) {
+	    char* pos;
+	    /* remove prefixed whitespace */
+	    while(whitespace(*token->text)) {
+		++token->text;
+	    }
+	    /* remove suffixed whitespace */
+	    pos = token->text + strlen(token->text);
+	    do {pos--;} while(whitespace(*pos));
+	    /* now move forward 1 char */
+	    pos++;
+	    /* re-terminate */
+	    *pos = EOS;
+	} else {
+	    /* a zero-length trimmed text is treated as empty */
+	    token->text = "";
+	}
     }
+    /* backup to just before the &lt; */
+    backup(lexer);
+    lexer->context = YX_UNDEFINED;
     XTRACE(lexer);
-done:
     return err;
 }
 
@@ -633,22 +640,22 @@ collectattribute(yax_lexer* lexer, yax_token* token)
     token->name = SPOS;
     token->text = NULL;
     for(;;) {
-        c=nextch(lexer); /* get current name char */
-        if(c == EOFCHAR) break;
-        /*cases: ...NNN^NNN... ...NNN?^...; N is a namechar ? is any char*/
-        if(!namecharn(c)) {
-            /*cases: ...NNN?^... */
-            break;
-        }
+	c=nextch(lexer); /* get current name char */
+	if(c == EOS) break;
+	/*cases: ...NNN^NNN... ...NNN?^...; N is a namechar ? is any char*/
+	if(!namecharn(c)) {
+	    /*cases: ...NNN?^... */
+	    break;
+	}
 	*SPOS++ = (char)c; /* capture */
     }
     terminate(lexer);
     /*cases: ...NNN?^..., EOF */
     if(whitespace(c)) {
-        skipwhitespace(lexer);
-        c = nextch(lexer);
+	skipwhitespace(lexer);
+	c = nextch(lexer);
     }
-    if(c == EOFCHAR) {XFAIL(YAX_EEQUAL);}
+    if(c == EOS) {XFAIL(YAX_EEQUAL);}
     if(c != '=')  {XFAIL(YAX_EEQUAL);}
     token->text = SPOS;
     /*cases: ...NNN_=^_ ... ; _ is whitespace */
@@ -659,24 +666,24 @@ collectattribute(yax_lexer* lexer, yax_token* token)
     c = nextch(lexer);
     quote = 0;
     if(c == CQUOTE || c == CSQUOTE) {
-        quote = c;
+	quote = c;
     } else if(valuechar(c)) {
 	backup(lexer);
     } else {
-        XFAIL(YAX_EVALUE);
+	XFAIL(YAX_EVALUE);
     }
     /*cases: ...name_=_^VVV ..., ...name_=_Q^VVVQ...*/
     for(;;) {
-        /*cases: ...^VVV, ...^VVVQ... */
-        c=nextch(lexer);
-        if(c == EOFCHAR) break;
-        /*cases: ...V^VV, ...V^VVQ..., ...VVVQ^...., EOF */
-        if(quote && c == quote)
-            break;
-        /*cases: ...V^VV, ...VVV?^; ? is not a value char */
-        if(!quote && !valuechar(c))
-            break;
-        /*cases: ...V^VV, ...VVV^? */
+	/*cases: ...^VVV, ...^VVVQ... */
+	c=nextch(lexer);
+	if(c == EOS) break;
+	/*cases: ...V^VV, ...V^VVQ..., ...VVVQ^...., EOF */
+	if(quote && c == quote)
+	    break;
+	/*cases: ...V^VV, ...VVV?^; ? is not a value char */
+	if(!quote && !valuechar(c))
+	    break;
+	/*cases: ...V^VV, ...VVV^? */
 	*SPOS++ = (char)c; /* capture */
     }
     terminate(lexer);
@@ -687,26 +694,46 @@ collectattribute(yax_lexer* lexer, yax_token* token)
     }
     /*cases: ...QvalueQ?^...value?^; where ? is not value char or quote */
     if(whitespace(c)) {
-        skipwhitespace(lexer);
-        c = nextch(lexer);
+	skipwhitespace(lexer);
+	c = nextch(lexer);
     }
     if(c == '/' && peek(0,lexer) == CGT ) {
-        /*cases: ..VVV/^> */
-        nextch(lexer);
-        /*cases: ..VVV/>^ */
-        lexer->context = YX_EMPTYCLOSE;
+	/*cases: ..VVV/^> */
+	nextch(lexer);
+	/*cases: ..VVV/>^ */
+	lexer->context = YX_EMPTYCLOSE;
     } else if(c == CGT ) {
-        /*cases: ..VVV>^ */
-        lexer->context = YX_TEXT;
+	/*cases: ..VVV>^ */
+	lexer->context = YX_TEXT;
     } else if(namechar1(c)) {
-        backup(lexer);
-        /*case: ...^aname... */
-        lexer->context = YX_ATTRIBUTE;
+	backup(lexer);
+	/*case: ...^aname... */
+	lexer->context = YX_ATTRIBUTE;
     } else {XFAIL(YAX_ECLOSURE);}
     XTRACE(lexer);
 
 done:
     return err;
+}
+
+static yax_err
+collectnamespace(yax_token* token)
+{
+    if(token->name != NULL) {
+	char* p = strchr(token->name,':');
+	if(p == NULL)
+	    token->namespace = NULL;
+	else {
+	    token->namespace = token->name;
+	    token->name = p+1;
+	    *p = EOS;
+	    if(*token->namespace == EOS)
+		token->namespace = NULL;
+	}
+	if(*token->name == EOS)
+	   return YAX_ENAMENULL;
+    }
+    return YAX_OK;
 }
 
 yax_err
@@ -718,7 +745,7 @@ yax_create(const char* input, int flags, yax_lexer** lexerp)
     if(input == NULL || strlen(input) == 0) return YAX_EINVAL;
     lexer->input = input;
     lexer->strings = (char*)malloc(strlen(input));
-    lexer->strings[0] = EOFCHAR;
+    lexer->strings[0] = EOS;
     lexer->ipos = lexer->input;
     lexer->spos = lexer->strings;
     lexer->context = YX_UNDEFINED;
@@ -731,8 +758,8 @@ yax_err
 yax_free(yax_lexer* lexer)
 {
     if(lexer != NULL) {
-        if(lexer->strings) free(lexer->strings);
-        free(lexer);
+	if(lexer->strings) free(lexer->strings);
+	free(lexer);
     }
     return YAX_OK;
 }
@@ -747,7 +774,7 @@ void
 yax_setflags(yax_lexer* lexer, int flags)
 {
     if(lexer != NULL) {
-        lexer->flags = flags;
+	lexer->flags = flags;
     }
 }
 
@@ -762,13 +789,13 @@ skipentity(yax_lexer* lexer)
     c=nextch(lexer); /* skip the ampersand */
     count = 1;
     for(;;) {
-        c=nextch(lexer);
-        if(c == EOFCHAR) break;
-        if(c != ';' && !namecharn(c)) break;
-        count++;
-        if(c == ';') {
-            return count;
-        }           
+	c=nextch(lexer);
+	if(c == EOS) break;
+	if(c != ';' && !namecharn(c)) break;
+	count++;
+	if(c == ';') {
+	    return count;
+	}	    
     }
     /* wasn't an entity after all */
     setmark1(lexer,save); 
@@ -801,56 +828,57 @@ yax_unescape(char* s, char** translations)
     stop = (s + len);
 
     while(q < stop) {
-        int c = *q++;
-        switch (c) {
-        case '&': /* see if this is a legitimate entity */
-            /* move forward looking for a semicolon; */
-            for(found=1,count=0;count < sizeof(entity);count++) {
-                c = q[count];
-                if(c == ';')
-                    break;
-                if(   (count==0 && !namechar1(c))
-                   || (count > 0 && !namecharn(c))) {
-                    found=0; /* not a legitimate entity */
-                    break;
-                }
-                entity[count] = c;
-            }
-            if(count == sizeof(entity) || count == 0 || !found) {
-                /* was not in correct form for entity */
-                *p++ = '&';
-            } else { /* looks legitimate */
-                char** pos = translations;
-                char* replacement = NULL;
-                entity[count] = '\0'; /* null terminate */
-                /* check the translation table */
-                while(*pos) {
-                    if(strcmp(*pos,entity)==0) {
-                        replacement = pos[1];
-                        break;
-                    }
-                    pos += 2;                   
-                }
-                if(replacement == NULL) { /* no translation, ignore */
-                    *p++ = '&';
-                } else { /* found it */
-                    int replen = strlen(replacement);
-                    q += (count+1) ; /* skip input entity, including trailing semicolon */
-                    memcpy(p,replacement,replen);
-                    p += replen;
-                }
-            }
-            break;
-        default:
-            *p++ = (char)c;
-            break;
-        }
+	int c = *q++;
+	switch (c) {
+	case '&': /* see if this is a legitimate entity */
+	    /* move forward looking for a semicolon; */
+	    for(found=1,count=0;count < sizeof(entity);count++) {
+		c = q[count];
+		if(c == ';')
+		    break;
+		if(   (count==0 && !namechar1(c))
+		   || (count > 0 && !namecharn(c))) {
+		    found=0; /* not a legitimate entity */
+		    break;
+		}
+		entity[count] = c;
+	    }
+	    if(count == sizeof(entity) || count == 0 || !found) {
+		/* was not in correct form for entity */
+		*p++ = '&';
+	    } else { /* looks legitimate */
+		char** pos = translations;
+		char* replacement = NULL;
+		entity[count] = '\0'; /* null terminate */
+		/* check the translation table */
+		while(*pos) {
+		    if(strcmp(*pos,entity)==0) {
+			replacement = pos[1];
+			break;
+		    }
+		    pos += 2;			
+		}
+		if(replacement == NULL) { /* no translation, ignore */
+		    *p++ = '&';
+		} else { /* found it */
+		    int replen = strlen(replacement);
+		    q += (count+1) ; /* skip input entity, including trailing semicolon */
+		    memcpy(p,replacement,replen);
+		    p += replen;
+		}
+	    }
+	    break;
+	default:
+	    *p++ = (char)c;
+	    break;
+	}
     }
     *p = '\0';
     return u;
 }
 
 static char* tokennames[] = {
+"UNDEFINED",
 "EOF",
 "OPEN",
 "CLOSE",
@@ -878,7 +906,7 @@ tokenname(yax_tokentype token)
     int itoken = (int)token;
     int ntokens = (sizeof(tokennames)/sizeof(char*));
     if(itoken >= 0 && itoken < ntokens) {
-        return tokennames[itoken];
+	return tokennames[itoken];
     }
     return "UNKNOWN";
 }
@@ -892,44 +920,44 @@ addtext(char* dst, const char* txt, int flags)
     int shortened = 0;
 
     if(txt == NULL) {
-        strcat(dst,"null");
-        return;
+	strcat(dst,"null");
+	return;
     }
     len = strlen(txt);
-    if(flags & YXFLAG_ELIDETEXT && len > MAXTEXT) {
-        len = MAXTEXT;
-        shortened = 1;
+    if(flags & YXFLAG_ELIDETEXT && len > YAX_MAX_TEXT) {
+	len = YAX_MAX_TEXT;
+	shortened = 1;
     }
     pos = dst + strlen(dst);
     *pos++ = '|';
     while((c=*txt++)) {
-        if(len-- <= 0) continue;
-        if((flags & YXFLAG_ESCAPE) && c < ' ') {
-            *pos++ = '\\';
-            switch (c) {
-            case '\n': *pos++ = 'n'; break;
-            case '\r': *pos++ = 'r'; break;
-            case '\f': *pos++ = 'f'; break;
-            case '\t': *pos++ = 't'; break;
-            default: {/* convert to octal */
-                unsigned int uc = (unsigned int)c;
-                unsigned int oct;
-                oct = ((uc >> 6) & 077);
-                *pos++ = (char)('0'+ oct);
-                oct = ((uc >> 3) & 077);
-                *pos++ = (char)('0'+ oct);
-                oct = ((uc) & 077);
-                *pos++ = (char)('0'+ oct);
-                } break;
-            }
-        } else if((flags & YXFLAG_NOCR) && c == '\r') {
-            continue;
-        } else {
-            *pos++ = (char)c;       
-        }
+	if(len-- <= 0) continue;
+	if((flags & YXFLAG_ESCAPE) && c < ' ') {
+	    *pos++ = '\\';
+	    switch (c) {
+	    case '\n': *pos++ = 'n'; break;
+	    case '\r': *pos++ = 'r'; break;
+	    case '\f': *pos++ = 'f'; break;
+	    case '\t': *pos++ = 't'; break;
+	    default: {/* convert to octal */
+		unsigned int uc = (unsigned int)c;
+		unsigned int oct;
+		oct = ((uc >> 6) & 077);
+		*pos++ = (char)('0'+ oct);
+		oct = ((uc >> 3) & 077);
+		*pos++ = (char)('0'+ oct);
+		oct = ((uc) & 077);
+		*pos++ = (char)('0'+ oct);
+		} break;
+	    }
+	} else if((flags & YXFLAG_NOCR) && c == '\r') {
+	    continue;
+	} else {
+	    *pos++ = (char)c;	    
+	}
     }
     if(shortened) {
-        *pos++ = '.'; *pos++ = '.'; *pos++ = '.';
+	*pos++ = '.'; *pos++ = '.'; *pos++ = '.';
     }
     *pos++ = '|';
     *pos = '\0';
@@ -963,41 +991,41 @@ yax_trace(yax_lexer* lexer, yax_token* token)
     case YAX_OPEN:
     case YAX_CLOSE:
     case YAX_EMPTYCLOSE:
-        strcat(result,": element=|");
-        strcat(result,token->name);
-        strcat(result,"|");
-        break;
+	strcat(result,": element=|");
+	strcat(result,token->name);
+	strcat(result,"|");
+	break;
     case YAX_TEXT:
-        trans = NULL;
-        strcat(result," text=");
-        addtext(result,token->text,lexer->flags);
-        trans = yax_unescape(token->text,tracetranstable);
-        strcat(result," translation=");
-        addtext(result,trans,lexer->flags);
-        if(trans) free(trans);
-        break;
+	trans = NULL;
+	strcat(result," text=");
+	addtext(result,token->text,lexer->flags);
+	trans = yax_unescape(token->text,tracetranstable);
+	strcat(result," translation=");
+	addtext(result,trans,lexer->flags);
+	if(trans) free(trans);
+	break;
     case YAX_ATTRIBUTE:
-        strcat(result,": name=");
-        addtext(result,token->name,lexer->flags);
-        strcat(result," value=");
-        addtext(result,token->text,lexer->flags);
-        break;
+	strcat(result,": name=");
+	addtext(result,token->name,lexer->flags);
+	strcat(result," value=");
+	addtext(result,token->text,lexer->flags);
+	break;
     case YAX_COMMENT:
     case YAX_CDATA:
-        strcat(result,": text=");
-        addtext(result,token->text,lexer->flags);
-        break;
+	strcat(result,": text=");
+	addtext(result,token->text,lexer->flags);
+	break;
     case YAX_DOCTYPE:
     case YAX_PROLOG:
-        strcat(result,": name=");
-        addtext(result,token->name,lexer->flags);
-        strcat(result," value=");
-        addtext(result,token->text,lexer->flags);
-        break;
+	strcat(result,": name=");
+	addtext(result,token->name,lexer->flags);
+	strcat(result," value=");
+	addtext(result,token->text,lexer->flags);
+	break;
     case YAX_EOF:
-        break;
+	break;
     default:
-        XASSERT(0);
+	XASSERT(0);
     }
     return result;
 }
@@ -1008,31 +1036,31 @@ yax_errstring(yax_err err)
 {
     const char* msg = NULL;
     if(err == 0)
-        msg = "No error";
+	msg = "No error";
     else if(err > 0) {
       msg = (const char *) strerror((int)err);
       if(msg == NULL) msg = "Unknown Error";
     } else {/*err < 0 */
-        switch(err) {
-        case YAX_ENOMEM: msg = "Out of Memory"; break;
-        case YAX_EINVAL: msg = "Invalid argument"; break;
-        case YAX_EEOF: msg = "Unexpected EOF"; break;
-        case YAX_ECLOSURE: msg = "Expected /,>,or attribute name"; break;
-        case YAX_EGT: msg = "Expected >"; break;
-        case YAX_ELT: msg = "Expected <"; break;
-        case YAX_ENAMECHAR: msg = "Illegal leading name character"; break;
-        case YAX_ENATTR: msg = "Too many attributes"; break;
-        case YAX_EEQUAL: msg = "Expected '=' after attribute name"; break;
-        case YAX_EVALUE: msg = "Expected attribute value"; break;
-        case YAX_ECOMMENT: msg = "Comment is missing trailing '-->'"; break;
-        case YAX_ECDATA: msg = "Cdata is missing trailing ']]>'"; break;
-        case YAX_EPROLOG: msg = "Malformed <?xml...> prolog"; break;
-        case YAX_EDOCTYPE: msg = "Malformed <!DOCTYPE...>"; break;
-        case YAX_ENAMENULL: msg = "Name is zero length"; break;
-        case YAX_ETEXT: msg = "Non-whitespace text encountered"; break;
+	switch(err) {
+	case YAX_ENOMEM: msg = "Out of Memory"; break;
+	case YAX_EINVAL: msg = "Invalid argument"; break;
+	case YAX_EEOF: msg = "Unexpected EOF"; break;
+	case YAX_ECLOSURE: msg = "Expected /,>,or attribute name"; break;
+	case YAX_EGT: msg = "Expected >"; break;
+	case YAX_ELT: msg = "Expected <"; break;
+	case YAX_ENAMECHAR: msg = "Illegal leading name character"; break;
+	case YAX_ENATTR: msg = "Too many attributes"; break;
+	case YAX_EEQUAL: msg = "Expected '=' after attribute name"; break;
+	case YAX_EVALUE: msg = "Expected attribute value"; break;
+	case YAX_ECOMMENT: msg = "Comment is missing trailing '-->'"; break;
+	case YAX_ECDATA: msg = "Cdata is missing trailing ']]>'"; break;
+	case YAX_EPROLOG: msg = "Malformed <?xml...> prolog"; break;
+	case YAX_EDOCTYPE: msg = "Malformed <!DOCTYPE...>"; break;
+	case YAX_ENAMENULL: msg = "Name is zero length"; break;
+	case YAX_ETEXT: msg = "Non-whitespace text encountered"; break;
 
-        default: msg = "Undefined error code"; break;
-        }
+	default: msg = "Undefined error code"; break;
+	}
     }
     return msg;
 }
@@ -1045,3 +1073,4 @@ yax_tokendup(yax_token token)
 	*t = token;
     return t;
 }
+

@@ -50,7 +50,7 @@ options(const char* optlist0, int argc, char** argv)
     }
     *q = '\0';
 
-    opterr = 0; /* I will print any error message */
+    opterr = 1; /* Let getopt report */
     while ((c = getopt(argc, argv, optlist)) != EOF) {
 	switch(c) {
 	case '?':
@@ -78,6 +78,7 @@ options(const char* optlist0, int argc, char** argv)
     for(i=0;i<argc;i++) {
 	nonoptions[i] = argv[i];
     }    
+    nonoptions[i] = NULL; /* signal end of the non-option arguments */
 
     return 1;
 

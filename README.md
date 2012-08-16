@@ -1,29 +1,52 @@
-The yax system uses YACC (Bison really)
-to contruct parsers for specific
-XML document formats.
+# Project Description
+The goal of the **yax** project is to allow
+the use of _YACC_ (Gnu _Bison_ actually)
+to parse/process XML documents.
 
-In order to use yax, it is necessary to manually produce the
-three pieces of code.
-# A Bison .y grammar file. This file can be produced in a
-straightforward way starting with a RELAXNG [] grammar for the XML document.
-# A perfect hash function for the element names and attribute names
-defined in #1. The examples use the GNU gperf program
-to generate the perfect hash code.
-<li> A lexer for the YAXX/Bison parser.
-This lexer in turn uses the yax provided basic xml lexer
-to provide lexemes for the Bison generated parser.
+The key piece of software for achieving the above goal is to
+provide a library that can produce an XML lexical token
+stream from an XML document.
 
-Yax has some limitations with respect
-to the kinds of XML document it can handle.
-# Mixed content is not supported.
-# % is not supported.
-# The xml prolog and DOCTYPE constructs are parsed
-     but not used.
-# Name space prefixs (e.g. "xxx:yyy") are just treated as part
-     of the name of an element.
-# The input document is an in-memory string.
-     A duplicate will be created and used inside the yax library.
-# Comments are scanned but ignored.
-# Entities (e.g. &amp;amp;) are not converted, but
-an API function is provided to do that.
+This stream can be wrapped to create an instance
+of _yylex()_ to feed tokens to a Bison grammar to
+parse and process the XML document.
 
+Using the stream plus a Bison grammar, it is possible
+to carry at least the following kinds of activities.
+
+1. Validate XML documents,
+2. Directly parse XML documents to
+  create internal data structures,
+3. Construct DOM trees.
+
+Activity #1, Document validation, can be achieved by parsing the xml token
+stream against a validation grammar. It is relatively simple
+to manually convert a RELAX-NG grammar to a Bison _.y_ grammar.
+Parsing a document using the .y grammar then becomes equivalent
+to validating the document against the RELAX-NG grammar.
+
+Activity #2 is the most general case. It simultaneously
+validates the XML token stream against the .y grammar
+and, using Bison grammar actions, can create internal
+data structures containing information extracted from
+the XML document.
+
+Activity #3, DOM trees, is actually an example of #2
+where the grammar is a general grammar for xml (see the file
+xml.y) and the created data structure is a DOM tree.
+
+# Over View
+
+In order to use _yax_, it is necessary to manually produce
+the following pieces of code.
+
+1. A Bison .y grammar file. This file can be produced in a
+straightforward way starting with a RELAXNG [1] grammar for
+the XML document.
+2. A Bison _yylex() program that can provide lexical
+tokens to a Bison parser.  The yylex() program in turn wraps
+the ''yax'' provided basic xml lexer to provide a stream of
+xml-level tokens for the Bison generated parser.
+
+# References
+1. http://relaxng.org

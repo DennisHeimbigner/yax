@@ -6,6 +6,8 @@
 
 #include "yxlist.h"
 
+#define yxelem void*
+
 int yxlistnull(yxelem e) {return e == NULL;}
 
 #ifndef TRUE

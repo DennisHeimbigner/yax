@@ -1,0 +1,12 @@
+#!/bin/sh
+
+F=manual
+
+gcc -g -O0 -o lno.exe lno.c
+
+if ! test -f ./$F.save ; then
+  cp $F.html ./$F.save
+fi
+rm -f $F.html
+./lno.exe $F.save > ./$F.html
+

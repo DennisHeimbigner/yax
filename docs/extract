@@ -1,0 +1,11 @@
+#!/bin/sh
+
+F=manual
+
+gcc -g -O0 -o extract.exe extract.c
+
+rm -f ./ex1.c ./ex2.c
+./extract.exe $F.html 1 >./ex1.c
+
+
+

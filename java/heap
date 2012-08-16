@@ -1,0 +1,14 @@
+
+	sed -e '1,/\/[*]DO NOT DELETE THIS LINE[*]\//d' \
+	    -e 's|YYABORT|return YYABORT|' \
+	    -e 's|YYACCEPT|return YYACCEPT|' \
+		<${DAP4_Y} >./dap4.y.core
+<replaceregexp byline="true">
+  <regexp pattern="OldProperty=(.*)"/>
+  <substitution expression="NewProperty=\1"/>
+
+<replaceregexp file="${src}/build.properties"
+               match="OldProperty=(.*)"
+               replace="NewProperty=\1"
+               byline="true"
+/>

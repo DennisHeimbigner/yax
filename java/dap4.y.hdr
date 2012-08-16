@@ -1,0 +1,36 @@
+%debug
+%error-verbose
+
+%define public
+%define package "yax"
+%define extends "DAP4Actions"
+%define throws "Exception"
+%define lex_throws "Exception"
+
+%code imports {
+import opendap.dap.*;
+import opendap.dap.BaseTypeFactory;
+import opendap.dap.parsers.ParseException;
+import java.io.*;
+}
+
+%code {
+ 
+    /**
+     * Instantiates the Bison-generated parser.
+     * @param yylexer The scanner that will supply tokens to the parser.
+     */
+
+    public DAP4Parser()
+	throws Exception
+    {
+	super();
+    }
+
+    public DAP4Parser(String document)
+	throws Exception
+    {
+	super(document);
+    }
+
+}

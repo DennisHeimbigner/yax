@@ -1,4 +1,4 @@
-#ifdef OPTIONS_H
+#ifndef OPTIONS_H
 #define OPTIONS_H
 
 extern int options(const char* optlist, int argc, char** argv);
