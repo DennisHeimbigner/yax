@@ -1,4 +1,84 @@
 
+<!--antcall target="testeach"><param name="TESTCASE" value=""/></antcall-->
+<target name="test" depends="jar,testclean,lextest">
+</target>
+
+<target name="testclean">
+  <delete dir="${results.dir}"/>
+  <mkdir dir="${results.dir}"/>
+</target>
+
+<target name="lextest">
+  <java classpath="${test.cp}" classname="yax.test.LexTest"
+        output="${results.dir}/lextest.txt">
+    <arg value="-tle"/><arg value="${tests.dir}/books.xml"/>
+  </java>
+  <antcall target="compare">
+    <param name="TESTCASE" value="lextest"/>
+    <param name="EXT" value="txt"/>
+  </antcall>
+</target>
+
+<!--property name="TESTCASE" value="..."/-->
+<!--property name="EXT" value="..."/-->
+<target name="testeach">
+  <antcall target="exec"><param name="EXT" value="lt"/></antcall>
+  <antcall target="compare"><param name="EXT" value="lt"/></antcall>
+</target>
+
+<target name="lt">
+  <java fork="true" classpath="${test.cp}" classname="yax.LexTest"
+        output="${results.dir}/${TESTCASE}.lt">
+    <arg value="-te"/><arg value="${tests.dir}/${TESTCASE}.xml"/>
+  </java>
+</target>
+
+<target name="expr">
+  <antcall target="bison"><param name="GRAMMAR" value="expr.y"/></antcall>
+  <java fork="true" classpath="${test.cp}" classname="yax.LexTest"
+        output="${results.dir}/${TESTCASE}.lt">
+    <arg value="-te"/><arg value="${tests.dir}/${TESTCASE}.xml"/>
+  </java>
+</target>
+
+<target name="dap4" depends="dap4.y">
+  <antcall target="bison"><param name="GRAMMAR" value="dap4.y"/></antcall>
+</target>
+
+<target name="compare" depends="initbaseline,diff,if-true,if-false"/>
+
+<target name="initbaseline" if="${setup}">
+   <copy file="${results.dir}/${TESTCASE}.${EXT}"
+         todir="${baseline.dir}"
+	 overwrite="true"/>
+</target>
+    
+<target name="diff">
+  <exec executable="diff" failonerror="false" resultproperty="diff-result">
+    <arg value="-w"/><arg value="-b"/><arg value="-B"/>
+    <arg value="${baseline.dir}/${TESTCASE}.${EXT}"/>
+    <arg value="${results.dir}/${TESTCASE}.${EXT}"/>
+  </exec>
+  <condition property="${EXT}" value="true">
+    <not><equals arg1="${diff-result}" arg2="1"/></not>
+  </condition>
+</target>
+
+<target name="if">
+  <condition property="${EXT}">
+    <filesmatch file1="${baseline.dir}/${TESTCASE}.${EXT}" file2="${results.dir}/${TESTCASE}.${EXT}"/>
+  </condition>
+</target>
+
+<target name="if-true" if="${EXT}">
+  <echo message="*** Pass: ${TESTCASE}.${EXT}"/>
+</target>
+
+<target name="if-false" unless="${EXT}">
+  <echo message="*** Fail: ${TESTCASE}.${EXT}"/>
+</target>
+
+==================================================
 	sed -e '1,/\/[*]DO NOT DELETE THIS LINE[*]\//d' \
 	    -e 's|YYABORT|return YYABORT|' \
 	    -e 's|YYACCEPT|return YYACCEPT|' \

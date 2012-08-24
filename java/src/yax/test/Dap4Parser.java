@@ -30,30 +30,16 @@
    This special exception was added by the Free Software Foundation in
    version 2.2 of Bison.  */
 
-package yax;
+package yax.test;
 /* First part of user declarations.  */
 
-/* "%code imports" blocks.  */
-
-/* Line 33 of lalr1.java  */
-/* Line 10 of "dap4.y"  */
-
-import opendap.dap.*;
-import opendap.dap.BaseTypeFactory;
-import opendap.dap.parsers.ParseException;
-import java.io.*;
-
-
-
-/* Line 33 of lalr1.java  */
-/* Line 50 of "DAP4Parser.java"  */
 
 /**
- * A Bison parser, automatically generated from <tt>dap4.y</tt>.
+ * A Bison parser, automatically generated from <tt>F:\\svn\\yax\\java/src/yax/test/dap4.y</tt>.
  *
  * @author LALR (1) parser skeleton written by Paolo Bonzini.
  */
-public class DAP4Parser extends DAP4parse
+public class Dap4Parser extends Dap4Test
 {
     /** Version number for the Bison executable that generated this parser.  */
   public static final String bisonVersion = "2.4.2";
@@ -210,13 +196,11 @@ public class DAP4Parser extends DAP4parse
   /** Token number, to be returned by the scanner.  */
   public static final int TEXT = 326;
   /** Token number, to be returned by the scanner.  */
-  public static final int OTHERXML = 327;
+  public static final int ERROR = 327;
   /** Token number, to be returned by the scanner.  */
-  public static final int ERROR = 328;
+  public static final int UNKNOWN = 328;
   /** Token number, to be returned by the scanner.  */
-  public static final int UNKNOWN = 329;
-  /** Token number, to be returned by the scanner.  */
-  public static final int UNEXPECTED = 330;
+  public static final int UNEXPECTED = 329;
 
 
 
@@ -224,7 +208,7 @@ public class DAP4Parser extends DAP4parse
 
   /**
    * Communication interface between the scanner and the Bison-generated
-   * parser <tt>DAP4Parser</tt>.
+   * parser <tt>Dap4Parser</tt>.
    */
   public interface Lexer {
     
@@ -261,7 +245,7 @@ public class DAP4Parser extends DAP4parse
    * Instantiates the Bison-generated parser.
    * @param yylexer The scanner that will supply tokens to the parser.
    */
-  public DAP4Parser (Lexer yylexer) {
+  public Dap4Parser (Lexer yylexer) {
     this.yylexer = yylexer;
     
   }
@@ -431,851 +415,10 @@ public class DAP4Parser extends DAP4parse
 
     switch (yyn)
       {
-	  case 2:
-  if (yyn == 2)
-    
-/* Line 354 of lalr1.java  */
-/* Line 110 of "dap4.y"  */
-    {yyval=d4group(parser,((List)(yystack.valueAt (4-(2)))),((List)(yystack.valueAt (4-(3))))); CHECK(yyval); };
-  break;
-    
-
-  case 3:
-  if (yyn == 3)
-    
-/* Line 354 of lalr1.java  */
-/* Line 114 of "dap4.y"  */
-    {yyval=d4attrlist(parser,NULL,emptytoken);};
-  break;
-    
-
-  case 4:
-  if (yyn == 4)
-    
-/* Line 354 of lalr1.java  */
-/* Line 116 of "dap4.y"  */
-    {yyval=d4attrlist(parser,((List)(yystack.valueAt (2-(1)))),((YaxToken)(yystack.valueAt (2-(2)))));};
-  break;
-    
-
-  case 5:
-  if (yyn == 5)
-    
-/* Line 354 of lalr1.java  */
-/* Line 118 of "dap4.y"  */
-    {yyval=d4attrlist(parser,((List)(yystack.valueAt (2-(1)))),((YaxToken)(yystack.valueAt (2-(2)))));};
-  break;
-    
-
-  case 6:
-  if (yyn == 6)
-    
-/* Line 354 of lalr1.java  */
-/* Line 120 of "dap4.y"  */
-    {yyval=d4attrlist(parser,((List)(yystack.valueAt (2-(1)))),((YaxToken)(yystack.valueAt (2-(2)))));};
-  break;
-    
-
-  case 7:
-  if (yyn == 7)
-    
-/* Line 354 of lalr1.java  */
-/* Line 122 of "dap4.y"  */
-    {yyval=d4attrlist(parser,((List)(yystack.valueAt (2-(1)))),((YaxToken)(yystack.valueAt (2-(2)))));};
-  break;
-    
-
-  case 8:
-  if (yyn == 8)
-    
-/* Line 354 of lalr1.java  */
-/* Line 124 of "dap4.y"  */
-    {yyval=d4attrlist(parser,((List)(yystack.valueAt (2-(1)))),((YaxToken)(yystack.valueAt (2-(2)))));};
-  break;
-    
-
-  case 9:
-  if (yyn == 9)
-    
-/* Line 354 of lalr1.java  */
-/* Line 126 of "dap4.y"  */
-    {yyval=d4attrlist(parser,((List)(yystack.valueAt (2-(1)))),((YaxToken)(yystack.valueAt (2-(2)))));};
-  break;
-    
-
-  case 10:
-  if (yyn == 10)
-    
-/* Line 354 of lalr1.java  */
-/* Line 128 of "dap4.y"  */
-    {yyval=d4attrlist(parser,((List)(yystack.valueAt (2-(1)))),((YaxToken)(yystack.valueAt (2-(2)))));};
-  break;
-    
-
-  case 11:
-  if (yyn == 11)
-    
-/* Line 354 of lalr1.java  */
-/* Line 133 of "dap4.y"  */
-    {yyval=d4list(parser,NULL,NULL);};
-  break;
-    
-
-  case 12:
-  if (yyn == 12)
-    
-/* Line 354 of lalr1.java  */
-/* Line 135 of "dap4.y"  */
-    {yyval=d4list(parser,((List)(yystack.valueAt (2-(1)))),((Object)(yystack.valueAt (2-(2)))));};
-  break;
-    
-
-  case 13:
-  if (yyn == 13)
-    
-/* Line 354 of lalr1.java  */
-/* Line 137 of "dap4.y"  */
-    {yyval=d4list(parser,((List)(yystack.valueAt (2-(1)))),((Object)(yystack.valueAt (2-(2)))));};
-  break;
-    
-
-  case 14:
-  if (yyn == 14)
-    
-/* Line 354 of lalr1.java  */
-/* Line 139 of "dap4.y"  */
-    {yyval=d4list(parser,((List)(yystack.valueAt (2-(1)))),((Object)(yystack.valueAt (2-(2)))));};
-  break;
-    
-
-  case 15:
-  if (yyn == 15)
-    
-/* Line 354 of lalr1.java  */
-/* Line 141 of "dap4.y"  */
-    {yyval=d4list(parser,((List)(yystack.valueAt (2-(1)))),((Object)(yystack.valueAt (2-(2)))));};
-  break;
-    
-
-  case 16:
-  if (yyn == 16)
-    
-/* Line 354 of lalr1.java  */
-/* Line 143 of "dap4.y"  */
-    {yyval=d4list(parser,((List)(yystack.valueAt (2-(1)))),((Object)(yystack.valueAt (2-(2)))));};
-  break;
-    
-
-  case 17:
-  if (yyn == 17)
-    
-/* Line 354 of lalr1.java  */
-/* Line 148 of "dap4.y"  */
-    {yyval=d4enumdef(parser,((List)(yystack.valueAt (4-(2)))),((List)(yystack.valueAt (4-(3))))); CHECK(yyval);};
-  break;
-    
-
-  case 18:
-  if (yyn == 18)
-    
-/* Line 354 of lalr1.java  */
-/* Line 153 of "dap4.y"  */
-    {yyval=d4attrlist(parser,NULL,emptytoken);
-		d4attrlist(parser,yyval,((YaxToken)(yystack.valueAt (2-(1)))));
-		d4attrlist(parser,yyval,((YaxToken)(yystack.valueAt (2-(2)))));
-	    };
-  break;
-    
-
-  case 19:
-  if (yyn == 19)
-    
-/* Line 354 of lalr1.java  */
-/* Line 158 of "dap4.y"  */
-    {yyval=d4attrlist(parser,NULL,emptytoken);
-		d4attrlist(parser,yyval,((YaxToken)(yystack.valueAt (2-(1)))));
-		d4attrlist(parser,yyval,((YaxToken)(yystack.valueAt (2-(2)))));
-	    };
-  break;
-    
-
-  case 20:
-  if (yyn == 20)
-    
-/* Line 354 of lalr1.java  */
-/* Line 166 of "dap4.y"  */
-    {yyval=d4list(parser,NULL,NULL);};
-  break;
-    
-
-  case 21:
-  if (yyn == 21)
-    
-/* Line 354 of lalr1.java  */
-/* Line 168 of "dap4.y"  */
-    {yyval=d4list(parser,((List)(yystack.valueAt (2-(1)))),((Object)(yystack.valueAt (2-(2)))));};
-  break;
-    
-
-  case 22:
-  if (yyn == 22)
-    
-/* Line 354 of lalr1.java  */
-/* Line 174 of "dap4.y"  */
-    {yyval=d4enumconst(parser,((List)(yystack.valueAt (3-(2))))); CHECK(yyval);};
-  break;
-    
-
-  case 23:
-  if (yyn == 23)
-    
-/* Line 354 of lalr1.java  */
-/* Line 179 of "dap4.y"  */
-    {yyval=d4attrlist(parser,NULL,emptytoken);
-		d4attrlist(parser,yyval,((YaxToken)(yystack.valueAt (2-(1)))));
-		d4attrlist(parser,yyval,((YaxToken)(yystack.valueAt (2-(2)))));
-	    };
-  break;
-    
-
-  case 24:
-  if (yyn == 24)
-    
-/* Line 354 of lalr1.java  */
-/* Line 184 of "dap4.y"  */
-    {yyval=d4attrlist(parser,NULL,emptytoken);
-		d4attrlist(parser,yyval,((YaxToken)(yystack.valueAt (2-(1)))));
-		d4attrlist(parser,yyval,((YaxToken)(yystack.valueAt (2-(2)))));
-	    };
-  break;
-    
-
-  case 25:
-  if (yyn == 25)
-    
-/* Line 354 of lalr1.java  */
-/* Line 192 of "dap4.y"  */
-    {yyval=d4list(parser,NULL,NULL);};
-  break;
-    
-
-  case 26:
-  if (yyn == 26)
-    
-/* Line 354 of lalr1.java  */
-/* Line 194 of "dap4.y"  */
-    {yyval=d4list(parser,((List)(yystack.valueAt (2-(1)))),((Object)(yystack.valueAt (2-(2)))));};
-  break;
-    
-
-  case 27:
-  if (yyn == 27)
-    
-/* Line 354 of lalr1.java  */
-/* Line 199 of "dap4.y"  */
-    {yyval=d4namespace(parser,((YaxToken)(yystack.valueAt (3-(2))))); CHECK(yyval);};
-  break;
-    
-
-  case 28:
-  if (yyn == 28)
-    
-/* Line 354 of lalr1.java  */
-/* Line 204 of "dap4.y"  */
-    {yyval=d4dimdef(parser,((List)(yystack.valueAt (4-(2)))),((List)(yystack.valueAt (4-(3))))); CHECK(yyval);};
-  break;
-    
-
-  case 29:
-  if (yyn == 29)
-    
-/* Line 354 of lalr1.java  */
-/* Line 209 of "dap4.y"  */
-    {yyval=d4attrlist(parser,NULL,emptytoken);
-		d4attrlist(parser,yyval,((YaxToken)(yystack.valueAt (2-(1)))));
-		d4attrlist(parser,yyval,((YaxToken)(yystack.valueAt (2-(2)))));
-	    };
-  break;
-    
-
-  case 30:
-  if (yyn == 30)
-    
-/* Line 354 of lalr1.java  */
-/* Line 214 of "dap4.y"  */
-    {yyval=d4attrlist(parser,NULL,emptytoken);
-		d4attrlist(parser,yyval,((YaxToken)(yystack.valueAt (2-(1)))));
-		d4attrlist(parser,yyval,((YaxToken)(yystack.valueAt (2-(2)))));
-	    };
-  break;
-    
-
-  case 31:
-  if (yyn == 31)
-    
-/* Line 354 of lalr1.java  */
-/* Line 222 of "dap4.y"  */
-    {yyval=d4dimref(parser,((List)(yystack.valueAt (3-(2))))); CHECK(yyval);};
-  break;
-    
-
-  case 32:
-  if (yyn == 32)
-    
-/* Line 354 of lalr1.java  */
-/* Line 227 of "dap4.y"  */
-    {yyval=d4attrlist(parser,NULL,emptytoken);
-		d4attrlist(parser,yyval,((YaxToken)(yystack.valueAt (1-(1)))));
-	    };
-  break;
-    
-
-  case 33:
-  if (yyn == 33)
-    
-/* Line 354 of lalr1.java  */
-/* Line 231 of "dap4.y"  */
-    {yyval=d4attrlist(parser,NULL,emptytoken);
-		d4attrlist(parser,yyval,((YaxToken)(yystack.valueAt (1-(1)))));
-	    };
-  break;
-    
-
-  case 34:
-  if (yyn == 34)
-    
-/* Line 354 of lalr1.java  */
-/* Line 237 of "dap4.y"  */
-    {yyval=((Object)(yystack.valueAt (1-(1))));};
-  break;
-    
-
-  case 35:
-  if (yyn == 35)
-    
-/* Line 354 of lalr1.java  */
-/* Line 238 of "dap4.y"  */
-    {yyval=((Object)(yystack.valueAt (1-(1))));};
-  break;
-    
-
-  case 36:
-  if (yyn == 36)
-    
-/* Line 354 of lalr1.java  */
-/* Line 244 of "dap4.y"  */
-    {yyval=d4simplevariable(parser,((YaxToken)(yystack.valueAt (4-(1)))),((YaxToken)(yystack.valueAt (4-(2)))),((Object)(yystack.valueAt (4-(3)))),((YaxToken)(yystack.valueAt (4-(4))))); CHECK(yyval);};
-  break;
-    
-
-  case 37:
-  if (yyn == 37)
-    
-/* Line 354 of lalr1.java  */
-/* Line 249 of "dap4.y"  */
-    {yyval=((YaxToken)(yystack.valueAt (1-(1))));};
-  break;
-    
-
-  case 38:
-  if (yyn == 38)
-    
-/* Line 354 of lalr1.java  */
-/* Line 250 of "dap4.y"  */
-    {yyval=((YaxToken)(yystack.valueAt (1-(1))));};
-  break;
-    
-
-  case 39:
-  if (yyn == 39)
-    
-/* Line 354 of lalr1.java  */
-/* Line 251 of "dap4.y"  */
-    {yyval=((YaxToken)(yystack.valueAt (1-(1))));};
-  break;
-    
-
-  case 40:
-  if (yyn == 40)
-    
-/* Line 354 of lalr1.java  */
-/* Line 252 of "dap4.y"  */
-    {yyval=((YaxToken)(yystack.valueAt (1-(1))));};
-  break;
-    
-
-  case 41:
-  if (yyn == 41)
-    
-/* Line 354 of lalr1.java  */
-/* Line 253 of "dap4.y"  */
-    {yyval=((YaxToken)(yystack.valueAt (1-(1))));};
-  break;
-    
-
-  case 42:
-  if (yyn == 42)
-    
-/* Line 354 of lalr1.java  */
-/* Line 254 of "dap4.y"  */
-    {yyval=((YaxToken)(yystack.valueAt (1-(1))));};
-  break;
-    
-
-  case 43:
-  if (yyn == 43)
-    
-/* Line 354 of lalr1.java  */
-/* Line 255 of "dap4.y"  */
-    {yyval=((YaxToken)(yystack.valueAt (1-(1))));};
-  break;
-    
-
-  case 44:
-  if (yyn == 44)
-    
-/* Line 354 of lalr1.java  */
-/* Line 256 of "dap4.y"  */
-    {yyval=((YaxToken)(yystack.valueAt (1-(1))));};
-  break;
-    
-
-  case 45:
-  if (yyn == 45)
-    
-/* Line 354 of lalr1.java  */
-/* Line 257 of "dap4.y"  */
-    {yyval=((YaxToken)(yystack.valueAt (1-(1))));};
-  break;
-    
-
-  case 46:
-  if (yyn == 46)
-    
-/* Line 354 of lalr1.java  */
-/* Line 258 of "dap4.y"  */
-    {yyval=((YaxToken)(yystack.valueAt (1-(1))));};
-  break;
-    
-
-  case 47:
-  if (yyn == 47)
-    
-/* Line 354 of lalr1.java  */
-/* Line 259 of "dap4.y"  */
-    {yyval=((YaxToken)(yystack.valueAt (1-(1))));};
-  break;
-    
-
-  case 48:
-  if (yyn == 48)
-    
-/* Line 354 of lalr1.java  */
-/* Line 260 of "dap4.y"  */
-    {yyval=((YaxToken)(yystack.valueAt (1-(1))));};
-  break;
-    
-
-  case 49:
-  if (yyn == 49)
-    
-/* Line 354 of lalr1.java  */
-/* Line 261 of "dap4.y"  */
-    {yyval=((YaxToken)(yystack.valueAt (1-(1))));};
-  break;
-    
-
-  case 50:
-  if (yyn == 50)
-    
-/* Line 354 of lalr1.java  */
-/* Line 262 of "dap4.y"  */
-    {yyval=((YaxToken)(yystack.valueAt (1-(1))));};
-  break;
-    
-
-  case 51:
-  if (yyn == 51)
-    
-/* Line 354 of lalr1.java  */
-/* Line 263 of "dap4.y"  */
-    {yyval=((YaxToken)(yystack.valueAt (1-(1))));};
-  break;
-    
-
-  case 52:
-  if (yyn == 52)
-    
-/* Line 354 of lalr1.java  */
-/* Line 264 of "dap4.y"  */
-    {yyval=((YaxToken)(yystack.valueAt (2-(1))));};
-  break;
-    
-
-  case 53:
-  if (yyn == 53)
-    
-/* Line 354 of lalr1.java  */
-/* Line 268 of "dap4.y"  */
-    {yyval=((YaxToken)(yystack.valueAt (1-(1))));};
-  break;
-    
-
-  case 54:
-  if (yyn == 54)
-    
-/* Line 354 of lalr1.java  */
-/* Line 269 of "dap4.y"  */
-    {yyval=((YaxToken)(yystack.valueAt (1-(1))));};
-  break;
-    
-
-  case 55:
-  if (yyn == 55)
-    
-/* Line 354 of lalr1.java  */
-/* Line 270 of "dap4.y"  */
-    {yyval=((YaxToken)(yystack.valueAt (1-(1))));};
-  break;
-    
-
-  case 56:
-  if (yyn == 56)
-    
-/* Line 354 of lalr1.java  */
-/* Line 271 of "dap4.y"  */
-    {yyval=((YaxToken)(yystack.valueAt (1-(1))));};
-  break;
-    
-
-  case 57:
-  if (yyn == 57)
-    
-/* Line 354 of lalr1.java  */
-/* Line 272 of "dap4.y"  */
-    {yyval=((YaxToken)(yystack.valueAt (1-(1))));};
-  break;
-    
-
-  case 58:
-  if (yyn == 58)
-    
-/* Line 354 of lalr1.java  */
-/* Line 273 of "dap4.y"  */
-    {yyval=((YaxToken)(yystack.valueAt (1-(1))));};
-  break;
-    
-
-  case 59:
-  if (yyn == 59)
-    
-/* Line 354 of lalr1.java  */
-/* Line 274 of "dap4.y"  */
-    {yyval=((YaxToken)(yystack.valueAt (1-(1))));};
-  break;
-    
-
-  case 60:
-  if (yyn == 60)
-    
-/* Line 354 of lalr1.java  */
-/* Line 275 of "dap4.y"  */
-    {yyval=((YaxToken)(yystack.valueAt (1-(1))));};
-  break;
-    
-
-  case 61:
-  if (yyn == 61)
-    
-/* Line 354 of lalr1.java  */
-/* Line 276 of "dap4.y"  */
-    {yyval=((YaxToken)(yystack.valueAt (1-(1))));};
-  break;
-    
-
-  case 62:
-  if (yyn == 62)
-    
-/* Line 354 of lalr1.java  */
-/* Line 277 of "dap4.y"  */
-    {yyval=((YaxToken)(yystack.valueAt (1-(1))));};
-  break;
-    
-
-  case 63:
-  if (yyn == 63)
-    
-/* Line 354 of lalr1.java  */
-/* Line 278 of "dap4.y"  */
-    {yyval=((YaxToken)(yystack.valueAt (1-(1))));};
-  break;
-    
-
-  case 64:
-  if (yyn == 64)
-    
-/* Line 354 of lalr1.java  */
-/* Line 279 of "dap4.y"  */
-    {yyval=((YaxToken)(yystack.valueAt (1-(1))));};
-  break;
-    
-
-  case 65:
-  if (yyn == 65)
-    
-/* Line 354 of lalr1.java  */
-/* Line 280 of "dap4.y"  */
-    {yyval=((YaxToken)(yystack.valueAt (1-(1))));};
-  break;
-    
-
-  case 66:
-  if (yyn == 66)
-    
-/* Line 354 of lalr1.java  */
-/* Line 281 of "dap4.y"  */
-    {yyval=((YaxToken)(yystack.valueAt (1-(1))));};
-  break;
-    
-
-  case 67:
-  if (yyn == 67)
-    
-/* Line 354 of lalr1.java  */
-/* Line 282 of "dap4.y"  */
-    {yyval=((YaxToken)(yystack.valueAt (1-(1))));};
-  break;
-    
-
-  case 68:
-  if (yyn == 68)
-    
-/* Line 354 of lalr1.java  */
-/* Line 283 of "dap4.y"  */
-    {yyval=((YaxToken)(yystack.valueAt (1-(1))));};
-  break;
-    
-
-  case 69:
-  if (yyn == 69)
-    
-/* Line 354 of lalr1.java  */
-/* Line 288 of "dap4.y"  */
-    {yyval=d4list(parser,NULL,NULL);};
-  break;
-    
-
-  case 70:
-  if (yyn == 70)
-    
-/* Line 354 of lalr1.java  */
-/* Line 290 of "dap4.y"  */
-    {yyval=d4list(parser,((Object)(yystack.valueAt (2-(1)))),((Object)(yystack.valueAt (2-(2)))));};
-  break;
-    
-
-  case 71:
-  if (yyn == 71)
-    
-/* Line 354 of lalr1.java  */
-/* Line 292 of "dap4.y"  */
-    {yyval=d4list(parser,((Object)(yystack.valueAt (2-(1)))),((Object)(yystack.valueAt (2-(2)))));};
-  break;
-    
-
-  case 72:
-  if (yyn == 72)
-    
-/* Line 354 of lalr1.java  */
-/* Line 294 of "dap4.y"  */
-    {yyval=d4list(parser,((Object)(yystack.valueAt (2-(1)))),((Object)(yystack.valueAt (2-(2)))));};
-  break;
-    
-
-  case 73:
-  if (yyn == 73)
-    
-/* Line 354 of lalr1.java  */
-/* Line 299 of "dap4.y"  */
-    {yyval=d4mapref(parser,((YaxToken)(yystack.valueAt (3-(2))))); CHECK(yyval);};
-  break;
-    
-
-  case 74:
-  if (yyn == 74)
-    
-/* Line 354 of lalr1.java  */
-/* Line 304 of "dap4.y"  */
-    {yyval=d4structurevariable(parser,((YaxToken)(yystack.valueAt (4-(2)))),((Object)(yystack.valueAt (4-(3))))); CHECK(yyval);};
-  break;
-    
-
-  case 75:
-  if (yyn == 75)
-    
-/* Line 354 of lalr1.java  */
-/* Line 309 of "dap4.y"  */
-    {yyval=d4list(parser,NULL,NULL);};
-  break;
-    
-
-  case 76:
-  if (yyn == 76)
-    
-/* Line 354 of lalr1.java  */
-/* Line 311 of "dap4.y"  */
-    {yyval=d4list(parser,((Object)(yystack.valueAt (2-(1)))),((Object)(yystack.valueAt (2-(2)))));};
-  break;
-    
-
-  case 77:
-  if (yyn == 77)
-    
-/* Line 354 of lalr1.java  */
-/* Line 313 of "dap4.y"  */
-    {yyval=d4list(parser,((Object)(yystack.valueAt (2-(1)))),((Object)(yystack.valueAt (2-(2)))));};
-  break;
-    
-
-  case 78:
-  if (yyn == 78)
-    
-/* Line 354 of lalr1.java  */
-/* Line 315 of "dap4.y"  */
-    {yyval=d4list(parser,((Object)(yystack.valueAt (2-(1)))),((Object)(yystack.valueAt (2-(2)))));};
-  break;
-    
-
-  case 79:
-  if (yyn == 79)
-    
-/* Line 354 of lalr1.java  */
-/* Line 320 of "dap4.y"  */
-    {yyval=d4list(parser,NULL,NULL);};
-  break;
-    
-
-  case 80:
-  if (yyn == 80)
-    
-/* Line 354 of lalr1.java  */
-/* Line 322 of "dap4.y"  */
-    {yyval=d4list(parser,((List)(yystack.valueAt (2-(1)))),((Object)(yystack.valueAt (2-(2)))));};
-  break;
-    
-
-  case 81:
-  if (yyn == 81)
-    
-/* Line 354 of lalr1.java  */
-/* Line 326 of "dap4.y"  */
-    {yyval=((Object)(yystack.valueAt (1-(1))));};
-  break;
-    
-
-  case 82:
-  if (yyn == 82)
-    
-/* Line 354 of lalr1.java  */
-/* Line 327 of "dap4.y"  */
-    {yyval=((Object)(yystack.valueAt (1-(1))));};
-  break;
-    
-
-  case 83:
-  if (yyn == 83)
-    
-/* Line 354 of lalr1.java  */
-/* Line 335 of "dap4.y"  */
-    {yyval=d4attribute(parser,((List)(yystack.valueAt (5-(2)))),((List)(yystack.valueAt (5-(3)))),((List)(yystack.valueAt (5-(4))))); CHECK(yyval);};
-  break;
-    
-
-  case 84:
-  if (yyn == 84)
-    
-/* Line 354 of lalr1.java  */
-/* Line 340 of "dap4.y"  */
-    {yyval=d4attrlist(parser,NULL,emptytoken);};
-  break;
-    
-
-  case 85:
-  if (yyn == 85)
-    
-/* Line 354 of lalr1.java  */
-/* Line 342 of "dap4.y"  */
-    {yyval=d4attrlist(parser,((List)(yystack.valueAt (2-(1)))),((YaxToken)(yystack.valueAt (2-(2)))));};
-  break;
-    
-
-  case 86:
-  if (yyn == 86)
-    
-/* Line 354 of lalr1.java  */
-/* Line 344 of "dap4.y"  */
-    {yyval=d4attrlist(parser,((List)(yystack.valueAt (2-(1)))),((YaxToken)(yystack.valueAt (2-(2)))));};
-  break;
-    
-
-  case 87:
-  if (yyn == 87)
-    
-/* Line 354 of lalr1.java  */
-/* Line 346 of "dap4.y"  */
-    {yyval=d4attrlist(parser,((List)(yystack.valueAt (2-(1)))),((YaxToken)(yystack.valueAt (2-(2)))));};
-  break;
-    
-
-  case 88:
-  if (yyn == 88)
-    
-/* Line 354 of lalr1.java  */
-/* Line 348 of "dap4.y"  */
-    {yyval=d4attrlist(parser,((List)(yystack.valueAt (2-(1)))),((YaxToken)(yystack.valueAt (2-(2)))));};
-  break;
-    
-
-  case 89:
-  if (yyn == 89)
-    
-/* Line 354 of lalr1.java  */
-/* Line 353 of "dap4.y"  */
-    {yyval=d4attrlist(parser,NULL,emptytoken);};
-  break;
-    
-
-  case 90:
-  if (yyn == 90)
-    
-/* Line 354 of lalr1.java  */
-/* Line 355 of "dap4.y"  */
-    {yyval=d4attrlist(parser,((List)(yystack.valueAt (2-(1)))),((YaxToken)(yystack.valueAt (2-(2)))));};
-  break;
-    
-
-  case 91:
-  if (yyn == 91)
-    
-/* Line 354 of lalr1.java  */
-/* Line 358 of "dap4.y"  */
-    {yyval=((YaxToken)(yystack.valueAt (3-(2))));};
-  break;
-    
-
-  case 92:
-  if (yyn == 92)
-    
-/* Line 354 of lalr1.java  */
-/* Line 362 of "dap4.y"  */
-    {yyval=d4otherxml(parser,((List)(yystack.valueAt (1-(1)))));};
-  break;
-    
-
-
+	
 
 /* Line 354 of lalr1.java  */
-/* Line 1279 of "DAP4Parser.java"  */
+/* Line 422 of "F:\\svn\\yax\\java/src/yax/test/Dap4Parser.java"  */
 	default: break;
       }
 
@@ -1628,22 +771,22 @@ public class DAP4Parser extends DAP4parse
 
   /* YYPACT[STATE-NUM] -- Index in YYTABLE of the portion describing
      STATE-NUM.  */
-  private static final byte yypact_ninf_ = -57;
+  private static final byte yypact_ninf_ = -56;
   private static final byte yypact_[] =
   {
-        12,   -57,    19,    -1,   -57,   -57,   -57,   -57,   -57,   -57,
-     -57,   -57,    -3,   -57,   -52,   -56,    -4,     3,   -57,   -57,
-     -57,   -57,   -57,   -57,   -57,   -57,   -57,   -57,   -57,   -57,
-     -57,   -57,   -57,   -57,   -57,   -57,   -57,   -57,   -57,   -57,
-      15,   -57,   -57,   -57,   -57,    17,    24,    75,    21,    25,
-     -57,   -57,   -57,    39,   -57,   -57,   -57,   -55,   100,   -57,
-     -57,   -57,    -9,    -2,   -57,   -57,   -57,   -57,    79,    45,
-      27,    29,    86,   -57,   -57,   -57,   -57,    11,   -57,   -57,
-     -57,   -57,    36,   -57,    81,   -57,    37,   -57,   -57,   -57,
-     -57,   -57,   -57,   -57,   -57,   -57,   -57,   -57,   -57,   -57,
-     -57,   -57,   -57,   -57,   -57,   -57,   -57,   -57,   -57,   -57,
-     -57,    94,    99,    46,   -57,   -57,    92,   -57,   -57,    90,
-     -57,   -57
+         7,   -56,    18,    36,   -56,   -56,   -56,   -56,   -56,   -56,
+     -56,   -56,    -3,   -56,     1,     2,    -1,    10,   -56,   -56,
+     -56,   -56,   -56,   -56,   -56,   -56,   -56,   -56,   -56,   -56,
+     -56,   -56,   -56,   -56,   -56,   -56,   -56,   -56,   -56,    12,
+     -56,   -56,   -56,    14,     4,    70,    16,    20,   -56,   -56,
+     -56,    34,   -56,   -56,   -56,   -12,    93,   -56,   -56,   -56,
+      -8,    -6,   -56,   -56,   -56,    74,    38,    22,    24,    81,
+     -56,   -56,   -56,   -56,     6,   -56,   -56,   -56,   -56,    41,
+     -56,    35,   -56,    44,   -56,   -56,   -56,   -56,   -56,   -56,
+     -56,   -56,   -56,   -56,   -56,   -56,   -56,   -56,   -56,   -56,
+     -56,   -56,   -56,   -56,   -56,   -56,   -56,   -56,    92,    97,
+      43,   -56,   -56,    91,   -56,   -56,    88,   -19,   -56,   -56,
+     -56,   -56
   };
 
   /* YYDEFACT[S] -- default rule to reduce with in state S when YYTABLE
@@ -1652,35 +795,35 @@ public class DAP4Parser extends DAP4parse
   private static final byte yydefact_[] =
   {
          0,     3,     0,    11,     1,     8,     5,     6,     4,     7,
-       9,    10,     0,     2,     0,     0,     0,     0,    84,    37,
+       9,    10,     0,     2,     0,     0,     0,     0,    83,    37,
       38,    39,    40,    41,    42,    43,    44,    45,    46,    47,
-      48,    49,    50,    51,    92,    16,    12,    13,    14,    34,
-       0,    35,    15,    81,    82,     0,     0,     0,     0,     0,
-      79,    52,    75,    25,    69,    19,    18,     0,     0,    20,
-      29,    30,     0,     0,    85,    87,    86,    88,    89,     0,
-       0,     0,     0,    17,    21,    28,    80,     0,    74,    76,
-      77,    78,     0,    26,     0,    68,     0,    53,    54,    55,
-      56,    57,    58,    59,    60,    61,    62,    63,    64,    65,
-      66,    67,    70,    36,    71,    72,    23,    24,    22,    32,
-      33,     0,     0,     0,    83,    90,     0,    31,    27,     0,
-      73,    91
+      48,    49,    50,    51,    16,    12,    13,    14,    34,     0,
+      35,    15,    81,     0,     0,     0,     0,     0,    79,    52,
+      75,    25,    69,    19,    18,     0,     0,    20,    29,    30,
+       0,     0,    84,    86,    85,    87,     0,     0,     0,     0,
+      17,    21,    28,    80,     0,    74,    76,    77,    78,     0,
+      26,     0,    68,     0,    53,    54,    55,    56,    57,    58,
+      59,    60,    61,    62,    63,    64,    65,    66,    67,    70,
+      36,    71,    72,    23,    24,    22,    32,    33,     0,     0,
+      91,    82,    88,     0,    31,    27,     0,     0,    73,    89,
+      90,    92
   };
 
   /* YYPGOTO[NTERM-NUM].  */
   private static final byte yypgoto_[] =
   {
-       -57,   101,   -57,   -57,   -57,   -57,   -57,    56,   -57,   -57,
-     -57,   -57,   -57,    47,   -57,    52,   -57,   -57,   -57,   -57,
-     -57,   -57,   -57,   -57,   -10,   -57,   -57,   -57,   -57,   -57
+       -56,    99,   -56,   -56,   -56,   -56,   -56,    56,   -56,   -56,
+     -56,   -56,   -56,    47,   -56,    53,   -56,   -56,   -56,   -56,
+     -56,   -56,   -56,   -56,   -55,   -56,   -56,   -56,   -56,   -56
   };
 
   /* YYDEFGOTO[NTERM-NUM].  */
   private static final byte
   yydefgoto_[] =
   {
-        -1,     2,     3,    12,    36,    47,    58,    59,    72,    68,
-      83,    37,    50,    79,   111,    38,    39,    40,   103,    69,
-     104,    41,    63,    62,    42,    43,    53,    84,   115,    44
+        -1,     2,     3,    12,    35,    45,    56,    57,    69,    65,
+      80,    36,    48,    76,   108,    37,    38,    39,   100,    66,
+     101,    40,    61,    60,    41,    42,    51,    81,   112,   117
   };
 
   /* YYTABLE[YYPACT[STATE-NUM]].  What to do in state STATE-NUM.  If
@@ -1690,36 +833,36 @@ public class DAP4Parser extends DAP4parse
   private static final byte
   yytable_[] =
   {
-         1,    13,    14,    75,    45,    48,    70,    49,    15,    46,
-      71,    77,    16,    16,    18,     1,    17,    17,    78,     4,
-      18,    18,    19,    19,    20,    20,    21,    21,    22,    22,
-      23,    23,    24,    24,    25,    25,    26,    26,    27,    27,
-      28,    28,    29,    29,    30,    30,    31,    31,    32,    32,
-      33,    33,    76,    81,     5,    51,     6,     7,    77,   105,
-       8,    85,    86,    34,    52,     9,    10,    11,    18,    34,
-      34,    87,   109,    88,   110,    89,    54,    90,    55,    91,
-      56,    92,    57,    93,    60,    94,    61,    95,    82,    96,
-     107,    97,   106,    98,   108,    99,   112,   100,   116,   101,
-      64,    65,   113,    66,    67,   114,    73,    57,   117,   118,
-     120,   119,   121,    35,    74,    80,   102,    34
+         1,    13,    14,   120,    72,    73,    78,    74,    15,    16,
+       1,   102,    16,    17,    75,    18,    17,    18,     4,    19,
+      18,    20,    19,    21,    20,    22,    21,    23,    22,    24,
+      23,    25,    24,    26,    25,    27,    26,    28,    27,    29,
+      28,    30,    29,    31,    30,    32,    31,    33,    32,    67,
+      33,    74,   121,    68,    82,    83,   110,    43,    49,   111,
+      54,    18,    44,    46,    84,    47,    85,   106,    86,   107,
+      87,    50,    88,    52,    89,    53,    90,    55,    91,    58,
+      92,    59,    93,    79,    94,   104,    95,   103,    96,   105,
+      97,     5,    98,     6,     7,    62,    63,     8,    64,    70,
+      55,   109,     9,    10,    11,   113,   114,   115,   116,   118,
+     119,    34,    71,    99,    77
   };
 
   /* YYCHECK.  */
   private static final byte
   yycheck_[] =
   {
-         3,     4,     5,    12,    56,    61,    61,    63,    11,    61,
-      65,    13,    15,    15,    23,     3,    19,    19,    20,     0,
-      23,    23,    25,    25,    27,    27,    29,    29,    31,    31,
-      33,    33,    35,    35,    37,    37,    39,    39,    41,    41,
-      43,    43,    45,    45,    47,    47,    49,    49,    51,    51,
-      53,    53,    62,    63,    55,    59,    57,    58,    13,    69,
-      61,    16,    17,    72,    61,    66,    67,    68,    23,    72,
-      72,    26,    61,    28,    63,    30,    61,    32,    61,    34,
-      56,    36,     7,    38,    63,    40,    61,    42,     9,    44,
-      61,    46,    65,    48,     8,    50,    60,    52,    61,    54,
-      61,    62,    21,    64,    65,    24,     6,     7,    14,    10,
-      18,    65,    22,    12,    58,    63,    69,    72
+         3,     4,     5,    22,    12,    60,    61,    13,    11,    15,
+       3,    66,    15,    19,    20,    23,    19,    23,     0,    25,
+      23,    27,    25,    29,    27,    31,    29,    33,    31,    35,
+      33,    37,    35,    39,    37,    41,    39,    43,    41,    45,
+      43,    47,    45,    49,    47,    51,    49,    53,    51,    61,
+      53,    13,    71,    65,    16,    17,    21,    56,    59,    24,
+      56,    23,    61,    61,    26,    63,    28,    61,    30,    63,
+      32,    61,    34,    61,    36,    61,    38,     7,    40,    63,
+      42,    61,    44,     9,    46,    61,    48,    65,    50,     8,
+      52,    55,    54,    57,    58,    61,    62,    61,    64,     6,
+       7,    60,    66,    67,    68,    61,    14,    10,    65,    18,
+      22,    12,    56,    66,    61
   };
 
   /* STOS_[STATE-NUM] -- The (internal number of the) accessing
@@ -1727,19 +870,19 @@ public class DAP4Parser extends DAP4parse
   private static final byte
   yystos_[] =
   {
-         0,     3,    77,    78,     0,    55,    57,    58,    61,    66,
-      67,    68,    79,     4,     5,    11,    15,    19,    23,    25,
+         0,     3,    76,    77,     0,    55,    57,    58,    61,    66,
+      67,    68,    78,     4,     5,    11,    15,    19,    23,    25,
       27,    29,    31,    33,    35,    37,    39,    41,    43,    45,
-      47,    49,    51,    53,    72,    77,    80,    87,    91,    92,
-      93,    97,   100,   101,   105,    56,    61,    81,    61,    63,
-      88,    59,    61,   102,    61,    61,    56,     7,    82,    83,
-      63,    61,    99,    98,    61,    62,    64,    65,    85,    95,
-      61,    65,    84,     6,    83,    12,   100,    13,    20,    89,
-      91,   100,     9,    86,   103,    16,    17,    26,    28,    30,
-      32,    34,    36,    38,    40,    42,    44,    46,    48,    50,
-      52,    54,    89,    94,    96,   100,    65,    61,     8,    61,
-      63,    90,    60,    21,    24,   104,    61,    14,    10,    65,
-      18,    22
+      47,    49,    51,    53,    76,    79,    86,    90,    91,    92,
+      96,    99,   100,    56,    61,    80,    61,    63,    87,    59,
+      61,   101,    61,    61,    56,     7,    81,    82,    63,    61,
+      98,    97,    61,    62,    64,    84,    94,    61,    65,    83,
+       6,    82,    12,    99,    13,    20,    88,    90,    99,     9,
+      85,   102,    16,    17,    26,    28,    30,    32,    34,    36,
+      38,    40,    42,    44,    46,    48,    50,    52,    54,    88,
+      93,    95,    99,    65,    61,     8,    61,    63,    89,    60,
+      21,    24,   103,    61,    14,    10,    65,   104,    18,    22,
+      22,    71
   };
 
   /* TOKEN_NUMBER_[YYLEX-NUM] -- Internal symbol number corresponding
@@ -1754,23 +897,23 @@ public class DAP4Parser extends DAP4parse
      295,   296,   297,   298,   299,   300,   301,   302,   303,   304,
      305,   306,   307,   308,   309,   310,   311,   312,   313,   314,
      315,   316,   317,   318,   319,   320,   321,   322,   323,   324,
-     325,   326,   327,   328,   329,   330
+     325,   326,   327,   328,   329
   };
 
   /* YYR1[YYN] -- Symbol number of symbol that rule YYN derives.  */
   private static final byte
   yyr1_[] =
   {
-         0,    76,    77,    78,    78,    78,    78,    78,    78,    78,
-      78,    79,    79,    79,    79,    79,    79,    80,    81,    81,
-      82,    82,    83,    84,    84,    85,    85,    86,    87,    88,
-      88,    89,    90,    90,    91,    91,    92,    93,    93,    93,
-      93,    93,    93,    93,    93,    93,    93,    93,    93,    93,
-      93,    93,    93,    94,    94,    94,    94,    94,    94,    94,
-      94,    94,    94,    94,    94,    94,    94,    94,    94,    95,
-      95,    95,    95,    96,    97,    98,    98,    98,    98,    99,
-      99,   100,   100,   101,   102,   102,   102,   102,   102,   103,
-     103,   104,   105
+         0,    75,    76,    77,    77,    77,    77,    77,    77,    77,
+      77,    78,    78,    78,    78,    78,    78,    79,    80,    80,
+      81,    81,    82,    83,    83,    84,    84,    85,    86,    87,
+      87,    88,    89,    89,    90,    90,    91,    92,    92,    92,
+      92,    92,    92,    92,    92,    92,    92,    92,    92,    92,
+      92,    92,    92,    93,    93,    93,    93,    93,    93,    93,
+      93,    93,    93,    93,    93,    93,    93,    93,    93,    94,
+      94,    94,    94,    95,    96,    97,    97,    97,    97,    98,
+      98,    99,   100,   101,   101,   101,   101,   102,   102,   103,
+     103,   104,   104
   };
 
   /* YYR2[YYN] -- Number of symbols composing right hand side of rule YYN.  */
@@ -1785,8 +928,8 @@ public class DAP4Parser extends DAP4parse
        1,     1,     2,     1,     1,     1,     1,     1,     1,     1,
        1,     1,     1,     1,     1,     1,     1,     1,     1,     0,
        2,     2,     2,     3,     4,     0,     2,     2,     2,     0,
-       2,     1,     1,     5,     0,     2,     2,     2,     2,     0,
-       2,     3,     1
+       2,     1,     5,     0,     2,     2,     2,     0,     2,     3,
+       3,     0,     2
   };
 
   /* YYTNAME[SYMBOL-NUM] -- String name of the symbol SYMBOL-NUM.
@@ -1805,44 +948,43 @@ public class DAP4Parser extends DAP4parse
   "ATTR_DAPVERSION", "ATTR_DDXVERSION", "ATTR_ENUM", "ATTR_HREF",
   "ATTR_NAME", "ATTR_NAMESPACE", "ATTR_SIZE", "ATTR_TYPE", "ATTR_VALUE",
   "ATTR_NS", "ATTR_XMLNS", "UNKNOWN_ATTR", "UNKNOWN_ELEMENT_",
-  "_UNKNOWN_ELEMENT", "TEXT", "OTHERXML", "ERROR", "UNKNOWN", "UNEXPECTED",
-  "$accept", "group", "group_attr_list", "group_body", "enumdef",
-  "enum_attr_list", "enumconst_list", "enumconst", "enumconst_attr_list",
-  "namespace_list", "namespace", "dimdef", "dimdef_attr_list", "dimref",
-  "dimref_attr_list", "variable", "simplevariable", "atomictype_",
-  "_atomictype", "variabledef", "mapref", "structurevariable",
-  "structuredef", "metadatalist", "metadata", "attribute",
-  "attribute_attr_list", "attribute_value_list", "attribute_value",
-  "otherxml", null
+  "_UNKNOWN_ELEMENT", "TEXT", "ERROR", "UNKNOWN", "UNEXPECTED", "$accept",
+  "group", "group_attr_list", "group_body", "enumdef", "enum_attr_list",
+  "enumconst_list", "enumconst", "enumconst_attr_list", "namespace_list",
+  "namespace", "dimdef", "dimdef_attr_list", "dimref", "dimref_attr_list",
+  "variable", "simplevariable", "atomictype_", "_atomictype",
+  "variabledef", "mapref", "structurevariable", "structuredef",
+  "metadatalist", "metadata", "attribute", "attribute_attr_list",
+  "value_list", "value", "text_list", null
   };
 
   /* YYRHS -- A `-1'-separated list of the rules' RHS.  */
   private static final byte yyrhs_[] =
   {
-        77,     0,    -1,     3,    78,    79,     4,    -1,    -1,    78,
-      61,    -1,    78,    57,    -1,    78,    58,    -1,    78,    66,
-      -1,    78,    55,    -1,    78,    67,    -1,    78,    68,    -1,
-      -1,    79,    80,    -1,    79,    87,    -1,    79,    91,    -1,
-      79,   100,    -1,    79,    77,    -1,     5,    81,    82,     6,
-      -1,    61,    56,    -1,    56,    61,    -1,    83,    -1,    82,
-      83,    -1,     7,    84,     8,    -1,    61,    65,    -1,    65,
-      61,    -1,    -1,    85,    86,    -1,     9,    60,    10,    -1,
-      11,    88,    99,    12,    -1,    61,    63,    -1,    63,    61,
-      -1,    13,    90,    14,    -1,    61,    -1,    63,    -1,    92,
-      -1,    97,    -1,    93,    61,    95,    94,    -1,    25,    -1,
+        76,     0,    -1,     3,    77,    78,     4,    -1,    -1,    77,
+      61,    -1,    77,    57,    -1,    77,    58,    -1,    77,    66,
+      -1,    77,    55,    -1,    77,    67,    -1,    77,    68,    -1,
+      -1,    78,    79,    -1,    78,    86,    -1,    78,    90,    -1,
+      78,    99,    -1,    78,    76,    -1,     5,    80,    81,     6,
+      -1,    61,    56,    -1,    56,    61,    -1,    82,    -1,    81,
+      82,    -1,     7,    83,     8,    -1,    61,    65,    -1,    65,
+      61,    -1,    -1,    84,    85,    -1,     9,    60,    10,    -1,
+      11,    87,    98,    12,    -1,    61,    63,    -1,    63,    61,
+      -1,    13,    89,    14,    -1,    61,    -1,    63,    -1,    91,
+      -1,    96,    -1,    92,    61,    94,    93,    -1,    25,    -1,
       27,    -1,    29,    -1,    31,    -1,    33,    -1,    35,    -1,
       37,    -1,    39,    -1,    41,    -1,    43,    -1,    45,    -1,
       47,    -1,    49,    -1,    51,    -1,    53,    -1,    15,    59,
       -1,    26,    -1,    28,    -1,    30,    -1,    32,    -1,    34,
       -1,    36,    -1,    38,    -1,    40,    -1,    42,    -1,    44,
       -1,    46,    -1,    48,    -1,    50,    -1,    52,    -1,    54,
-      -1,    16,    -1,    -1,    95,    89,    -1,    95,    96,    -1,
-      95,   100,    -1,    17,    61,    18,    -1,    19,    61,    98,
-      20,    -1,    -1,    98,    89,    -1,    98,    91,    -1,    98,
-     100,    -1,    -1,    99,   100,    -1,   101,    -1,   105,    -1,
-      23,   102,    85,   103,    24,    -1,    -1,   102,    61,    -1,
-     102,    64,    -1,   102,    62,    -1,   102,    65,    -1,    -1,
-     103,   104,    -1,    21,    65,    22,    -1,    72,    -1
+      -1,    16,    -1,    -1,    94,    88,    -1,    94,    95,    -1,
+      94,    99,    -1,    17,    61,    18,    -1,    19,    61,    97,
+      20,    -1,    -1,    97,    88,    -1,    97,    90,    -1,    97,
+      99,    -1,    -1,    98,    99,    -1,   100,    -1,    23,   101,
+      84,   102,    24,    -1,    -1,   101,    61,    -1,   101,    64,
+      -1,   101,    62,    -1,    -1,   102,   103,    -1,    21,    65,
+      22,    -1,    21,   104,    22,    -1,    -1,   104,    71,    -1
   };
 
   /* YYPRHS[YYN] -- Index of the first RHS symbol of rule number YYN in
@@ -1857,23 +999,23 @@ public class DAP4Parser extends DAP4parse
      134,   136,   138,   141,   143,   145,   147,   149,   151,   153,
      155,   157,   159,   161,   163,   165,   167,   169,   171,   173,
      174,   177,   180,   183,   187,   192,   193,   196,   199,   202,
-     203,   206,   208,   210,   216,   217,   220,   223,   226,   229,
-     230,   233,   237
+     203,   206,   208,   214,   215,   218,   221,   224,   225,   228,
+     232,   236,   237
   };
 
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
   private static final short yyrline_[] =
   {
-         0,   109,   109,   114,   115,   117,   119,   121,   123,   125,
-     127,   133,   134,   136,   138,   140,   142,   147,   152,   157,
-     165,   167,   173,   178,   183,   192,   193,   198,   203,   208,
-     213,   221,   226,   230,   237,   238,   243,   249,   250,   251,
-     252,   253,   254,   255,   256,   257,   258,   259,   260,   261,
-     262,   263,   264,   268,   269,   270,   271,   272,   273,   274,
-     275,   276,   277,   278,   279,   280,   281,   282,   283,   288,
-     289,   291,   293,   298,   303,   309,   310,   312,   314,   320,
-     321,   326,   327,   331,   340,   341,   343,   345,   347,   353,
-     354,   358,   362
+         0,    75,    75,    78,    80,    81,    82,    83,    84,    85,
+      86,    89,    91,    92,    93,    94,    95,    99,   103,   104,
+     108,   109,   114,   118,   119,   122,   124,   128,   132,   136,
+     137,   141,   145,   146,   150,   151,   156,   161,   162,   163,
+     164,   165,   166,   167,   168,   169,   170,   171,   172,   173,
+     174,   175,   176,   180,   181,   182,   183,   184,   185,   186,
+     187,   188,   189,   190,   191,   192,   193,   194,   195,   198,
+     200,   201,   202,   206,   210,   213,   215,   216,   217,   220,
+     222,   226,   230,   236,   238,   239,   240,   243,   245,   249,
+     250,   253,   255
   };
 
   // Report on the debug stream that the rule yyrule is going to be reduced.
@@ -1930,8 +1072,7 @@ public class DAP4Parser extends DAP4parse
       35,    36,    37,    38,    39,    40,    41,    42,    43,    44,
       45,    46,    47,    48,    49,    50,    51,    52,    53,    54,
       55,    56,    57,    58,    59,    60,    61,    62,    63,    64,
-      65,    66,    67,    68,    69,    70,    71,    72,    73,    74,
-      75
+      65,    66,    67,    68,    69,    70,    71,    72,    73,    74
   };
 
   private static final byte yytranslate_ (int t)
@@ -1942,54 +1083,47 @@ public class DAP4Parser extends DAP4parse
       return yyundef_token_;
   }
 
-  private static final int yylast_ = 117;
+  private static final int yylast_ = 114;
   private static final int yynnts_ = 30;
   private static final int yyempty_ = -2;
   private static final int yyfinal_ = 4;
   private static final int yyterror_ = 1;
   private static final int yyerrcode_ = 256;
-  private static final int yyntokens_ = 76;
+  private static final int yyntokens_ = 75;
 
-  private static final int yyuser_token_number_max_ = 330;
+  private static final int yyuser_token_number_max_ = 329;
   private static final int yyundef_token_ = 2;
 
 /* User implementation code.  */
 /* Unqualified %code blocks.  */
 
 /* Line 876 of lalr1.java  */
-/* Line 17 of "dap4.y"  */
+/* Line 13 of "F:\\svn\\yax\\java/src/yax/test/dap4.y"  */
 
- 
+
     /**
      * Instantiates the Bison-generated parser.
-     * @param yylexer The scanner that will supply tokens to the parser.
+     *
      */
 
-    public DAP4Parser(String document)
+    public Dap4Parser(String document, int flags)
+	    throws Exception
     {
-	super();
-	setLexer(new DAP4Lexer(document));
+	this.dap4Lexer = new Dap4Lexer(document,flags);
+	this.yylexer = (Dap4Parser.Lexer)this.dap4Lexer;
     }
 
-    /* the parse function allows the specification of a
-       new stream in case one is reusing the parser
-    */
-
-    public boolean parse() throws Exception
-    {
-	return parse();
-    }
 
 
 
 
 /* Line 876 of lalr1.java  */
-/* Line 1988 of "DAP4Parser.java"  */
+/* Line 1122 of "F:\\svn\\yax\\java/src/yax/test/Dap4Parser.java"  */
 
 }
 
 
 /* Line 880 of lalr1.java  */
-/* Line 364 of "dap4.y"  */
+/* Line 258 of "F:\\svn\\yax\\java/src/yax/test/dap4.y"  */
 
 

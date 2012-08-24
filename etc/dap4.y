@@ -1,6 +1,3 @@
-%error-verbose
-%pure-parser
-
 %token  GROUP_ _GROUP
 %token  ENUMERATION_ _ENUMERATION
 %token  ENUMCONST_ _ENUMCONST
@@ -37,7 +34,6 @@
 %token  ATTR_NS ATTR_XMLNS
 %token  UNKNOWN_ATTR UNKNOWN_ELEMENT_ _UNKNOWN_ELEMENT
 
-/* Currently unused */
 %token  TEXT
 
 /* Error cases */
@@ -204,7 +200,7 @@ metadata:
 attribute:
 	ATTRIBUTE_ attribute_attr_list
                    namespace_list
-                   attribute_value_list
+                   value_list
 		   _ATTRIBUTE
 	;
 
@@ -213,15 +209,21 @@ attribute_attr_list:
 	| attribute_attr_list ATTR_NAME
 	| attribute_attr_list ATTR_TYPE
 	| attribute_attr_list ATTR_NAMESPACE
-	| attribute_attr_list ATTR_VALUE
 	;	
 
-attribute_value_list:
+value_list:
 	  /*empty*/
-	| attribute_value_list attribute_value
+	| value_list value
 	;
-attribute_value:
-	VALUE_ ATTR_VALUE _VALUE
+
+value:
+	  VALUE_ ATTR_VALUE _VALUE
+	| VALUE_ text_list _VALUE
+	;
+
+text_list:
+	  /*empty*/
+	| text_list TEXT
 	;
 
 %%
