@@ -11,7 +11,7 @@ import java.util.List;
 
 import static yax.test.Dap4Parser.*;
 
-class Dap4Lexer implements Dap4Parser.Lexer
+class Dap4DomLexer implements Dap4Parser.Lexer
 {
 
     //////////////////////////////////////////////////
@@ -25,7 +25,7 @@ class Dap4Lexer implements Dap4Parser.Lexer
     //////////////////////////////////////////////////
     // Constructor(s)
 
-    public Dap4Lexer(String input, int flags)
+    public Dap4DomLexer(String input, int flags)
             throws Exception
     {
 	domlexer = new DomLexer(input);
@@ -190,8 +190,4 @@ class Dap4Lexer implements Dap4Parser.Lexer
         keywords.add("xmlns", 0, 0, ATTR_XMLNS);
     }
 
-} // class Dap4Lexer
-
-
-
-    
+} // class Dap4DomLexer

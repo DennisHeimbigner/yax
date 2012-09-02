@@ -7,7 +7,7 @@ import org.w3c.dom.*;
 
 import java.io.*;
 
-public class LexTest
+public class DomTest
 {
 
     static public void
@@ -56,7 +56,7 @@ public class LexTest
                 String trace = null;
                 tokentype = lexer.nextToken(nodep);
                 trace = Util.trace(tokentype,nodep[0]);
-                System.out.printf("lextest: %s\n",trace);
+                System.out.printf("domtest: %s\n",trace);
                 System.out.flush();
                 if(tokentype == Type.EOF)
                     break;
@@ -85,4 +85,4 @@ public class LexTest
     }
 
 
-} //LexTest
+} //Domtest

@@ -6,7 +6,7 @@
 %define package "yax.test"
 %define throws "Exception"
 %define lex_throws "Exception"
-%define extends "Dap4Test"
+%define extends "Dap4DomTest"
 
 %lex-param {Dap4Parser parser}
 
@@ -17,13 +17,11 @@
      *
      */
 
-    public Dap4Parser(String document, int flags)
+    public Dap4Parser(String document, Dap4Parser.Lexer lexer, int flags)
 	    throws Exception
     {
-	this.dap4Lexer = new Dap4Lexer(document,flags);
-	this.yylexer = (Dap4Parser.Lexer)this.dap4Lexer;
+	this.yylexer = this.dap4Lexer;
     }
 
-
+    public Dap4Parser.Lexer getLexer() {return this.yylexer;}
 }
-

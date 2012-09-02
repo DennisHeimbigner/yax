@@ -11,10 +11,10 @@ import yax.lex.Util;
 import java.io.FileReader;
 import java.io.IOException;
 
-public abstract class Dap4Test
+public abstract class Dap4DomTest
 {
 
-    Dap4Lexer dap4Lexer = null;
+    Dap4DomLexer dap4Lexer = null;
 
     static public void
     main(String[] argv)
@@ -28,7 +28,6 @@ public abstract class Dap4Test
 	Dap4Parser parser = null;
 
         try {
-
             Options options = new Options();
             options.addOption("w",false,"trim whitespace ");
             options.addOption("l",false,"Limit size of text printout");
@@ -87,7 +86,7 @@ public abstract class Dap4Test
         }
         return buf.toString();
     }
-} // class Dap4Parser
+} // class Dap4DomParser
 
 
 
