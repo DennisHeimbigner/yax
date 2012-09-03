@@ -4,16 +4,25 @@ import yax.lex.*;
 
 import org.apache.commons.cli.*;
 import org.w3c.dom.*;
+import org.xml.sax.*;
 
 import java.io.*;
 
-public class DomTest
+public class SaxTest
 {
+
+    // Trivial implementation of SaxLexer
+    static public class SaxTestLexer extends SaxLexer
+    {
+	public SaxTestLexer(String document) throws LexException
+		{super(document);}
+	public String[] orderedAttributes(String element) {return null;}
+    }
 
     static public void
     main(String[] argv)
     {
-        DomLexer lexer;
+        SaxLexer lexer;
         int flags = Util.FLAG_NONE;
         Type tokentype = null;
 	Node[] nodep = new Node[]{null};
@@ -22,7 +31,6 @@ public class DomTest
         int i,c;
 
         try {
-
             Options options = new Options();
             options.addOption("t",false,"trim text");
             options.addOption("l",false,"Limit size of text printout");
@@ -48,17 +56,18 @@ public class DomTest
             if(cmd.hasOption('e'))
                 flags |= Util.FLAG_ESCAPE;
 
-            lexer = new DomLexer(input);
-            lexer.setFlags(flags);
+            lexer = new SaxTestLexer(input);
+	    lexer.lex(); // build token list
 
-            for(i=0;i<200;i++) {
+	    int ntokens = lexer.getTokenCount();
+	    SaxToken[] tokens = lexer.getTokens(new SaxToken[ntokens]);
+
+            for(i=0;i<ntokens;i++) {
                 String trace = null;
-                tokentype = lexer.nextToken(nodep);
-                trace = Util.trace(tokentype,nodep[0]);
-                System.out.printf("domtest: %s\n",trace);
+                SaxToken token = tokens[i];
+                trace = Util.trace(token,flags);
+                System.out.printf("saxtest: %s\n",trace);
                 System.out.flush();
-                if(tokentype == Type.EOF)
-                    break;
             }
 
         } catch (Exception e) {
@@ -84,4 +93,4 @@ public class DomTest
     }
 
 
-} //Domtest
+} //SaxTest

@@ -1,35 +1,41 @@
 package yax.test;
 
-import yax.lex.*;
+import org.apache.commons.cli.CommandLine;
+import org.apache.commons.cli.CommandLineParser;
+import org.apache.commons.cli.Options;
+import org.apache.commons.cli.PosixParser;
+import org.w3c.dom.Node;
+import yax.lex.Type;
+import yax.lex.Util;
 
-import org.apache.commons.cli.*;
-import org.w3c.dom.*;
+import java.io.FileReader;
+import java.io.IOException;
 
-import java.io.*;
-
-public class DomTest
+public abstract class Dap4SaxTest
 {
 
     static public void
     main(String[] argv)
     {
-        DomLexer lexer;
         int flags = Util.FLAG_NONE;
         Type tokentype = null;
 	Node[] nodep = new Node[]{null};
-	
+
         String input;
         int i,c;
+	Dap4Parser parser = null;
+        Dap4SaxLexer dap4lexer = null;
 
         try {
-
             Options options = new Options();
-            options.addOption("t",false,"trim text");
+            options.addOption("w",false,"trim whitespace ");
             options.addOption("l",false,"Limit size of text printout");
             options.addOption("e",false,"Escape control characters");
+            options.addOption("t",false,"Trace parser");
+            options.addOption("T",false,"Trace lexer");
 
-            CommandLineParser parser = new PosixParser();
-            CommandLine cmd = parser.parse(options, argv);
+            CommandLineParser clparser = new PosixParser();
+            CommandLine cmd = clparser.parse(options, argv);
 
             argv = cmd.getArgs();
 
@@ -41,25 +47,23 @@ public class DomTest
             input = getinput(argv[0]);
 
             flags = Util.FLAG_NOCR; // always
-            if(cmd.hasOption('t'))
+            if(cmd.hasOption('w'))
                 flags |= Util.FLAG_TRIMTEXT;
             if(cmd.hasOption('l'))
                 flags |= Util.FLAG_ELIDETEXT;
             if(cmd.hasOption('e'))
                 flags |= Util.FLAG_ESCAPE;
+              if(cmd.hasOption('T'))
+                flags |= Util.FLAG_TRACE;
 
-            lexer = new DomLexer(input);
-            lexer.setFlags(flags);
+	    dap4lexer = new Dap4SaxLexer(input);
+	    parser = new Dap4Parser((Dap4Parser.Lexer)dap4lexer);
+            if(cmd.hasOption('t'))
+                parser.setDebugLevel(1);
 
-            for(i=0;i<200;i++) {
-                String trace = null;
-                tokentype = lexer.nextToken(nodep);
-                trace = Util.trace(tokentype,nodep[0]);
-                System.out.printf("domtest: %s\n",trace);
-                System.out.flush();
-                if(tokentype == Type.EOF)
-                    break;
-            }
+	    if(!parser.parse()) {
+		System.err.println("Parse failed");
+	    }
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -82,6 +86,7 @@ public class DomTest
         }
         return buf.toString();
     }
+} // class Dap4SaxParser
 
 
-} //Domtest
+

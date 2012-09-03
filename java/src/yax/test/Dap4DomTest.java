@@ -14,8 +14,6 @@ import java.io.IOException;
 public abstract class Dap4DomTest
 {
 
-    Dap4DomLexer dap4Lexer = null;
-
     static public void
     main(String[] argv)
     {
@@ -26,6 +24,7 @@ public abstract class Dap4DomTest
         String input;
         int i,c;
 	Dap4Parser parser = null;
+        Dap4DomLexer dap4lexer = null;
 
         try {
             Options options = new Options();
@@ -57,8 +56,9 @@ public abstract class Dap4DomTest
               if(cmd.hasOption('T'))
                 flags |= Util.FLAG_TRACE;
 
-	    parser = new Dap4Parser(input,flags);
-             if(cmd.hasOption('t'))
+	    dap4lexer = new Dap4DomLexer(input,flags);
+	    parser = new Dap4Parser(dap4lexer);
+            if(cmd.hasOption('t'))
                 parser.setDebugLevel(1);
 
 	    if(!parser.parse()) {

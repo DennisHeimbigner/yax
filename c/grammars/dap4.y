@@ -1,20 +1,3 @@
-%debug
-%error-verbose
-%pure-parser
-
-%define public
-%define package "yax.test"
-%define throws "Exception"
-%define lex_throws "Exception"
-%define extends "Dap4DomTest"
-
-%lex-param {Dap4Parser parser}
-
-%code {
-
-    public Dap4Parser.Lexer getLexer() {return this.yylexer;}
-}
-
 %token  GROUP_ _GROUP
 %token  ENUMERATION_ _ENUMERATION
 %token  ENUMCONST_ _ENUMCONST
