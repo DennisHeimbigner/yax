@@ -1,3 +1,6 @@
+/* Incomplete dap4 parser; it will be prefixed
+   as required to produce a complete parser.
+*/
 %token  GROUP_ _GROUP
 %token  ENUMERATION_ _ENUMERATION
 %token  ENUMCONST_ _ENUMCONST

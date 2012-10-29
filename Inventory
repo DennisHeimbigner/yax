@@ -5,10 +5,6 @@ Inventory
 
 docs/manual.html
 
-etc/dap4.y
-etc/rng.y
-etc/xml.y
-
 c/Makefile
 c/dap4.h
 c/dap4.y.hdr
@@ -32,6 +28,10 @@ c/yax.c
 c/yax.h
 c/yxlist.c
 c/yxlist.h
+
+c/grammars/dap4.y
+c/grammars/rng.y
+c/grammars/xml.y
 
 c/data/baseline/books.dom
 c/data/baseline/books.yax

@@ -2,7 +2,7 @@
 #INIT=1
 
 # Paths of interest
-GRAMMARS=../etc
+GRAMMARS=./grammars
 TESTINPUTS=./testdata/testinput
 TESTOUTPUTS=./testdata/testoutput
 
