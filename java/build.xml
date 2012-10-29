@@ -28,7 +28,7 @@
 <property name="cp" value="${cli.jar}"/>
 <property name="test.cp" value="${build.dir};${cli.jar}"/>
 
-<target name="all" depends="jar,test"/>
+<target name="all" depends="jar"/>
 
 <target name="init">
   <mkdir dir="${build.dir}"/>
@@ -95,12 +95,12 @@ like cleanup and running the actual tests
 
 <target name="domtests">
   <java classpath="${test.cp}" classname="yax.test.DomTest"
-        output="${testoutput.dir}/domtest.txt">
+        output="${testoutput.dir}/domtest.txt" fork="true">
     <arg value="-le"/>
     <arg value="${testinput.dir}/books.xml"/>
   </java>
   <java classpath="${test.cp}" classname="yax.test.Dap4DomTest"
-        output="${testoutput.dir}/dap4dom.txt">
+        output="${testoutput.dir}/dap4dom.txt" fork="true">
     <arg value="-dwle"/>
     <arg value="${testinput.dir}/dap4.xml"/>
   </java>
@@ -108,12 +108,12 @@ like cleanup and running the actual tests
 
 <target name="saxtests">
   <java classpath="${test.cp}" classname="yax.test.SaxTest"
-        output="${testoutput.dir}/saxtest.txt">
+        output="${testoutput.dir}/saxtest.txt" fork="true">
     <arg value="-le"/>
     <arg value="${testinput.dir}/dap4.xml"/>
   </java>
   <java classpath="${test.cp}" classname="yax.test.Dap4SaxTest"
-        output="${testoutput.dir}/dap4sax.txt">
+        output="${testoutput.dir}/dap4sax.txt" fork="true">
     <arg value="-dwle"/>
     <arg value="${testinput.dir}/dap4.xml"/>
   </java>

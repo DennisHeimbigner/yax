@@ -18,9 +18,9 @@ for f in $CASES ; do
     continue;
   fi
   # Remove the (line xxx) to make this insensitive to minor changes to .y file
-  rm -f ./tmp
-  mv ${DATA}/testoutput/${f}.txt ./tmp
-  sed -e 's/(line [0-9][0-9]*)//' <./tmp >${DATA}/testoutput/${f}.txt
+  rm -f ./original
+  mv ${DATA}/testoutput/${f}.txt ./original
+  sed -e 's/(line [0-9][0-9]*)//' <./original >${DATA}/testoutput/${f}.txt
   if test "x${INIT}" = x1 ; then
     echo "Initializing test ${f}"
     cp ${DATA}/testoutput/${f}.txt ${DATA}/baseline/${f}.txt

@@ -77,7 +77,7 @@ public abstract class Dap4SaxTest
             e.printStackTrace();
             System.exit(1);
         }
-        System.out.println("No error");
+        System.err.println("No error");
         System.exit(0);
     }
 
