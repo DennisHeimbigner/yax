@@ -32,6 +32,7 @@ public abstract class Dap4DomTest
             options.addOption("l",false,"Limit size of text printout");
             options.addOption("e",false,"Escape control characters");
             options.addOption("t",false,"Trace parser");
+            options.addOption("d",false,"Parser debug");
             options.addOption("T",false,"Trace lexer");
 
             CommandLineParser clparser = new PosixParser();
@@ -58,7 +59,7 @@ public abstract class Dap4DomTest
 
 	    dap4lexer = new Dap4DomLexer(input,flags);
 	    parser = new Dap4DomParser(dap4lexer);
-            if(cmd.hasOption('t'))
+            if(cmd.hasOption('d'))
                 parser.setDebugLevel(1);
 
 	    if(!parser.parse()) {

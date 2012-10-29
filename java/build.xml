@@ -101,7 +101,7 @@ like cleanup and running the actual tests
   </java>
   <java classpath="${test.cp}" classname="yax.test.Dap4DomTest"
         output="${testoutput.dir}/dap4dom.txt">
-    <arg value="-wle"/>
+    <arg value="-dwle"/>
     <arg value="${testinput.dir}/dap4.xml"/>
   </java>
 </target>
@@ -114,7 +114,7 @@ like cleanup and running the actual tests
   </java>
   <java classpath="${test.cp}" classname="yax.test.Dap4SaxTest"
         output="${testoutput.dir}/dap4sax.txt">
-    <arg value="-wle"/>
+    <arg value="-dwle"/>
     <arg value="${testinput.dir}/dap4.xml"/>
   </java>
 </target>
