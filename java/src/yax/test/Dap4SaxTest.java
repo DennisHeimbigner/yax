@@ -10,9 +10,15 @@ import yax.lex.Util;
 
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.charset.Charset;
 
 public abstract class Dap4SaxTest
 {
+
+    //////////////////////////////////////////////////
+    // Constants
+
+    //////////////////////////////////////////////////
 
     static public void
     main(String[] argv)
@@ -21,10 +27,10 @@ public abstract class Dap4SaxTest
         Type tokentype = null;
 	Node[] nodep = new Node[]{null};
 
-        String input;
+        String document;
         int i,c;
-	Dap4Parser parser = null;
-        Dap4SaxLexer dap4lexer = null;
+	Dap4SaxParser dap4pushparser = null;
+        Dap4SaxEventHandler dap4eventhandler = null;
 
         try {
             Options options = new Options();
@@ -44,7 +50,7 @@ public abstract class Dap4SaxTest
               System.exit(1);
             }
 
-            input = getinput(argv[0]);
+            document = getinput(argv[0]);
 
             flags = Util.FLAG_NOCR; // always
             if(cmd.hasOption('w'))
@@ -56,15 +62,16 @@ public abstract class Dap4SaxTest
               if(cmd.hasOption('T'))
                 flags |= Util.FLAG_TRACE;
 
-	    dap4lexer = new Dap4SaxLexer(input);
-	    parser = new Dap4Parser((Dap4Parser.Lexer)dap4lexer);
+	    // 1. push parser
+	    dap4pushparser = new Dap4SaxParser();
             if(cmd.hasOption('t'))
-                parser.setDebugLevel(1);
+                dap4pushparser.setDebugLevel(1);
 
-	    if(!parser.parse()) {
+	    // 2. event handler
+	    dap4eventhandler = new Dap4SaxEventHandler(document,dap4pushparser);
+	    if(!dap4eventhandler.parse()) {
 		System.err.println("Parse failed");
 	    }
-
         } catch (Exception e) {
             e.printStackTrace();
             System.exit(1);
@@ -86,7 +93,8 @@ public abstract class Dap4SaxTest
         }
         return buf.toString();
     }
-} // class Dap4SaxParser
+} // class Dap4SaxTest
+
 
 
 

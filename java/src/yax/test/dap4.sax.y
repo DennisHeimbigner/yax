@@ -1,19 +1,29 @@
+%language "Java"
 %debug
 %error-verbose
 %pure-parser
 
+%define parser_class_name "Dap4SaxParser"
+%define extends "Dap4SaxTest"
+%define api.push-pull push
 %define public
 %define package "yax.test"
 %define throws "Exception"
 %define lex_throws "Exception"
-%define extends "Dap4DomTest"
 
-%lex-param {Dap4Parser parser}
-
-%code {
-
-    public Dap4Parser.Lexer getLexer() {return this.yylexer;}
+%code imports {
 }
+
+%code lexer {
+public Object getLVal() {return null;}
+public int yylex() {return 0;}
+public void yyerror(String s) {System.err.println(s);}
+}
+
+/* This version exploits the
+   ability of the sax parser to
+   order attributes
+*/
 
 %token  GROUP_ _GROUP
 %token  ENUMERATION_ _ENUMERATION
@@ -60,18 +70,23 @@
 
 %%
 group:
-	GROUP_ group_attr_list group_body _GROUP
+	GROUP_ ATTR_NAME group_opt_attr group_body _GROUP
 	;
 
-group_attr_list:
+group_opt_attr:
 	  /*empty*/
-	| group_attr_list ATTR_NAME
-	| group_attr_list ATTR_DAPVERSION
-	| group_attr_list ATTR_DDXVERSION
-	| group_attr_list ATTR_NS
-	| group_attr_list ATTR_BASE
-	| group_attr_list ATTR_XMLNS
-	| group_attr_list UNKNOWN_ATTR
+	| ATTR_DAPVERSION
+	| ATTR_DAPVERSION ATTR_DDXVERSION
+	| ATTR_DAPVERSION ATTR_DDXVERSION ATTR_NS
+	| ATTR_DAPVERSION ATTR_DDXVERSION ATTR_NS ATTR_BASE
+	| ATTR_DAPVERSION ATTR_DDXVERSION ATTR_NS ATTR_BASE ATTR_XMLNS
+	| ATTR_DAPVERSION ATTR_DDXVERSION ATTR_NS ATTR_BASE unknown_attrs
+	;
+
+/* These will always be pushed to the end of the list of attributes */
+unknown_attrs:
+	  UNKNOWN_ATTR
+	| unknown_attrs UNKNOWN_ATTR
 	;
 
 group_body:
@@ -84,12 +99,12 @@ group_body:
 	;
 
 enumdef:
-	ENUMERATION_ enum_attr_list enumconst_list _ENUMERATION
+	ENUMERATION_ ATTR_NAME enum_opt_attr enumconst_list _ENUMERATION
 	;
 
-enum_attr_list:
-	ATTR_NAME ATTR_BASETYPE
-	| ATTR_BASETYPE ATTR_NAME 
+enum_opt_attr:
+	  /*empty*/
+	| ATTR_BASETYPE
 	;
 
 enumconst_list:
@@ -97,14 +112,8 @@ enumconst_list:
 	| enumconst_list enumconst
 	;
 
-
 enumconst:
-	ENUMCONST_ enumconst_attr_list _ENUMCONST
-	;
-	
-enumconst_attr_list:
-	  ATTR_NAME ATTR_VALUE
-	| ATTR_VALUE ATTR_NAME
+	ENUMCONST_ ATTR_NAME ATTR_VALUE _ENUMCONST
 	;
 
 namespace_list: 
@@ -117,21 +126,12 @@ namespace:
 	;
 
 dimdef:
-	DIMENSION_ dimdef_attr_list metadatalist _DIMENSION
-	;
-
-dimdef_attr_list:
-	  ATTR_NAME ATTR_SIZE
-	| ATTR_SIZE ATTR_NAME
+	DIMENSION_ ATTR_NAME ATTR_SIZE metadatalist _DIMENSION
 	;
 
 dimref:
-	DIM_ dimref_attr_list _DIM
-	;
-
-dimref_attr_list:
-	  ATTR_NAME
-	| ATTR_SIZE
+	  DIM_ ATTR_NAME _DIM
+	| DIM_ ATTR_SIZE _DIM
 	;
 
 variable:
@@ -141,9 +141,9 @@ variable:
 
 /* Use atomic type to avoid rule explosion */
 simplevariable:
-	atomictype_ ATTR_NAME variabledef _atomictype
+	  atomictype_ ATTR_NAME variabledef _atomictype
+	| ENUM_ ATTR_ENUM ATTR_NAME variabledef _ENUM
 	;
-
 
 atomictype_:
 	  CHAR_
@@ -161,7 +161,6 @@ atomictype_:
 	| STRING_
 	| URL_
 	| OPAQUE_
-	| ENUM_ ATTR_ENUM
 	;
 
 _atomictype:
@@ -180,7 +179,6 @@ _atomictype:
 	| _STRING
 	| _URL
 	| _OPAQUE
-	| _ENUM
 	;
 
 variabledef:
@@ -215,18 +213,17 @@ metadata:
 	;
 
 attribute:
-	ATTRIBUTE_ attribute_attr_list
+	ATTRIBUTE_ ATTR_NAME attribute_opt_attr
                    namespace_list
                    value_list
 		   _ATTRIBUTE
 	;
 
-attribute_attr_list:
+attribute_opt_attr:
 	  /*empty*/
-	| attribute_attr_list ATTR_NAME
-	| attribute_attr_list ATTR_TYPE
-	| attribute_attr_list ATTR_NAMESPACE
-	;	
+	| ATTR_TYPE
+	| ATTR_TYPE ATTR_NAMESPACE
+	;
 
 value_list:
 	  /*empty*/

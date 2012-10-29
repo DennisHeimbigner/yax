@@ -9,9 +9,9 @@ import java.io.*;
 import java.util.Stack;
 import java.util.List;
 
-import static yax.test.Dap4Parser.*;
+import static yax.test.Dap4DomParser.*;
 
-class Dap4DomLexer implements Dap4Parser.Lexer
+class Dap4DomLexer implements Dap4DomParser.Lexer
 {
 
     //////////////////////////////////////////////////

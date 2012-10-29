@@ -13,10 +13,13 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.nio.charset.Charset;
 
-abstract public class SaxLexer extends DefaultHandler
+abstract public class SaxEventHandler extends DefaultHandler
 {
     //////////////////////////////////////////////////
     // Constants
+
+    static boolean TRACE = false;
+
     static Charset UTF8 = Charset.forName("UTF-8");
 
     static final String LOAD_EXTERNAL_DTD
@@ -31,36 +34,21 @@ abstract public class SaxLexer extends DefaultHandler
     //////////////////////////////////////////////////
     // Instance variables
     
-    String document;
+    String document = null;
     
     // Sax parser state
     Locator locator = null;
     SAXParserFactory spf = null;
-    SAXParser parser = null;
+    SAXParser saxparser = null;
     ByteArrayInputStream input = null;
-
-    // Lexer state
-    List<SaxToken> tokens = null;
-    SaxToken token = null; // last token constructed
 
     //////////////////////////////////////////////////
     // Constructor(s)
 
-    public SaxLexer(String document)
-	throws LexException
+    public SaxEventHandler(String document)
+	throws SAXException
     {
-	try {
-	    spf = SAXParserFactory.newInstance();
-	    spf.setValidating(false);
-            spf.setNamespaceAware(true);
-	    spf.setFeature(LOAD_EXTERNAL_DTD,false);
-	    parser = spf.newSAXParser();
-	} catch (Exception e) {
-	    throw new LexException(e);
-	}
-	// Set up for the parse
-	input = new ByteArrayInputStream(document.getBytes(UTF8));
-	tokens = new ArrayList<SaxToken>();
+	this.document = document;
     }
 
     //////////////////////////////////////////////////
@@ -69,17 +57,11 @@ abstract public class SaxLexer extends DefaultHandler
     // get list of legal attribute names in desired order
     abstract public String[] orderedAttributes(String element);
 
+    // Send the lexeme to the the subclass to process
+    abstract public void yyevent(SaxToken token) throws SAXException;
+
     //////////////////////////////////////////////////
     // Get/Set
-
-    public int getTokenCount() {return tokens.size();}
-
-    public List<SaxToken> getTokens() {return tokens;}
-
-    public SaxToken[] getTokens(SaxToken[] tokenarray)
-    {
-	return tokens.toArray(tokenarray);
-    }
 
     //////////////////////////////////////////////////
     // Misc.
@@ -98,16 +80,21 @@ abstract public class SaxLexer extends DefaultHandler
     //////////////////////////////////////////////////
     // Public API
 
-    public void lex()
-	throws LexException
+    public boolean parse()
+	throws Exception
     {
-	try {
-	    parser.parse(input,this);
-	} catch (IOException ioe) {
-	    throw new LexException(ioe);
-	} catch (SAXException se) {
-	    throw new LexException(se);
-	}
+        // Create the sax parser that will drive us with events
+        spf = SAXParserFactory.newInstance();
+        spf.setValidating(false);
+        spf.setNamespaceAware(true);
+        spf.setFeature(LOAD_EXTERNAL_DTD,false);
+        saxparser = spf.newSAXParser();
+        // Set up for the parse
+        input = new ByteArrayInputStream(document.getBytes(UTF8));
+        try {
+            saxparser.parse(input,this);
+            return true;
+        } catch (SAXException se) {return false;}
     }
 
     //////////////////////////////////////////////////
@@ -123,14 +110,18 @@ abstract public class SaxLexer extends DefaultHandler
     public void startDocument()
 	throws SAXException
     {
-	tokens.clear();
-	tokens.add(new SaxToken(Type.DOCTYPE));
+	SaxToken token = new SaxToken(Type.DOCTYPE);
+if(TRACE) System.err.println("event.startDocument: "+token.toString());
+	yyevent(token);
     }
 
     @Override
     public void endDocument()
 	throws SAXException
     {
+	SaxToken token = new SaxToken(Type.EOF);
+if(TRACE) System.err.println("event.endDocument: "+token.toString());
+	yyevent(token);
     }
 
     @Override
@@ -138,28 +129,46 @@ abstract public class SaxLexer extends DefaultHandler
 		      Attributes attributes)
 	throws SAXException
     {
-	token = new SaxToken(Type.OPEN,name,qualname,nsuri);
-	tokens.add(token);
+	SaxToken token = new SaxToken(Type.OPEN,name,qualname,nsuri);
+if(TRACE) System.err.println("event.startElement: "+token.toString());
+	yyevent(token);
 	// Let subclass tell us what and in what order
 	// to generate the attributes
 	String[] userorder = orderedAttributes(name);
 	int nattr = attributes.getLength();
+	List<String> knowns = null;
 	if(userorder != null) {
-	    for(String uname: userorder) {
+	    for(int i=0;i<userorder.length;i++) {
+                String uname = userorder[i].toLowerCase();
 	        String value = null;
-	        for(int i=0;i<nattr;i++) {
-		    String aname = attributes.getLocalName(i);
+                boolean found = false;
+	        for(int j=0;j<nattr;j++) {
+		    String aname = attributes.getLocalName(j).toLowerCase();
 		    if("".equals(aname)) aname = attributes.getQName(i);
-		    if(uname.equals(aname)) {
+		    if(uname.equalsIgnoreCase(aname)) {// force case insensitive
 		        value = attributes.getValue(i);
+                        found = true;
 		        break;
 		    }
 		}
-		if(value != null) {// found it
+		if(found) {// found it
 		    token = new SaxToken(Type.ATTRIBUTE,uname);
 		    token.value = value;
-		    tokens.add(token);
-		}		
+		    if(knowns == null) knowns = new ArrayList<String>();
+		    knowns.add(uname);
+if(TRACE) System.err.println("event.attribute: "+token.toString());
+		    yyevent(token);
+	        }
+	    }
+	    // Now pass on the given attributes that are unknown
+	    for(int i=0;i<nattr;i++) {
+		String aname = attributes.getLocalName(i).toLowerCase();
+		if(!knowns.contains(aname)) {
+		    token = new SaxToken(Type.ATTRIBUTE,aname);
+		    token.value = attributes.getValue(i);
+if(TRACE) System.err.println("event.attribute.unknown: "+token.toString());
+		    yyevent(token);
+		}
 	    }
 	} else {// no attribute ordering; just include as is
 	    for(int i=0;i<nattr;i++) {
@@ -168,7 +177,8 @@ abstract public class SaxLexer extends DefaultHandler
 		String value = attributes.getValue(i);
 		token = new SaxToken(Type.ATTRIBUTE,aname);
 	        token.value = value;
-		tokens.add(token);
+if(TRACE) System.err.println("event.attribute: "+token.toString());
+	    	yyevent(token);
 	    }
 	}
     }
@@ -177,17 +187,19 @@ abstract public class SaxLexer extends DefaultHandler
     public void endElement(String nsuri, String name, String qualname)
 	throws SAXException
     {
-	token = new SaxToken(Type.CLOSE,name,qualname,nsuri);
-	tokens.add(token);
+	SaxToken token = new SaxToken(Type.CLOSE,name,qualname,nsuri);
+if(TRACE) System.err.println("event.endElement: "+token.toString());
+    	yyevent(token);
     }
 
     @Override
     public void characters(char[] ch, int start, int length)
 	throws SAXException
     {
-	token = new SaxToken(Type.TEXT);
+	SaxToken token = new SaxToken(Type.TEXT);
 	token.text = new String(ch,start,length);
-	tokens.add(token);
+if(TRACE) System.err.println("event.characters: "+token.toString());
+    	yyevent(token);
     }
 
     @Override
@@ -220,4 +232,7 @@ abstract public class SaxLexer extends DefaultHandler
 	System.err.println("Sax error: "+e);	
     }
 
-} // class SaxLexer
+
+
+} // class SaxEventHandler
+

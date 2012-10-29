@@ -11,18 +11,28 @@ import java.io.*;
 public class SaxTest
 {
 
-    // Trivial implementation of SaxLexer
-    static public class SaxTestLexer extends SaxLexer
+    // Simple subclass of SaxEventHandler
+    static public class SaxTestHandler extends SaxEventHandler
     {
-	public SaxTestLexer(String document) throws LexException
+	public SaxTestHandler(String document) throws SAXException
 		{super(document);}
+	// Define the abstract methods
 	public String[] orderedAttributes(String element) {return null;}
+
+	public void yyevent(SaxToken token)
+	    throws SAXException
+	{
+            String trace = null;
+            trace = Util.trace(token,0);
+            System.out.printf("saxtest: %s\n",trace);
+            System.out.flush();
+	}
     }
 
     static public void
     main(String[] argv)
     {
-        SaxLexer lexer;
+        SaxTestHandler handler;
         int flags = Util.FLAG_NONE;
         Type tokentype = null;
 	Node[] nodep = new Node[]{null};
@@ -56,19 +66,8 @@ public class SaxTest
             if(cmd.hasOption('e'))
                 flags |= Util.FLAG_ESCAPE;
 
-            lexer = new SaxTestLexer(input);
-	    lexer.lex(); // build token list
-
-	    int ntokens = lexer.getTokenCount();
-	    SaxToken[] tokens = lexer.getTokens(new SaxToken[ntokens]);
-
-            for(i=0;i<ntokens;i++) {
-                String trace = null;
-                SaxToken token = tokens[i];
-                trace = Util.trace(token,flags);
-                System.out.printf("saxtest: %s\n",trace);
-                System.out.flush();
-            }
+            handler = new SaxTestHandler(input);
+	    handler.parse();
 
         } catch (Exception e) {
             e.printStackTrace();

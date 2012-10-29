@@ -23,7 +23,7 @@ public abstract class Dap4DomTest
 
         String input;
         int i,c;
-	Dap4Parser parser = null;
+	Dap4DomParser parser = null;
         Dap4DomLexer dap4lexer = null;
 
         try {
@@ -57,7 +57,7 @@ public abstract class Dap4DomTest
                 flags |= Util.FLAG_TRACE;
 
 	    dap4lexer = new Dap4DomLexer(input,flags);
-	    parser = new Dap4Parser(dap4lexer);
+	    parser = new Dap4DomParser(dap4lexer);
             if(cmd.hasOption('t'))
                 parser.setDebugLevel(1);
 
