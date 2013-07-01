@@ -7,7 +7,6 @@ import yax.lex.*;
 
 import org.xml.sax.*;
 
-import java.io.IOException;
 import java.util.*;
 
 import static yax.test.Dap4SaxParser.*;
@@ -29,6 +28,7 @@ public class Dap4SaxEventHandler extends SaxEventHandler
     static {
         elementmap = new HashMap<String,Lexeme>();
         attributemap = new HashMap<String, Lexeme>();
+
         elementmap.put("Group",
                         new Lexeme("Group",GROUP_,_GROUP,
                         new String[]{"name","dapversion","ddxversion","ns","base","xmlns"}));
@@ -109,6 +109,7 @@ public class Dap4SaxEventHandler extends SaxEventHandler
                         new Lexeme("Opaque",OPAQUE_,_OPAQUE,
                         new String[]{"name"}));
 
+	// Always insert the lowercase name
         attributemap.put("base",new Lexeme("base",ATTR_BASE));
         attributemap.put("basetype",new Lexeme("basetype",ATTR_BASETYPE));
         attributemap.put("dapversion",new Lexeme("dapversion",ATTR_DAPVERSION));
@@ -145,18 +146,10 @@ public class Dap4SaxEventHandler extends SaxEventHandler
     //////////////////////////////////////////////////
     // Abstract method overrides
 
-    public String[] orderedAttributes(String elementname)
-    {
-        Lexeme lexeme = elementmap.get(elementname);
-        if(lexeme == null)
-            return null;
-        return lexeme.attributesInOrder;
-    }
-
     // Push the token to the parser
     // @throws SAXException if parser return YYABORT
 
-    public void yyevent(SaxToken saxtoken)
+    public void yyevent(SaxEvent saxtoken)
         throws SAXException
     {
         if(accepted) {
@@ -170,7 +163,6 @@ public class Dap4SaxEventHandler extends SaxEventHandler
 	Lexeme attr = null;
 
         element = elementmap.get(name);
-        attr = attributemap.get(name);
     
         switch(yaxtoken) {
 
@@ -185,6 +177,15 @@ public class Dap4SaxEventHandler extends SaxEventHandler
             }
             break;
 
+        case ATTRIBUTE:
+	    attr = attributemap.get(name.toLowerCase());
+            if(attr == null) {
+                yytoken = UNKNOWN_ATTR;
+            } else {
+                yytoken = attr.atoken;
+            }
+            break;
+
         case EMPTYCLOSE:
         case CLOSE:
             if(element == null) {// undefined
@@ -192,14 +193,6 @@ public class Dap4SaxEventHandler extends SaxEventHandler
             } else {
                 yytoken = element.close;
                 textok = false;
-            }
-            break;
-
-        case ATTRIBUTE:
-            if(attr == null) {
-                yytoken = UNKNOWN_ATTR;
-            } else {
-                yytoken = attr.atoken;
             }
             break;
 
@@ -227,7 +220,7 @@ public class Dap4SaxEventHandler extends SaxEventHandler
 
         int status = 0;
         try {
-            status = pushparser.push_parse(yytoken,yaxtoken);
+            status = pushparser.push_parse(yytoken,saxtoken);
         } catch (Exception e) {
             throw new SAXException(e);
         }

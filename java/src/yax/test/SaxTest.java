@@ -19,7 +19,7 @@ public class SaxTest
 	// Define the abstract methods
 	public String[] orderedAttributes(String element) {return null;}
 
-	public void yyevent(SaxToken token)
+	public void yyevent(SaxEvent token)
 	    throws SAXException
 	{
             String trace = null;

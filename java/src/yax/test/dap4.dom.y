@@ -1,3 +1,13 @@
+%define parser_class_name "Dap4DomParser"
+%define extends "Dap4DomTest"
+%define api.push-pull pull
+%lex-param {Dap4DomParser parser}
+
+/*%code {
+    public Dap4DomParser.Lexer getLexer() {return this.yylexer;}
+}*/
+
+/* Following should be same for both sax and dom parsers */
 %language "Java"
 %debug
 %error-verbose
@@ -6,13 +16,6 @@
 %define package "yax.test"
 %define throws "Exception"
 %define lex_throws "Exception"
-%define extends "Dap4DomTest"
-%define parser_class_name "Dap4DomParser"
-%lex-param {Dap4DomParser parser}
-
-%code {
-    public Dap4DomParser.Lexer getLexer() {return this.yylexer;}
-}
 
 %token  GROUP_ _GROUP
 %token  ENUMERATION_ _ENUMERATION

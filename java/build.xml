@@ -73,9 +73,10 @@ like cleanup and running the actual tests
 </target>
 
 <target name="test"
-        depends="testclean,generate,compile.tests,run.tests,compare">
+        depends="testclean,init,generate,compile.tests,run.tests,compare">
 </target>
 <target name="tests" depends="test"/> <!--alias-->
+<target name="check" depends="test"/> <!--alias-->
 
 <target name="outputdir">
   <mkdir dir="${testoutput.dir}"/>

@@ -9,7 +9,7 @@ public class Lexeme
     public int open; // Bison token for element open
     public int close; // Bison token for element close
     public int atoken; // Bison token if this is an attribute
-    public String[] attributesInOrder;
+    public String[] legalAttributes; /* not currently used */
 
     public Lexeme(String name, int atoken) {this(name,0,0,atoken,null);}
     public Lexeme(String name, int open, int close)
@@ -23,29 +23,28 @@ public class Lexeme
 	this.open = open;
 	this.close = close;
 	this.atoken = atoken;
-	attributesInOrder = alist;
+	legalAttributes = alist;
     }
 
-    public void attribute(String[] inorder)
+    public void attribute(String[] alist)
     {
-	attributesInOrder = inorder;
+	legalAttributes = alist;
 	// check for duplicates
-	for(int i=0;i<inorder.length;i++) {
-	    for(int j=i+1;j<inorder.length;j++)
-	        assert (!inorder[i].equals(inorder[j]));
+	for(int i=0;i<legalAttributes.length;i++) {
+	    for(int j=i+1;j<legalAttributes.length;j++)
+	        assert (!legalAttributes[i].equals(legalAttributes[j]));
 	}
     }
 
     public String toString()
     {
          String text = String.format("%s open=%d close=%d a=%d",name,open,close,atoken);
-         if(attributesInOrder != null && attributesInOrder.length > 0) {
+         if(legalAttributes != null && legalAttributes.length > 0) {
              text += " attributes=";
-             for(String s: attributesInOrder) {
+             for(String s: legalAttributes) {
                  text += " " + s;
              }
          }
          return text;
     }
 } // class Lexeme
-

@@ -10,6 +10,8 @@ DATA=`pwd`
 
 CASES="domtest dap4dom saxtest dap4sax"
 
+fail=no
+
 for f in $CASES ; do
   echo "*** Testing: ${f}"
   # Ignore missing cases 
@@ -27,11 +29,18 @@ for f in $CASES ; do
     continue;
   fi
   echo "***     Comparing testoutput/${f}.txt baseline/${f}.txt"
-  if ! diff -w ${DATA}/baseline/${f}.txt ${DATA}/testoutput/${f}.txt ; then
+  if  diff -w ${DATA}/baseline/${f}.txt ${DATA}/testoutput/${f}.txt ; then
+    echo "*** PASS: ${f}.xml";
+  else
     echo "*** FAIL: ${f}.xml: files differ";
+    fail=no
   fi
 done
 
-echo "*** Passed all tests"
+if test "x$fail" = "xyes" ; then
+  echo "*** Failed some tests"
+else
+  echo "*** Passed all tests"
+fi
 
 exit 0

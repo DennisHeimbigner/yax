@@ -6,6 +6,13 @@
 
 %code {
 #include "dap4.tab.h"
+extern void dap4_keyword_init(void);
+}
+
+%initial-action {
+#ifndef PERFECTHASH
+    dap4_keyword_init();
+#endif
 }
 
 %lex-param {DAP4parser* parser}

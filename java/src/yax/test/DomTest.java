@@ -16,7 +16,7 @@ public class DomTest
         DomLexer lexer;
         int flags = Util.FLAG_NONE;
         Type tokentype = null;
-	Node[] nodep = new Node[]{null};
+	Node node = null;
 	
         String input;
         int i,c;
@@ -53,8 +53,9 @@ public class DomTest
 
             for(i=0;i<200;i++) {
                 String trace = null;
-                tokentype = lexer.nextToken(nodep);
-                trace = Util.trace(tokentype,nodep[0]);
+                tokentype = lexer.nextToken();
+                node = lexer.nextNode();
+                trace = Util.trace(tokentype,node);
                 System.out.printf("domtest: %s\n",trace);
                 System.out.flush();
                 if(tokentype == Type.EOF)

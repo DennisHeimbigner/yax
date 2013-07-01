@@ -8,9 +8,7 @@ import javax.xml.parsers.*;
 import org.xml.sax.*;
 import org.xml.sax.helpers.*;
 
-import java.util.*;
 import java.io.ByteArrayInputStream;
-import java.io.IOException;
 import java.nio.charset.Charset;
 
 abstract public class SaxEventHandler extends DefaultHandler
@@ -52,30 +50,13 @@ abstract public class SaxEventHandler extends DefaultHandler
     }
 
     //////////////////////////////////////////////////
-    // Abstract methods
-
-    // get list of legal attribute names in desired order
-    abstract public String[] orderedAttributes(String element);
+    // Abstract method(s)
 
     // Send the lexeme to the the subclass to process
-    abstract public void yyevent(SaxToken token) throws SAXException;
+    abstract public void yyevent(SaxEvent token) throws SAXException;
 
     //////////////////////////////////////////////////
     // Get/Set
-
-    //////////////////////////////////////////////////
-    // Misc.
-    void fail(String msg)
-	throws SAXException
-    {
-	if(locator != null) {
-	    msg = String.format("[%d.%d] ",
-			locator.getLineNumber(),
-			locator.getColumnNumber())
-		  + msg;
-	}
-	throw new SAXException(msg);	
-    }
 
     //////////////////////////////////////////////////
     // Public API
@@ -100,6 +81,12 @@ abstract public class SaxEventHandler extends DefaultHandler
     //////////////////////////////////////////////////
     // DefaultHandler Overrides
 
+    // The key thing to note is that we map the Sax Event
+    // into a subset based on yax.lex.Type. This means
+    // we feed only a subset of the possible events into
+    // the subclass handler. This can be changed by
+    // overriding the suppressing event handler below.
+
     @Override
     public void setDocumentLocator(Locator locator)
     {
@@ -110,8 +97,8 @@ abstract public class SaxEventHandler extends DefaultHandler
     public void startDocument()
 	throws SAXException
     {
-	SaxToken token = new SaxToken(Type.DOCTYPE);
-if(TRACE) System.err.println("event.startDocument: "+token.toString());
+	SaxEvent token = new SaxEvent(SaxEventType.STARTDOCUMENT,locator);
+if(TRACE) System.err.printf("event.%s: %s\n",token.event.name(),token.toString());
 	yyevent(token);
     }
 
@@ -119,8 +106,9 @@ if(TRACE) System.err.println("event.startDocument: "+token.toString());
     public void endDocument()
 	throws SAXException
     {
-	SaxToken token = new SaxToken(Type.EOF);
-if(TRACE) System.err.println("event.endDocument: "+token.toString());
+	SaxEvent token = new SaxEvent(SaxEventType.ENDDOCUMENT,locator);
+if(TRACE) System.err.printf("event.%s: %s\n",
+		token.event.name(),token.toString());
 	yyevent(token);
     }
 
@@ -129,57 +117,21 @@ if(TRACE) System.err.println("event.endDocument: "+token.toString());
 		      Attributes attributes)
 	throws SAXException
     {
-	SaxToken token = new SaxToken(Type.OPEN,name,qualname,nsuri);
-if(TRACE) System.err.println("event.startElement: "+token.toString());
+	SaxEvent token = new SaxEvent(SaxEventType.STARTELEMENT,locator,name,qualname,nsuri);
+if(TRACE) System.err.printf("event.%s: %s\n",
+		token.event.name(),token.toString());
 	yyevent(token);
-	// Let subclass tell us what and in what order
-	// to generate the attributes
-	String[] userorder = orderedAttributes(name);
+	// Now pass the attributes as tokens
 	int nattr = attributes.getLength();
-	List<String> knowns = null;
-	if(userorder != null) {
-	    for(int i=0;i<userorder.length;i++) {
-                String uname = userorder[i].toLowerCase();
-	        String value = null;
-                boolean found = false;
-	        for(int j=0;j<nattr;j++) {
-		    String aname = attributes.getLocalName(j).toLowerCase();
-		    if("".equals(aname)) aname = attributes.getQName(i);
-		    if(uname.equalsIgnoreCase(aname)) {// force case insensitive
-		        value = attributes.getValue(i);
-                        found = true;
-		        break;
-		    }
-		}
-		if(found) {// found it
-		    token = new SaxToken(Type.ATTRIBUTE,uname);
-		    token.value = value;
-		    if(knowns == null) knowns = new ArrayList<String>();
-		    knowns.add(uname);
-if(TRACE) System.err.println("event.attribute: "+token.toString());
-		    yyevent(token);
-	        }
-	    }
-	    // Now pass on the given attributes that are unknown
-	    for(int i=0;i<nattr;i++) {
-		String aname = attributes.getLocalName(i).toLowerCase();
-		if(!knowns.contains(aname)) {
-		    token = new SaxToken(Type.ATTRIBUTE,aname);
-		    token.value = attributes.getValue(i);
-if(TRACE) System.err.println("event.attribute.unknown: "+token.toString());
-		    yyevent(token);
-		}
-	    }
-	} else {// no attribute ordering; just include as is
-	    for(int i=0;i<nattr;i++) {
+        for(int i=0;i<nattr;i++) {
 		String aname = attributes.getLocalName(i);
 		if("".equals(aname)) aname = attributes.getQName(i);
 		String value = attributes.getValue(i);
-		token = new SaxToken(Type.ATTRIBUTE,aname);
+		token = new SaxEvent(SaxEventType.ATTRIBUTE,locator,aname);
 	        token.value = value;
-if(TRACE) System.err.println("event.attribute: "+token.toString());
-	    	yyevent(token);
-	    }
+if(TRACE) System.err.printf("event.%s: %s\n",
+		token.event.name(),token.toString());
+	        yyevent(token);
 	}
     }
 
@@ -187,29 +139,88 @@ if(TRACE) System.err.println("event.attribute: "+token.toString());
     public void endElement(String nsuri, String name, String qualname)
 	throws SAXException
     {
-	SaxToken token = new SaxToken(Type.CLOSE,name,qualname,nsuri);
-if(TRACE) System.err.println("event.endElement: "+token.toString());
-    	yyevent(token);
+	SaxEvent token = new SaxEvent(SaxEventType.ENDELEMENT,locator,name,qualname,nsuri);
+if(TRACE) System.err.printf("event.%s: %s\n",
+	    token.event.name(),token.toString());
+	yyevent(token);
     }
 
     @Override
     public void characters(char[] ch, int start, int length)
 	throws SAXException
     {
-	SaxToken token = new SaxToken(Type.TEXT);
+	SaxEvent token = new SaxEvent(SaxEventType.CHARACTERS,locator);
 	token.text = new String(ch,start,length);
-if(TRACE) System.err.println("event.characters: "+token.toString());
-    	yyevent(token);
+if(TRACE) System.err.printf("event.%s: %s\n",
+		token.event.name(),token.toString());
+	yyevent(token);
     }
+
+    // Following events are suppressed
 
     @Override
     public void ignorableWhitespace(char[] ch, int start, int length)
 	throws SAXException
     {
-	// should never see this since not validating, but ignore
+	// should never see this since not validating
+	return;
     }
 
-    // Error handling
+    @Override
+    public void endPrefixMapping(String prefix)
+	throws SAXException
+    {
+	return;
+    }
+
+    @Override
+    public void notationDecl(String name, String publicId, String systemId)
+	throws SAXException
+    {
+	return;
+    }
+
+    @Override
+    public void processingInstruction(String target, String data)
+	throws SAXException
+    {
+	return;
+    }
+
+    @Override
+    public void skippedEntity(String name)
+	throws SAXException
+    {
+	return;
+    }
+
+    @Override
+    public void startPrefixMapping(String prefix, String uri)
+	throws SAXException
+    {
+	return;
+    }
+
+    @Override
+    public void unparsedEntityDecl(String name, String publicId, String systemId, String notationName)
+	throws SAXException
+    {
+	return;
+    }
+
+    //////////////////////////////////////////////////
+    // Entity resolution
+
+    @Override
+    public InputSource resolveEntity(String publicId, String systemId)
+    {
+if(TRACE) System.err.printf("event.RESOLVEENTITY: %s.%s\n",
+		publicId,systemId);
+	return null;
+    }
+
+    //////////////////////////////////////////////////
+    // Error handling Events
 
     @Override
     public void fatalError(SAXParseException e)
@@ -222,17 +233,16 @@ if(TRACE) System.err.println("event.characters: "+token.toString());
     public void error(SAXParseException e)
 	throws SAXException
     {
-	System.err.println("Sax error: "+e);	
+	System.err.println("Sax error: %s\n"+e);
     }
 
     @Override
     public void warning(SAXParseException e)
 	throws SAXException
     {
-	System.err.println("Sax error: "+e);	
+	System.err.println("Sax warning: "+e);
     }
 
 
 
 } // class SaxEventHandler
-

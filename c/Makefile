@@ -9,6 +9,7 @@ TESTOUTPUTS=./testdata/testoutput
 #X=.exe
 
 # The following set of CFLAGS may not work with all compilers
+# If so, then just remove any that fail.
 CFLAGS=-g -O0 -Wall -Wdeclaration-after-statement
 CC=gcc
 
