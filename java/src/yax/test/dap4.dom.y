@@ -1,5 +1,5 @@
-%define parser_class_name "Dap4DomParser"
-%define extends "Dap4DomTest"
+%define parser_class_name {Dap4DomParser}
+%define extends {Dap4DomTest}
 %define api.push-pull pull
 %lex-param {Dap4DomParser parser}
 
@@ -11,11 +11,10 @@
 %language "Java"
 %debug
 %error-verbose
-%pure-parser
 %define public
-%define package "yax.test"
-%define throws "Exception"
-%define lex_throws "Exception"
+%define package {yax.test}
+%define throws {Exception}
+%define lex_throws {Exception}
 
 %token  GROUP_ _GROUP
 %token  ENUMERATION_ _ENUMERATION

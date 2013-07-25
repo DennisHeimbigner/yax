@@ -27,8 +27,15 @@ public class SaxToken
 
     public String toString()
     {
-	String text = Util.trace(this);
-	return text;
+	StringBuilder buf = new StringBuilder();
+	buf.append("SaxToken{");
+	buf.append("type="+type);
+	if(fullname != null) buf.append(" fullname="+fullname);
+	if(namespace != null) buf.append(" namespace="+namespace);
+	if(value != null) buf.append(" value="+value);
+	if(text != null) buf.append(" text="+text);
+	buf.append("SaxToken}");
+	return buf.toString();
     }
 
 } // class SaxToken

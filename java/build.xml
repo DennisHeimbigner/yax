@@ -150,11 +150,11 @@ like cleanup and running the actual tests
 </target>
 
 <!-- antcall parameters: SRC, DST -->
+<!-- Requires bison version 3.0 or later -->
 <target name="bison">
   <exec executable="bison">
     <arg value="-Ljava"/>
     <arg value="-v"/>
-    <arg value="-S${test.dir}/lalr1.push"/>
     <arg value="-pDap4"/>
     <arg value="${test.dir}/${SRC}"/>
     <arg value="-o"/>

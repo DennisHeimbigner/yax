@@ -1,5 +1,5 @@
-%define parser_class_name "Dap4SaxParser"
-%define extends "Dap4SaxTest"
+%define parser_class_name {Dap4SaxParser}
+%define extends {Dap4SaxTest}
 %define api.push-pull push
 
 %code lexer {
@@ -12,11 +12,10 @@ public void yyerror(String s) {System.err.println(s);}
 %language "Java"
 %debug
 %error-verbose
-%pure-parser
 %define public
-%define package "yax.test"
-%define throws "Exception"
-%define lex_throws "Exception"
+%define package {yax.test}
+%define throws {Exception}
+%define lex_throws {Exception}
 
 %token  GROUP_ _GROUP
 %token  ENUMERATION_ _ENUMERATION
