@@ -1,3 +1,5 @@
+#!/bin/sh
+set -x
 GIT=git
 DST=$GIT/yax
 
