@@ -913,17 +913,12 @@ parser is fed lexemes one by one. This is essentially
 the same model as a Sax parser where the Sax events serve
 the role of tokens and the Sax parser is a push-parser in Bison
 terms.
-<p>
-The current Bison parsers (versions 2.6.3 and earlier)
+Bison parsers before version 3.0
 do not support Java push parsing. However, the author
 has contributed a Java push parser skeleton to the Bison
 project that supports Java push parsing. This skeleton
-is not yet in any distributed release, but will appear at
-some point.
+is now incorporated into Bison version 3.0.
 <p>
-In the meantime, the required skeleton is provided as part of the
-yax distribution and can be used with Bison version 2.6.4
-using the "bison -S" flag.
 The primary interface to the Bison generated push-parser
 uses this method call.
 <pre>
