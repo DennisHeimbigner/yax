@@ -1,6 +1,7 @@
 /* Incomplete dap4 parser; it will be prefixed
    as required to produce a complete parser.
 */
+%token  DATASET_ _DATASET
 %token  GROUP_ _GROUP
 %token  ENUMERATION_ _ENUMERATION
 %token  ENUMCONST_ _ENUMCONST
@@ -42,9 +43,13 @@
 /* Error cases */
 %token  ERROR UNKNOWN UNEXPECTED
 
-%start group
+%start dataset
 
 %%
+dataset:
+	DATASET_ group_attr_list group_body _DATASET
+	;
+
 group:
 	GROUP_ group_attr_list group_body _GROUP
 	;
