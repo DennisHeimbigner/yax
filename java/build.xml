@@ -1,12 +1,11 @@
 <project name="YAX Build" default="all" basedir=".">
 
 
-<!--property name="INIT" value="1"/ use -DINIT=1 -->
+<property name="INIT" value=""/>
+
 <!--property name="setup" value="true"/-->
 
 <property name="project.dir" value="${basedir}"/> <!--NOTE-->
-
-<!--property name="grammars.dir" value="${project.dir}/../etc"/-->
 
 <property name="build.dir" value="${project.dir}/build"/>
 <property name="out.dir" value="${project.dir}/out"/>
@@ -20,13 +19,16 @@
 <property name="testoutput.dir" value="${data.dir}/testoutput"/>
 
 <property name="src.dir" value="${project.dir}/src"/>
-<property name="lex.dir" value="${src.dir}/yax/lex"/>
-<property name="test.dir" value="${src.dir}/yax/test"/>
+<property name="yax.dir" value="${src.dir}/yax"/>
+<property name="test.dir" value="${src.dir}/test"/>
 
 <property name="yax.jar" value="${build.dir}/yax.jar"/>
 
-<property name="cp" value="${cli.jar}"/>
-<property name="test.cp" value="${build.dir};${cli.jar}"/>
+<property name="cp" value="${build.dir};${cli.jar}"/>
+<property name="test.cp" value="${cp}"/>
+
+<!-- TESTCASES must be consistent with target named saxtests-->
+<property name="TESTCASES" value="lextest books comments d dap4 expr"/>
 
 <target name="all" depends="jar"/>
 
@@ -36,7 +38,7 @@
 
 
 <target name="compile" depends="init">
-  <javac srcdir="${lex.dir}"
+  <javac srcdir="${yax.dir}"
  	 destdir="${build.dir}"
          classpath="${cp}"
 	 includeantruntime="false"
@@ -47,7 +49,7 @@
 
 <target name="jar" depends="compile">
   <jar jarfile="${yax.jar}">
-    <fileset dir="${build.dir}/yax/lex"/>
+    <fileset dir="${build.dir}/yax"/>
   </jar>
 </target>
 
@@ -61,7 +63,7 @@
 Doing file comparisons
 and reporting the result
 is so ugly in ant that
-instead, this all pushed off
+instead, this is all pushed off
 to a shell script that is
 executed by the build file.
 However we do do some things here
@@ -73,7 +75,7 @@ like cleanup and running the actual tests
 </target>
 
 <target name="test"
-        depends="testclean,init,generate,compile.tests,run.tests,compare">
+        depends="testclean,init,generate,compile.tests,run.tests">
 </target>
 <target name="tests" depends="test"/> <!--alias-->
 <target name="check" depends="test"/> <!--alias-->
@@ -92,38 +94,45 @@ like cleanup and running the actual tests
   />
 </target>
 
-<target name="run.tests" depends="outputdir,domtests,saxtests"/>
+<target name="run.tests" depends="outputdir,parsetests"/>
 
-<target name="domtests">
-  <java classpath="${test.cp}" classname="yax.test.DomTest"
-        output="${testoutput.dir}/domtest.txt" fork="true">
+<target name="parsetests">
+    <antcall target="parsetest">
+	<param name="SRC" value="dap4"/>
+	<param name="CLASS" value="Dap4Test"/>
+    </antcall>
+</target>
+
+<target name="parsetest">
+  <java classpath="${test.cp}" classname="yax.test.${CLASS}"
+        output="${testoutput.dir}/${SRC}.parse fork="true">
     <arg value="-le"/>
-    <arg value="${testinput.dir}/books.xml"/>
+    <arg value="${testinput.dir}/${SRC}.xml"/>
   </java>
-  <java classpath="${test.cp}" classname="yax.test.Dap4DomTest"
-        output="${testoutput.dir}/dap4dom.txt" fork="true">
-    <arg value="-dwle"/>
-    <arg value="${testinput.dir}/dap4.xml"/>
-  </java>
+  <exec executable="bash" dir="${data.dir}">
+    <arg value="${test.dir}/compare.sh"/>
+    <arg line="parse ${INIT} ${SRC}"/>
+  </exec>
 </target>
 
 <target name="saxtests">
-  <java classpath="${test.cp}" classname="yax.test.SaxTest"
-        output="${testoutput.dir}/saxtest.txt" fork="true">
-    <arg value="-le"/>
-    <arg value="${testinput.dir}/dap4.xml"/>
-  </java>
-  <java classpath="${test.cp}" classname="yax.test.Dap4SaxTest"
-        output="${testoutput.dir}/dap4sax.txt" fork="true">
-    <arg value="-dwle"/>
-    <arg value="${testinput.dir}/dap4.xml"/>
-  </java>
+    <antcall target="saxtest"><param name="SRC" value="lextest"/></antcall>
+    <antcall target="saxtest"><param name="SRC" value="books"/></antcall>
+    <antcall target="saxtest"><param name="SRC" value="comments"/></antcall>
+    <antcall target="saxtest"><param name="SRC" value="d"/></antcall>
+    <antcall target="saxtest"><param name="SRC" value="dap4"/></antcall>
+    <antcall target="saxtest"><param name="SRC" value="expr"/></antcall>
 </target>
 
-<target name="compare">
+<target name="saxtest">
+  <java classpath="${test.cp}" classname="yax.test.SaxTest"
+        output="${testoutput.dir}/${SRC}.sax" fork="true">
+    <arg value="-le"/>
+    <arg value="${testinput.dir}/${SRC}.xml"/>
+  </java>
   <exec executable="bash" dir="${data.dir}">
     <arg value="${test.dir}/compare.sh"/>
-    <arg value="${INIT}"/>
+    <arg line="sax ${INIT} ${SRC}"/>
   </exec>
 </target>
 
@@ -132,19 +141,12 @@ like cleanup and running the actual tests
 <!-- Generate the various parsers from the .y files -->
 
 <target name="generate"
-        depends="Dap4DomParser.java,Dap4SaxParser.java">
-</target>
-
-<target name="Dap4DomParser.java">
-    <antcall target="bison">
-      <param name="SRC" value="dap4.dom.y"/>
-      <param name="DST" value="Dap4DomParser.java"/>
-    </antcall>
+        depends="Dap4SaxParser.java">
 </target>
 
 <target name="Dap4SaxParser.java">
     <antcall target="bison">
-      <param name="SRC" value="dap4.sax.y"/>
+      <param name="SRC" value="dap4.y"/>
       <param name="DST" value="Dap4SaxParser.java"/>
     </antcall>
 </target>
@@ -162,17 +164,7 @@ like cleanup and running the actual tests
   </exec>
 </target>
 
-<target name="dap4.y.fixup">
-  <replace file="${test.dir}/dap4.y" token="YYABORT" value="return YYABORT"/>
-  <replace file="${test.dir}/dap4.y" token="YYACCEPT" value="return YYACCEPT"/>
-  <replace file="${test.dir}/dap4.y" token="CHECK($$)" value=""/>
-  <replace file="${test.dir}/dap4.y" token="&lt;token&gt;" value="&lt;YaxToken&gt;"/>
-  <replace file="${test.dir}/dap4.y" token="&lt;list&gt;" value="&lt;List&gt;"/>
-  <replace file="${test.dir}/dap4.y" token="&lt;object&gt;" value="&lt;Object&gt;"/>
-</target>
-
 <target name="parseclean">
-  <delete file="${test.dir}/Dap4DomParser.java"/>
   <delete file="${test.dir}/Dap4SaxParser.java"/>
 </target>
 

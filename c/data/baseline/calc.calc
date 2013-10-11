@@ -1,0 +1,1204 @@
+Starting parse
+Entering state 0
+Reading a token: Next token is token CALC_ (STARTELEMENT)
+Shifting token CALC_ (STARTELEMENT)
+Entering state 1
+Reducing stack by rule 2 :
+-> $$ = nterm exprlist ()
+Stack now 0 1
+Entering state 3
+Return for a new token:
+Reading a token: Next token is token EQ_ (STARTELEMENT)
+Shifting token EQ_ (STARTELEMENT)
+Entering state 7
+Return for a new token:
+Reading a token: Next token is token ADD_ (STARTELEMENT)
+Shifting token ADD_ (STARTELEMENT)
+Entering state 8
+Return for a new token:
+Reading a token: Next token is token INT_ (STARTELEMENT)
+Shifting token INT_ (STARTELEMENT)
+Entering state 14
+Return for a new token:
+Reading a token: Next token is token ATTR_N (ATTRIBUTE)
+Shifting token ATTR_N (ATTRIBUTE)
+Entering state 25
+Return for a new token:
+Reading a token: Next token is token _INT (ENDELEMENT)
+Shifting token _INT (ENDELEMENT)
+Entering state 34
+Reducing stack by rule 13 :
+   $1 = token INT_ (ENDELEMENT)
+   $2 = token ATTR_N (ENDELEMENT)
+   $3 = token _INT (ENDELEMENT)
+Illegal number: [ENDELEMENT]: element=|int|
+-> $$ = nterm integer (0)
+Stack now 0 1 3 7 8
+Entering state 16
+Reducing stack by rule 11 :
+   $1 = nterm integer (0)
+-> $$ = nterm expr (0)
+Stack now 0 1 3 7 8
+Entering state 19
+Return for a new token:
+Reading a token: Next token is token MUL_ (STARTELEMENT)
+Shifting token MUL_ (STARTELEMENT)
+Entering state 10
+Return for a new token:
+Reading a token: Next token is token INT_ (STARTELEMENT)
+Shifting token INT_ (STARTELEMENT)
+Entering state 14
+Return for a new token:
+Reading a token: Next token is token ATTR_N (ATTRIBUTE)
+Shifting token ATTR_N (ATTRIBUTE)
+Entering state 25
+Return for a new token:
+Reading a token: Next token is token _INT (ENDELEMENT)
+Shifting token _INT (ENDELEMENT)
+Entering state 34
+Reducing stack by rule 13 :
+   $1 = token INT_ (ENDELEMENT)
+   $2 = token ATTR_N (ENDELEMENT)
+   $3 = token _INT (ENDELEMENT)
+Illegal number: [ENDELEMENT]: element=|int|
+-> $$ = nterm integer (0)
+Stack now 0 1 3 7 8 19 10
+Entering state 16
+Reducing stack by rule 11 :
+   $1 = nterm integer (0)
+-> $$ = nterm expr (0)
+Stack now 0 1 3 7 8 19 10
+Entering state 21
+Return for a new token:
+Reading a token: Next token is token INT_ (STARTELEMENT)
+Shifting token INT_ (STARTELEMENT)
+Entering state 14
+Return for a new token:
+Reading a token: Next token is token ATTR_N (ATTRIBUTE)
+Shifting token ATTR_N (ATTRIBUTE)
+Entering state 25
+Return for a new token:
+Reading a token: Next token is token _INT (ENDELEMENT)
+Shifting token _INT (ENDELEMENT)
+Entering state 34
+Reducing stack by rule 13 :
+   $1 = token INT_ (ENDELEMENT)
+   $2 = token ATTR_N (ENDELEMENT)
+   $3 = token _INT (ENDELEMENT)
+Illegal number: [ENDELEMENT]: element=|int|
+-> $$ = nterm integer (0)
+Stack now 0 1 3 7 8 19 10 21
+Entering state 16
+Reducing stack by rule 11 :
+   $1 = nterm integer (0)
+-> $$ = nterm expr (0)
+Stack now 0 1 3 7 8 19 10 21
+Entering state 30
+Return for a new token:
+Reading a token: Next token is token _MUL (ENDELEMENT)
+Shifting token _MUL (ENDELEMENT)
+Entering state 39
+Reducing stack by rule 7 :
+   $1 = token MUL_ (ENDELEMENT)
+   $2 = nterm expr (0)
+   $3 = nterm expr (0)
+   $4 = token _MUL (ENDELEMENT)
+-> $$ = nterm expr (0)
+Stack now 0 1 3 7 8 19
+Entering state 28
+Return for a new token:
+Reading a token: Next token is token _ADD (ENDELEMENT)
+Shifting token _ADD (ENDELEMENT)
+Entering state 37
+Reducing stack by rule 5 :
+   $1 = token ADD_ (ENDELEMENT)
+   $2 = nterm expr (0)
+   $3 = nterm expr (0)
+   $4 = token _ADD (ENDELEMENT)
+-> $$ = nterm expr (0)
+Stack now 0 1 3 7
+Entering state 18
+Return for a new token:
+Reading a token: Next token is token INT_ (STARTELEMENT)
+Shifting token INT_ (STARTELEMENT)
+Entering state 14
+Return for a new token:
+Reading a token: Next token is token ATTR_N (ATTRIBUTE)
+Shifting token ATTR_N (ATTRIBUTE)
+Entering state 25
+Return for a new token:
+Reading a token: Next token is token _INT (ENDELEMENT)
+Shifting token _INT (ENDELEMENT)
+Entering state 34
+Reducing stack by rule 13 :
+   $1 = token INT_ (ENDELEMENT)
+   $2 = token ATTR_N (ENDELEMENT)
+   $3 = token _INT (ENDELEMENT)
+Illegal number: [ENDELEMENT]: element=|int|
+-> $$ = nterm integer (0)
+Stack now 0 1 3 7 18
+Entering state 16
+Reducing stack by rule 11 :
+   $1 = nterm integer (0)
+-> $$ = nterm expr (0)
+Stack now 0 1 3 7 18
+Entering state 27
+Return for a new token:
+Reading a token: Next token is token _EQ (ENDELEMENT)
+Shifting token _EQ (ENDELEMENT)
+Entering state 36
+Reducing stack by rule 4 :
+   $1 = token EQ_ (ENDELEMENT)
+   $2 = nterm expr (0)
+   $3 = nterm expr (0)
+   $4 = token _EQ (ENDELEMENT)
+-> $$ = nterm expr (1)
+Stack now 0 1 3
+Entering state 15
+Reducing stack by rule 3 :
+   $1 = nterm exprlist ()
+   $2 = nterm expr (1)
+-> $$ = nterm exprlist ()
+Stack now 0 1
+Entering state 3
+Return for a new token:
+Reading a token: Next token is token EQ_ (STARTELEMENT)
+Shifting token EQ_ (STARTELEMENT)
+Entering state 7
+Return for a new token:
+Reading a token: Next token is token ADD_ (STARTELEMENT)
+Shifting token ADD_ (STARTELEMENT)
+Entering state 8
+Return for a new token:
+Reading a token: Next token is token INT_ (STARTELEMENT)
+Shifting token INT_ (STARTELEMENT)
+Entering state 14
+Return for a new token:
+Reading a token: Next token is token ATTR_N (ATTRIBUTE)
+Shifting token ATTR_N (ATTRIBUTE)
+Entering state 25
+Return for a new token:
+Reading a token: Next token is token _INT (ENDELEMENT)
+Shifting token _INT (ENDELEMENT)
+Entering state 34
+Reducing stack by rule 13 :
+   $1 = token INT_ (ENDELEMENT)
+   $2 = token ATTR_N (ENDELEMENT)
+   $3 = token _INT (ENDELEMENT)
+Illegal number: [ENDELEMENT]: element=|int|
+-> $$ = nterm integer (0)
+Stack now 0 1 3 7 8
+Entering state 16
+Reducing stack by rule 11 :
+   $1 = nterm integer (0)
+-> $$ = nterm expr (0)
+Stack now 0 1 3 7 8
+Entering state 19
+Return for a new token:
+Reading a token: Next token is token MUL_ (STARTELEMENT)
+Shifting token MUL_ (STARTELEMENT)
+Entering state 10
+Return for a new token:
+Reading a token: Next token is token INT_ (STARTELEMENT)
+Shifting token INT_ (STARTELEMENT)
+Entering state 14
+Return for a new token:
+Reading a token: Next token is token ATTR_N (ATTRIBUTE)
+Shifting token ATTR_N (ATTRIBUTE)
+Entering state 25
+Return for a new token:
+Reading a token: Next token is token _INT (ENDELEMENT)
+Shifting token _INT (ENDELEMENT)
+Entering state 34
+Reducing stack by rule 13 :
+   $1 = token INT_ (ENDELEMENT)
+   $2 = token ATTR_N (ENDELEMENT)
+   $3 = token _INT (ENDELEMENT)
+Illegal number: [ENDELEMENT]: element=|int|
+-> $$ = nterm integer (0)
+Stack now 0 1 3 7 8 19 10
+Entering state 16
+Reducing stack by rule 11 :
+   $1 = nterm integer (0)
+-> $$ = nterm expr (0)
+Stack now 0 1 3 7 8 19 10
+Entering state 21
+Return for a new token:
+Reading a token: Next token is token NEG_ (STARTELEMENT)
+Shifting token NEG_ (STARTELEMENT)
+Entering state 13
+Return for a new token:
+Reading a token: Next token is token INT_ (STARTELEMENT)
+Shifting token INT_ (STARTELEMENT)
+Entering state 14
+Return for a new token:
+Reading a token: Next token is token ATTR_N (ATTRIBUTE)
+Shifting token ATTR_N (ATTRIBUTE)
+Entering state 25
+Return for a new token:
+Reading a token: Next token is token _INT (ENDELEMENT)
+Shifting token _INT (ENDELEMENT)
+Entering state 34
+Reducing stack by rule 13 :
+   $1 = token INT_ (ENDELEMENT)
+   $2 = token ATTR_N (ENDELEMENT)
+   $3 = token _INT (ENDELEMENT)
+Illegal number: [ENDELEMENT]: element=|int|
+-> $$ = nterm integer (0)
+Stack now 0 1 3 7 8 19 10 21 13
+Entering state 16
+Reducing stack by rule 11 :
+   $1 = nterm integer (0)
+-> $$ = nterm expr (0)
+Stack now 0 1 3 7 8 19 10 21 13
+Entering state 24
+Return for a new token:
+Reading a token: Next token is token _NEG (ENDELEMENT)
+Shifting token _NEG (ENDELEMENT)
+Entering state 33
+Reducing stack by rule 10 :
+   $1 = token NEG_ (ENDELEMENT)
+   $2 = nterm expr (0)
+   $3 = token _NEG (ENDELEMENT)
+-> $$ = nterm expr (0)
+Stack now 0 1 3 7 8 19 10 21
+Entering state 30
+Return for a new token:
+Reading a token: Next token is token _MUL (ENDELEMENT)
+Shifting token _MUL (ENDELEMENT)
+Entering state 39
+Reducing stack by rule 7 :
+   $1 = token MUL_ (ENDELEMENT)
+   $2 = nterm expr (0)
+   $3 = nterm expr (0)
+   $4 = token _MUL (ENDELEMENT)
+-> $$ = nterm expr (0)
+Stack now 0 1 3 7 8 19
+Entering state 28
+Return for a new token:
+Reading a token: Next token is token _ADD (ENDELEMENT)
+Shifting token _ADD (ENDELEMENT)
+Entering state 37
+Reducing stack by rule 5 :
+   $1 = token ADD_ (ENDELEMENT)
+   $2 = nterm expr (0)
+   $3 = nterm expr (0)
+   $4 = token _ADD (ENDELEMENT)
+-> $$ = nterm expr (0)
+Stack now 0 1 3 7
+Entering state 18
+Return for a new token:
+Reading a token: Next token is token INT_ (STARTELEMENT)
+Shifting token INT_ (STARTELEMENT)
+Entering state 14
+Return for a new token:
+Reading a token: Next token is token ATTR_N (ATTRIBUTE)
+Shifting token ATTR_N (ATTRIBUTE)
+Entering state 25
+Return for a new token:
+Reading a token: Next token is token _INT (ENDELEMENT)
+Shifting token _INT (ENDELEMENT)
+Entering state 34
+Reducing stack by rule 13 :
+   $1 = token INT_ (ENDELEMENT)
+   $2 = token ATTR_N (ENDELEMENT)
+   $3 = token _INT (ENDELEMENT)
+Illegal number: [ENDELEMENT]: element=|int|
+-> $$ = nterm integer (0)
+Stack now 0 1 3 7 18
+Entering state 16
+Reducing stack by rule 11 :
+   $1 = nterm integer (0)
+-> $$ = nterm expr (0)
+Stack now 0 1 3 7 18
+Entering state 27
+Return for a new token:
+Reading a token: Next token is token _EQ (ENDELEMENT)
+Shifting token _EQ (ENDELEMENT)
+Entering state 36
+Reducing stack by rule 4 :
+   $1 = token EQ_ (ENDELEMENT)
+   $2 = nterm expr (0)
+   $3 = nterm expr (0)
+   $4 = token _EQ (ENDELEMENT)
+-> $$ = nterm expr (1)
+Stack now 0 1 3
+Entering state 15
+Reducing stack by rule 3 :
+   $1 = nterm exprlist ()
+   $2 = nterm expr (1)
+-> $$ = nterm exprlist ()
+Stack now 0 1
+Entering state 3
+Return for a new token:
+Reading a token: Next token is token EQ_ (STARTELEMENT)
+Shifting token EQ_ (STARTELEMENT)
+Entering state 7
+Return for a new token:
+Reading a token: Next token is token EXP_ (STARTELEMENT)
+Shifting token EXP_ (STARTELEMENT)
+Entering state 12
+Return for a new token:
+Reading a token: Next token is token INT_ (STARTELEMENT)
+Shifting token INT_ (STARTELEMENT)
+Entering state 14
+Return for a new token:
+Reading a token: Next token is token ATTR_N (ATTRIBUTE)
+Shifting token ATTR_N (ATTRIBUTE)
+Entering state 25
+Return for a new token:
+Reading a token: Next token is token _INT (ENDELEMENT)
+Shifting token _INT (ENDELEMENT)
+Entering state 34
+Reducing stack by rule 13 :
+   $1 = token INT_ (ENDELEMENT)
+   $2 = token ATTR_N (ENDELEMENT)
+   $3 = token _INT (ENDELEMENT)
+Illegal number: [ENDELEMENT]: element=|int|
+-> $$ = nterm integer (0)
+Stack now 0 1 3 7 12
+Entering state 16
+Reducing stack by rule 11 :
+   $1 = nterm integer (0)
+-> $$ = nterm expr (0)
+Stack now 0 1 3 7 12
+Entering state 23
+Return for a new token:
+Reading a token: Next token is token INT_ (STARTELEMENT)
+Shifting token INT_ (STARTELEMENT)
+Entering state 14
+Return for a new token:
+Reading a token: Next token is token ATTR_N (ATTRIBUTE)
+Shifting token ATTR_N (ATTRIBUTE)
+Entering state 25
+Return for a new token:
+Reading a token: Next token is token _INT (ENDELEMENT)
+Shifting token _INT (ENDELEMENT)
+Entering state 34
+Reducing stack by rule 13 :
+   $1 = token INT_ (ENDELEMENT)
+   $2 = token ATTR_N (ENDELEMENT)
+   $3 = token _INT (ENDELEMENT)
+Illegal number: [ENDELEMENT]: element=|int|
+-> $$ = nterm integer (0)
+Stack now 0 1 3 7 12 23
+Entering state 16
+Reducing stack by rule 11 :
+   $1 = nterm integer (0)
+-> $$ = nterm expr (0)
+Stack now 0 1 3 7 12 23
+Entering state 32
+Return for a new token:
+Reading a token: Next token is token _EXP (ENDELEMENT)
+Shifting token _EXP (ENDELEMENT)
+Entering state 41
+Reducing stack by rule 9 :
+   $1 = token EXP_ (ENDELEMENT)
+   $2 = nterm expr (0)
+   $3 = nterm expr (0)
+   $4 = token _EXP (ENDELEMENT)
+-> $$ = nterm expr (1)
+Stack now 0 1 3 7
+Entering state 18
+Return for a new token:
+Reading a token: Next token is token INT_ (STARTELEMENT)
+Shifting token INT_ (STARTELEMENT)
+Entering state 14
+Return for a new token:
+Reading a token: Next token is token TEXT (CHARACTERS)
+Shifting token TEXT (CHARACTERS)
+Entering state 26
+Return for a new token:
+Reading a token: Next token is token _INT (ENDELEMENT)
+Shifting token _INT (ENDELEMENT)
+Entering state 35
+Reducing stack by rule 14 :
+   $1 = token INT_ (ENDELEMENT)
+   $2 = token TEXT (ENDELEMENT)
+   $3 = token _INT (ENDELEMENT)
+Illegal number: [ENDELEMENT]: element=|int|
+-> $$ = nterm integer (0)
+Stack now 0 1 3 7 18
+Entering state 16
+Reducing stack by rule 11 :
+   $1 = nterm integer (0)
+-> $$ = nterm expr (0)
+Stack now 0 1 3 7 18
+Entering state 27
+Return for a new token:
+Reading a token: Next token is token _EQ (ENDELEMENT)
+Shifting token _EQ (ENDELEMENT)
+Entering state 36
+Reducing stack by rule 4 :
+   $1 = token EQ_ (ENDELEMENT)
+   $2 = nterm expr (1)
+   $3 = nterm expr (0)
+   $4 = token _EQ (ENDELEMENT)
+-> $$ = nterm expr (0)
+Stack now 0 1 3
+Entering state 15
+Reducing stack by rule 3 :
+   $1 = nterm exprlist ()
+   $2 = nterm expr (0)
+-> $$ = nterm exprlist ()
+Stack now 0 1
+Entering state 3
+Return for a new token:
+Reading a token: Next token is token EQ_ (STARTELEMENT)
+Shifting token EQ_ (STARTELEMENT)
+Entering state 7
+Return for a new token:
+Reading a token: Next token is token NEG_ (STARTELEMENT)
+Shifting token NEG_ (STARTELEMENT)
+Entering state 13
+Return for a new token:
+Reading a token: Next token is token NEG_ (STARTELEMENT)
+Shifting token NEG_ (STARTELEMENT)
+Entering state 13
+Return for a new token:
+Reading a token: Next token is token NEG_ (STARTELEMENT)
+Shifting token NEG_ (STARTELEMENT)
+Entering state 13
+Return for a new token:
+Reading a token: Next token is token INT_ (STARTELEMENT)
+Shifting token INT_ (STARTELEMENT)
+Entering state 14
+Return for a new token:
+Reading a token: Next token is token TEXT (CHARACTERS)
+Shifting token TEXT (CHARACTERS)
+Entering state 26
+Return for a new token:
+Reading a token: Next token is token _INT (ENDELEMENT)
+Shifting token _INT (ENDELEMENT)
+Entering state 35
+Reducing stack by rule 14 :
+   $1 = token INT_ (ENDELEMENT)
+   $2 = token TEXT (ENDELEMENT)
+   $3 = token _INT (ENDELEMENT)
+Illegal number: [ENDELEMENT]: element=|int|
+-> $$ = nterm integer (0)
+Stack now 0 1 3 7 13 13 13
+Entering state 16
+Reducing stack by rule 11 :
+   $1 = nterm integer (0)
+-> $$ = nterm expr (0)
+Stack now 0 1 3 7 13 13 13
+Entering state 24
+Return for a new token:
+Reading a token: Next token is token _NEG (ENDELEMENT)
+Shifting token _NEG (ENDELEMENT)
+Entering state 33
+Reducing stack by rule 10 :
+   $1 = token NEG_ (ENDELEMENT)
+   $2 = nterm expr (0)
+   $3 = token _NEG (ENDELEMENT)
+-> $$ = nterm expr (0)
+Stack now 0 1 3 7 13 13
+Entering state 24
+Return for a new token:
+Reading a token: Next token is token _NEG (ENDELEMENT)
+Shifting token _NEG (ENDELEMENT)
+Entering state 33
+Reducing stack by rule 10 :
+   $1 = token NEG_ (ENDELEMENT)
+   $2 = nterm expr (0)
+   $3 = token _NEG (ENDELEMENT)
+-> $$ = nterm expr (0)
+Stack now 0 1 3 7 13
+Entering state 24
+Return for a new token:
+Reading a token: Next token is token _NEG (ENDELEMENT)
+Shifting token _NEG (ENDELEMENT)
+Entering state 33
+Reducing stack by rule 10 :
+   $1 = token NEG_ (ENDELEMENT)
+   $2 = nterm expr (0)
+   $3 = token _NEG (ENDELEMENT)
+-> $$ = nterm expr (0)
+Stack now 0 1 3 7
+Entering state 18
+Return for a new token:
+Reading a token: Next token is token INT_ (STARTELEMENT)
+Shifting token INT_ (STARTELEMENT)
+Entering state 14
+Return for a new token:
+Reading a token: Next token is token ATTR_N (ATTRIBUTE)
+Shifting token ATTR_N (ATTRIBUTE)
+Entering state 25
+Return for a new token:
+Reading a token: Next token is token _INT (ENDELEMENT)
+Shifting token _INT (ENDELEMENT)
+Entering state 34
+Reducing stack by rule 13 :
+   $1 = token INT_ (ENDELEMENT)
+   $2 = token ATTR_N (ENDELEMENT)
+   $3 = token _INT (ENDELEMENT)
+Illegal number: [ENDELEMENT]: element=|int|
+-> $$ = nterm integer (0)
+Stack now 0 1 3 7 18
+Entering state 16
+Reducing stack by rule 11 :
+   $1 = nterm integer (0)
+-> $$ = nterm expr (0)
+Stack now 0 1 3 7 18
+Entering state 27
+Return for a new token:
+Reading a token: Next token is token _EQ (ENDELEMENT)
+Shifting token _EQ (ENDELEMENT)
+Entering state 36
+Reducing stack by rule 4 :
+   $1 = token EQ_ (ENDELEMENT)
+   $2 = nterm expr (0)
+   $3 = nterm expr (0)
+   $4 = token _EQ (ENDELEMENT)
+-> $$ = nterm expr (1)
+Stack now 0 1 3
+Entering state 15
+Reducing stack by rule 3 :
+   $1 = nterm exprlist ()
+   $2 = nterm expr (1)
+-> $$ = nterm exprlist ()
+Stack now 0 1
+Entering state 3
+Return for a new token:
+Reading a token: Next token is token EQ_ (STARTELEMENT)
+Shifting token EQ_ (STARTELEMENT)
+Entering state 7
+Return for a new token:
+Reading a token: Next token is token SUB_ (STARTELEMENT)
+Shifting token SUB_ (STARTELEMENT)
+Entering state 9
+Return for a new token:
+Reading a token: Next token is token SUB_ (STARTELEMENT)
+Shifting token SUB_ (STARTELEMENT)
+Entering state 9
+Return for a new token:
+Reading a token: Next token is token INT_ (STARTELEMENT)
+Shifting token INT_ (STARTELEMENT)
+Entering state 14
+Return for a new token:
+Reading a token: Next token is token TEXT (CHARACTERS)
+Shifting token TEXT (CHARACTERS)
+Entering state 26
+Return for a new token:
+Reading a token: Next token is token _INT (ENDELEMENT)
+Shifting token _INT (ENDELEMENT)
+Entering state 35
+Reducing stack by rule 14 :
+   $1 = token INT_ (ENDELEMENT)
+   $2 = token TEXT (ENDELEMENT)
+   $3 = token _INT (ENDELEMENT)
+Illegal number: [ENDELEMENT]: element=|int|
+-> $$ = nterm integer (0)
+Stack now 0 1 3 7 9 9
+Entering state 16
+Reducing stack by rule 11 :
+   $1 = nterm integer (0)
+-> $$ = nterm expr (0)
+Stack now 0 1 3 7 9 9
+Entering state 20
+Return for a new token:
+Reading a token: Next token is token INT_ (STARTELEMENT)
+Shifting token INT_ (STARTELEMENT)
+Entering state 14
+Return for a new token:
+Reading a token: Next token is token TEXT (CHARACTERS)
+Shifting token TEXT (CHARACTERS)
+Entering state 26
+Return for a new token:
+Reading a token: Next token is token _INT (ENDELEMENT)
+Shifting token _INT (ENDELEMENT)
+Entering state 35
+Reducing stack by rule 14 :
+   $1 = token INT_ (ENDELEMENT)
+   $2 = token TEXT (ENDELEMENT)
+   $3 = token _INT (ENDELEMENT)
+Illegal number: [ENDELEMENT]: element=|int|
+-> $$ = nterm integer (0)
+Stack now 0 1 3 7 9 9 20
+Entering state 16
+Reducing stack by rule 11 :
+   $1 = nterm integer (0)
+-> $$ = nterm expr (0)
+Stack now 0 1 3 7 9 9 20
+Entering state 29
+Return for a new token:
+Reading a token: Next token is token _SUB (ENDELEMENT)
+Shifting token _SUB (ENDELEMENT)
+Entering state 38
+Reducing stack by rule 6 :
+   $1 = token SUB_ (ENDELEMENT)
+   $2 = nterm expr (0)
+   $3 = nterm expr (0)
+   $4 = token _SUB (ENDELEMENT)
+-> $$ = nterm expr (0)
+Stack now 0 1 3 7 9
+Entering state 20
+Return for a new token:
+Reading a token: Next token is token INT_ (STARTELEMENT)
+Shifting token INT_ (STARTELEMENT)
+Entering state 14
+Return for a new token:
+Reading a token: Next token is token TEXT (CHARACTERS)
+Shifting token TEXT (CHARACTERS)
+Entering state 26
+Return for a new token:
+Reading a token: Next token is token _INT (ENDELEMENT)
+Shifting token _INT (ENDELEMENT)
+Entering state 35
+Reducing stack by rule 14 :
+   $1 = token INT_ (ENDELEMENT)
+   $2 = token TEXT (ENDELEMENT)
+   $3 = token _INT (ENDELEMENT)
+Illegal number: [ENDELEMENT]: element=|int|
+-> $$ = nterm integer (0)
+Stack now 0 1 3 7 9 20
+Entering state 16
+Reducing stack by rule 11 :
+   $1 = nterm integer (0)
+-> $$ = nterm expr (0)
+Stack now 0 1 3 7 9 20
+Entering state 29
+Return for a new token:
+Reading a token: Next token is token _SUB (ENDELEMENT)
+Shifting token _SUB (ENDELEMENT)
+Entering state 38
+Reducing stack by rule 6 :
+   $1 = token SUB_ (ENDELEMENT)
+   $2 = nterm expr (0)
+   $3 = nterm expr (0)
+   $4 = token _SUB (ENDELEMENT)
+-> $$ = nterm expr (0)
+Stack now 0 1 3 7
+Entering state 18
+Return for a new token:
+Reading a token: Next token is token INT_ (STARTELEMENT)
+Shifting token INT_ (STARTELEMENT)
+Entering state 14
+Return for a new token:
+Reading a token: Next token is token TEXT (CHARACTERS)
+Shifting token TEXT (CHARACTERS)
+Entering state 26
+Return for a new token:
+Reading a token: Next token is token _INT (ENDELEMENT)
+Shifting token _INT (ENDELEMENT)
+Entering state 35
+Reducing stack by rule 14 :
+   $1 = token INT_ (ENDELEMENT)
+   $2 = token TEXT (ENDELEMENT)
+   $3 = token _INT (ENDELEMENT)
+Illegal number: [ENDELEMENT]: element=|int|
+-> $$ = nterm integer (0)
+Stack now 0 1 3 7 18
+Entering state 16
+Reducing stack by rule 11 :
+   $1 = nterm integer (0)
+-> $$ = nterm expr (0)
+Stack now 0 1 3 7 18
+Entering state 27
+Return for a new token:
+Reading a token: Next token is token _EQ (ENDELEMENT)
+Shifting token _EQ (ENDELEMENT)
+Entering state 36
+Reducing stack by rule 4 :
+   $1 = token EQ_ (ENDELEMENT)
+   $2 = nterm expr (0)
+   $3 = nterm expr (0)
+   $4 = token _EQ (ENDELEMENT)
+-> $$ = nterm expr (1)
+Stack now 0 1 3
+Entering state 15
+Reducing stack by rule 3 :
+   $1 = nterm exprlist ()
+   $2 = nterm expr (1)
+-> $$ = nterm exprlist ()
+Stack now 0 1
+Entering state 3
+Return for a new token:
+Reading a token: Next token is token EQ_ (STARTELEMENT)
+Shifting token EQ_ (STARTELEMENT)
+Entering state 7
+Return for a new token:
+Reading a token: Next token is token SUB_ (STARTELEMENT)
+Shifting token SUB_ (STARTELEMENT)
+Entering state 9
+Return for a new token:
+Reading a token: Next token is token INT_ (STARTELEMENT)
+Shifting token INT_ (STARTELEMENT)
+Entering state 14
+Return for a new token:
+Reading a token: Next token is token TEXT (CHARACTERS)
+Shifting token TEXT (CHARACTERS)
+Entering state 26
+Return for a new token:
+Reading a token: Next token is token _INT (ENDELEMENT)
+Shifting token _INT (ENDELEMENT)
+Entering state 35
+Reducing stack by rule 14 :
+   $1 = token INT_ (ENDELEMENT)
+   $2 = token TEXT (ENDELEMENT)
+   $3 = token _INT (ENDELEMENT)
+Illegal number: [ENDELEMENT]: element=|int|
+-> $$ = nterm integer (0)
+Stack now 0 1 3 7 9
+Entering state 16
+Reducing stack by rule 11 :
+   $1 = nterm integer (0)
+-> $$ = nterm expr (0)
+Stack now 0 1 3 7 9
+Entering state 20
+Return for a new token:
+Reading a token: Next token is token SUB_ (STARTELEMENT)
+Shifting token SUB_ (STARTELEMENT)
+Entering state 9
+Return for a new token:
+Reading a token: Next token is token INT_ (STARTELEMENT)
+Shifting token INT_ (STARTELEMENT)
+Entering state 14
+Return for a new token:
+Reading a token: Next token is token TEXT (CHARACTERS)
+Shifting token TEXT (CHARACTERS)
+Entering state 26
+Return for a new token:
+Reading a token: Next token is token _INT (ENDELEMENT)
+Shifting token _INT (ENDELEMENT)
+Entering state 35
+Reducing stack by rule 14 :
+   $1 = token INT_ (ENDELEMENT)
+   $2 = token TEXT (ENDELEMENT)
+   $3 = token _INT (ENDELEMENT)
+Illegal number: [ENDELEMENT]: element=|int|
+-> $$ = nterm integer (0)
+Stack now 0 1 3 7 9 20 9
+Entering state 16
+Reducing stack by rule 11 :
+   $1 = nterm integer (0)
+-> $$ = nterm expr (0)
+Stack now 0 1 3 7 9 20 9
+Entering state 20
+Return for a new token:
+Reading a token: Next token is token INT_ (STARTELEMENT)
+Shifting token INT_ (STARTELEMENT)
+Entering state 14
+Return for a new token:
+Reading a token: Next token is token TEXT (CHARACTERS)
+Shifting token TEXT (CHARACTERS)
+Entering state 26
+Return for a new token:
+Reading a token: Next token is token _INT (ENDELEMENT)
+Shifting token _INT (ENDELEMENT)
+Entering state 35
+Reducing stack by rule 14 :
+   $1 = token INT_ (ENDELEMENT)
+   $2 = token TEXT (ENDELEMENT)
+   $3 = token _INT (ENDELEMENT)
+Illegal number: [ENDELEMENT]: element=|int|
+-> $$ = nterm integer (0)
+Stack now 0 1 3 7 9 20 9 20
+Entering state 16
+Reducing stack by rule 11 :
+   $1 = nterm integer (0)
+-> $$ = nterm expr (0)
+Stack now 0 1 3 7 9 20 9 20
+Entering state 29
+Return for a new token:
+Reading a token: Next token is token _SUB (ENDELEMENT)
+Shifting token _SUB (ENDELEMENT)
+Entering state 38
+Reducing stack by rule 6 :
+   $1 = token SUB_ (ENDELEMENT)
+   $2 = nterm expr (0)
+   $3 = nterm expr (0)
+   $4 = token _SUB (ENDELEMENT)
+-> $$ = nterm expr (0)
+Stack now 0 1 3 7 9 20
+Entering state 29
+Return for a new token:
+Reading a token: Next token is token _SUB (ENDELEMENT)
+Shifting token _SUB (ENDELEMENT)
+Entering state 38
+Reducing stack by rule 6 :
+   $1 = token SUB_ (ENDELEMENT)
+   $2 = nterm expr (0)
+   $3 = nterm expr (0)
+   $4 = token _SUB (ENDELEMENT)
+-> $$ = nterm expr (0)
+Stack now 0 1 3 7
+Entering state 18
+Return for a new token:
+Reading a token: Next token is token INT_ (STARTELEMENT)
+Shifting token INT_ (STARTELEMENT)
+Entering state 14
+Return for a new token:
+Reading a token: Next token is token TEXT (CHARACTERS)
+Shifting token TEXT (CHARACTERS)
+Entering state 26
+Return for a new token:
+Reading a token: Next token is token _INT (ENDELEMENT)
+Shifting token _INT (ENDELEMENT)
+Entering state 35
+Reducing stack by rule 14 :
+   $1 = token INT_ (ENDELEMENT)
+   $2 = token TEXT (ENDELEMENT)
+   $3 = token _INT (ENDELEMENT)
+Illegal number: [ENDELEMENT]: element=|int|
+-> $$ = nterm integer (0)
+Stack now 0 1 3 7 18
+Entering state 16
+Reducing stack by rule 11 :
+   $1 = nterm integer (0)
+-> $$ = nterm expr (0)
+Stack now 0 1 3 7 18
+Entering state 27
+Return for a new token:
+Reading a token: Next token is token _EQ (ENDELEMENT)
+Shifting token _EQ (ENDELEMENT)
+Entering state 36
+Reducing stack by rule 4 :
+   $1 = token EQ_ (ENDELEMENT)
+   $2 = nterm expr (0)
+   $3 = nterm expr (0)
+   $4 = token _EQ (ENDELEMENT)
+-> $$ = nterm expr (1)
+Stack now 0 1 3
+Entering state 15
+Reducing stack by rule 3 :
+   $1 = nterm exprlist ()
+   $2 = nterm expr (1)
+-> $$ = nterm exprlist ()
+Stack now 0 1
+Entering state 3
+Return for a new token:
+Reading a token: Next token is token EQ_ (STARTELEMENT)
+Shifting token EQ_ (STARTELEMENT)
+Entering state 7
+Return for a new token:
+Reading a token: Next token is token EXP_ (STARTELEMENT)
+Shifting token EXP_ (STARTELEMENT)
+Entering state 12
+Return for a new token:
+Reading a token: Next token is token INT_ (STARTELEMENT)
+Shifting token INT_ (STARTELEMENT)
+Entering state 14
+Return for a new token:
+Reading a token: Next token is token ATTR_N (ATTRIBUTE)
+Shifting token ATTR_N (ATTRIBUTE)
+Entering state 25
+Return for a new token:
+Reading a token: Next token is token _INT (ENDELEMENT)
+Shifting token _INT (ENDELEMENT)
+Entering state 34
+Reducing stack by rule 13 :
+   $1 = token INT_ (ENDELEMENT)
+   $2 = token ATTR_N (ENDELEMENT)
+   $3 = token _INT (ENDELEMENT)
+Illegal number: [ENDELEMENT]: element=|int|
+-> $$ = nterm integer (0)
+Stack now 0 1 3 7 12
+Entering state 16
+Reducing stack by rule 11 :
+   $1 = nterm integer (0)
+-> $$ = nterm expr (0)
+Stack now 0 1 3 7 12
+Entering state 23
+Return for a new token:
+Reading a token: Next token is token EXP_ (STARTELEMENT)
+Shifting token EXP_ (STARTELEMENT)
+Entering state 12
+Return for a new token:
+Reading a token: Next token is token INT_ (STARTELEMENT)
+Shifting token INT_ (STARTELEMENT)
+Entering state 14
+Return for a new token:
+Reading a token: Next token is token ATTR_N (ATTRIBUTE)
+Shifting token ATTR_N (ATTRIBUTE)
+Entering state 25
+Return for a new token:
+Reading a token: Next token is token _INT (ENDELEMENT)
+Shifting token _INT (ENDELEMENT)
+Entering state 34
+Reducing stack by rule 13 :
+   $1 = token INT_ (ENDELEMENT)
+   $2 = token ATTR_N (ENDELEMENT)
+   $3 = token _INT (ENDELEMENT)
+Illegal number: [ENDELEMENT]: element=|int|
+-> $$ = nterm integer (0)
+Stack now 0 1 3 7 12 23 12
+Entering state 16
+Reducing stack by rule 11 :
+   $1 = nterm integer (0)
+-> $$ = nterm expr (0)
+Stack now 0 1 3 7 12 23 12
+Entering state 23
+Return for a new token:
+Reading a token: Next token is token INT_ (STARTELEMENT)
+Shifting token INT_ (STARTELEMENT)
+Entering state 14
+Return for a new token:
+Reading a token: Next token is token ATTR_N (ATTRIBUTE)
+Shifting token ATTR_N (ATTRIBUTE)
+Entering state 25
+Return for a new token:
+Reading a token: Next token is token _INT (ENDELEMENT)
+Shifting token _INT (ENDELEMENT)
+Entering state 34
+Reducing stack by rule 13 :
+   $1 = token INT_ (ENDELEMENT)
+   $2 = token ATTR_N (ENDELEMENT)
+   $3 = token _INT (ENDELEMENT)
+Illegal number: [ENDELEMENT]: element=|int|
+-> $$ = nterm integer (0)
+Stack now 0 1 3 7 12 23 12 23
+Entering state 16
+Reducing stack by rule 11 :
+   $1 = nterm integer (0)
+-> $$ = nterm expr (0)
+Stack now 0 1 3 7 12 23 12 23
+Entering state 32
+Return for a new token:
+Reading a token: Next token is token _EXP (ENDELEMENT)
+Shifting token _EXP (ENDELEMENT)
+Entering state 41
+Reducing stack by rule 9 :
+   $1 = token EXP_ (ENDELEMENT)
+   $2 = nterm expr (0)
+   $3 = nterm expr (0)
+   $4 = token _EXP (ENDELEMENT)
+-> $$ = nterm expr (1)
+Stack now 0 1 3 7 12 23
+Entering state 32
+Return for a new token:
+Reading a token: Next token is token _EXP (ENDELEMENT)
+Shifting token _EXP (ENDELEMENT)
+Entering state 41
+Reducing stack by rule 9 :
+   $1 = token EXP_ (ENDELEMENT)
+   $2 = nterm expr (0)
+   $3 = nterm expr (1)
+   $4 = token _EXP (ENDELEMENT)
+-> $$ = nterm expr (0)
+Stack now 0 1 3 7
+Entering state 18
+Return for a new token:
+Reading a token: Next token is token INT_ (STARTELEMENT)
+Shifting token INT_ (STARTELEMENT)
+Entering state 14
+Return for a new token:
+Reading a token: Next token is token ATTR_N (ATTRIBUTE)
+Shifting token ATTR_N (ATTRIBUTE)
+Entering state 25
+Return for a new token:
+Reading a token: Next token is token _INT (ENDELEMENT)
+Shifting token _INT (ENDELEMENT)
+Entering state 34
+Reducing stack by rule 13 :
+   $1 = token INT_ (ENDELEMENT)
+   $2 = token ATTR_N (ENDELEMENT)
+   $3 = token _INT (ENDELEMENT)
+Illegal number: [ENDELEMENT]: element=|int|
+-> $$ = nterm integer (0)
+Stack now 0 1 3 7 18
+Entering state 16
+Reducing stack by rule 11 :
+   $1 = nterm integer (0)
+-> $$ = nterm expr (0)
+Stack now 0 1 3 7 18
+Entering state 27
+Return for a new token:
+Reading a token: Next token is token _EQ (ENDELEMENT)
+Shifting token _EQ (ENDELEMENT)
+Entering state 36
+Reducing stack by rule 4 :
+   $1 = token EQ_ (ENDELEMENT)
+   $2 = nterm expr (0)
+   $3 = nterm expr (0)
+   $4 = token _EQ (ENDELEMENT)
+-> $$ = nterm expr (1)
+Stack now 0 1 3
+Entering state 15
+Reducing stack by rule 3 :
+   $1 = nterm exprlist ()
+   $2 = nterm expr (1)
+-> $$ = nterm exprlist ()
+Stack now 0 1
+Entering state 3
+Return for a new token:
+Reading a token: Next token is token EQ_ (STARTELEMENT)
+Shifting token EQ_ (STARTELEMENT)
+Entering state 7
+Return for a new token:
+Reading a token: Next token is token EXP_ (STARTELEMENT)
+Shifting token EXP_ (STARTELEMENT)
+Entering state 12
+Return for a new token:
+Reading a token: Next token is token EXP_ (STARTELEMENT)
+Shifting token EXP_ (STARTELEMENT)
+Entering state 12
+Return for a new token:
+Reading a token: Next token is token INT_ (STARTELEMENT)
+Shifting token INT_ (STARTELEMENT)
+Entering state 14
+Return for a new token:
+Reading a token: Next token is token ATTR_N (ATTRIBUTE)
+Shifting token ATTR_N (ATTRIBUTE)
+Entering state 25
+Return for a new token:
+Reading a token: Next token is token _INT (ENDELEMENT)
+Shifting token _INT (ENDELEMENT)
+Entering state 34
+Reducing stack by rule 13 :
+   $1 = token INT_ (ENDELEMENT)
+   $2 = token ATTR_N (ENDELEMENT)
+   $3 = token _INT (ENDELEMENT)
+Illegal number: [ENDELEMENT]: element=|int|
+-> $$ = nterm integer (0)
+Stack now 0 1 3 7 12 12
+Entering state 16
+Reducing stack by rule 11 :
+   $1 = nterm integer (0)
+-> $$ = nterm expr (0)
+Stack now 0 1 3 7 12 12
+Entering state 23
+Return for a new token:
+Reading a token: Next token is token INT_ (STARTELEMENT)
+Shifting token INT_ (STARTELEMENT)
+Entering state 14
+Return for a new token:
+Reading a token: Next token is token ATTR_N (ATTRIBUTE)
+Shifting token ATTR_N (ATTRIBUTE)
+Entering state 25
+Return for a new token:
+Reading a token: Next token is token _INT (ENDELEMENT)
+Shifting token _INT (ENDELEMENT)
+Entering state 34
+Reducing stack by rule 13 :
+   $1 = token INT_ (ENDELEMENT)
+   $2 = token ATTR_N (ENDELEMENT)
+   $3 = token _INT (ENDELEMENT)
+Illegal number: [ENDELEMENT]: element=|int|
+-> $$ = nterm integer (0)
+Stack now 0 1 3 7 12 12 23
+Entering state 16
+Reducing stack by rule 11 :
+   $1 = nterm integer (0)
+-> $$ = nterm expr (0)
+Stack now 0 1 3 7 12 12 23
+Entering state 32
+Return for a new token:
+Reading a token: Next token is token _EXP (ENDELEMENT)
+Shifting token _EXP (ENDELEMENT)
+Entering state 41
+Reducing stack by rule 9 :
+   $1 = token EXP_ (ENDELEMENT)
+   $2 = nterm expr (0)
+   $3 = nterm expr (0)
+   $4 = token _EXP (ENDELEMENT)
+-> $$ = nterm expr (1)
+Stack now 0 1 3 7 12
+Entering state 23
+Return for a new token:
+Reading a token: Next token is token INT_ (STARTELEMENT)
+Shifting token INT_ (STARTELEMENT)
+Entering state 14
+Return for a new token:
+Reading a token: Next token is token ATTR_N (ATTRIBUTE)
+Shifting token ATTR_N (ATTRIBUTE)
+Entering state 25
+Return for a new token:
+Reading a token: Next token is token _INT (ENDELEMENT)
+Shifting token _INT (ENDELEMENT)
+Entering state 34
+Reducing stack by rule 13 :
+   $1 = token INT_ (ENDELEMENT)
+   $2 = token ATTR_N (ENDELEMENT)
+   $3 = token _INT (ENDELEMENT)
+Illegal number: [ENDELEMENT]: element=|int|
+-> $$ = nterm integer (0)
+Stack now 0 1 3 7 12 23
+Entering state 16
+Reducing stack by rule 11 :
+   $1 = nterm integer (0)
+-> $$ = nterm expr (0)
+Stack now 0 1 3 7 12 23
+Entering state 32
+Return for a new token:
+Reading a token: Next token is token _EXP (ENDELEMENT)
+Shifting token _EXP (ENDELEMENT)
+Entering state 41
+Reducing stack by rule 9 :
+   $1 = token EXP_ (ENDELEMENT)
+   $2 = nterm expr (1)
+   $3 = nterm expr (0)
+   $4 = token _EXP (ENDELEMENT)
+-> $$ = nterm expr (1)
+Stack now 0 1 3 7
+Entering state 18
+Return for a new token:
+Reading a token: Next token is token INT_ (STARTELEMENT)
+Shifting token INT_ (STARTELEMENT)
+Entering state 14
+Return for a new token:
+Reading a token: Next token is token ATTR_N (ATTRIBUTE)
+Shifting token ATTR_N (ATTRIBUTE)
+Entering state 25
+Return for a new token:
+Reading a token: Next token is token _INT (ENDELEMENT)
+Shifting token _INT (ENDELEMENT)
+Entering state 34
+Reducing stack by rule 13 :
+   $1 = token INT_ (ENDELEMENT)
+   $2 = token ATTR_N (ENDELEMENT)
+   $3 = token _INT (ENDELEMENT)
+Illegal number: [ENDELEMENT]: element=|int|
+-> $$ = nterm integer (0)
+Stack now 0 1 3 7 18
+Entering state 16
+Reducing stack by rule 11 :
+   $1 = nterm integer (0)
+-> $$ = nterm expr (0)
+Stack now 0 1 3 7 18
+Entering state 27
+Return for a new token:
+Reading a token: Next token is token _EQ (ENDELEMENT)
+Shifting token _EQ (ENDELEMENT)
+Entering state 36
+Reducing stack by rule 4 :
+   $1 = token EQ_ (ENDELEMENT)
+   $2 = nterm expr (1)
+   $3 = nterm expr (0)
+   $4 = token _EQ (ENDELEMENT)
+-> $$ = nterm expr (0)
+Stack now 0 1 3
+Entering state 15
+Reducing stack by rule 3 :
+   $1 = nterm exprlist ()
+   $2 = nterm expr (0)
+-> $$ = nterm exprlist ()
+Stack now 0 1
+Entering state 3
+Return for a new token:
+Reading a token: Next token is token _CALC (ENDELEMENT)
+Shifting token _CALC (ENDELEMENT)
+Entering state 6
+Reducing stack by rule 1 :
+   $1 = token CALC_ (ENDELEMENT)
+   $2 = nterm exprlist ()
+   $3 = token _CALC (ENDELEMENT)
+-> $$ = nterm calc (0)
+Stack now 0
+Entering state 2
+Return for a new token:
+Reading a token: Now at end of input.
+Shifting token $end ()
+Entering state 4
+Stack now 0 2 4
+Cleanup: popping token $end ()
+Cleanup: popping nterm calc (0)
+result=1
+result=1
+result=0
+result=1
+result=1
+result=1
+result=1
+result=0

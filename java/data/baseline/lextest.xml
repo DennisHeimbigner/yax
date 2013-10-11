@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!DOCTYPE>
+<element1 name="x<yz" value="13">
+  |
+|  |&|  |
+|  |
+|  <e2 a="5">
+    |
+|    |
+|  </e2>  |
+|</element1>
+No error

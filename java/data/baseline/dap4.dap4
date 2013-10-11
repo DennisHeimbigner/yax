@@ -1,0 +1,1689 @@
+Starting parse
+
+Entering state 0
+
+Stack now 0
+Reading a token: 
+Next token is token DATASET_ ([STARTELEMENT] : element=|Dataset|)
+Shifting token DATASET_ ([STARTELEMENT] : element=|Dataset|)
+Entering state 1
+
+Stack now 0 1
+Reducing stack by rule 3 , 
+-> $$ = nterm group_attr_list ([STARTELEMENT] : element=|Dataset|)
+Entering state 3
+
+Stack now 0 1 3
+Reading a token: 
+Next token is token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|example|)
+Shifting token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|example|)
+Entering state 8
+
+Stack now 0 1 3 8
+Reducing stack by rule 4 , 
+   $1 = nterm group_attr_list ([STARTELEMENT] : element=|Dataset|)
+   $2 = token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|example|)
+-> $$ = nterm group_attr_list ([STARTELEMENT] : element=|Dataset|)
+Entering state 3
+
+Stack now 0 1 3
+Reading a token: 
+Next token is token ATTR_DAPVERSION ([ATTRIBUTE] : name=|dapVersion| value=|4.0|)
+Shifting token ATTR_DAPVERSION ([ATTRIBUTE] : name=|dapVersion| value=|4.0|)
+Entering state 6
+
+Stack now 0 1 3 6
+Reducing stack by rule 5 , 
+   $1 = nterm group_attr_list ([STARTELEMENT] : element=|Dataset|)
+   $2 = token ATTR_DAPVERSION ([ATTRIBUTE] : name=|dapVersion| value=|4.0|)
+-> $$ = nterm group_attr_list ([STARTELEMENT] : element=|Dataset|)
+Entering state 3
+
+Stack now 0 1 3
+Reading a token: 
+Next token is token ENUMERATION_ ([STARTELEMENT] : element=|Enumeration|)
+Reducing stack by rule 11 , 
+-> $$ = nterm group_body ([STARTELEMENT] : element=|Dataset|)
+Entering state 12
+
+Stack now 0 1 3 12
+Next token is token ENUMERATION_ ([STARTELEMENT] : element=|Enumeration|)
+Shifting token ENUMERATION_ ([STARTELEMENT] : element=|Enumeration|)
+Entering state 15
+
+Stack now 0 1 3 12 15
+Reading a token: 
+Next token is token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|e1|)
+Shifting token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|e1|)
+Entering state 46
+
+Stack now 0 1 3 12 15 46
+Reading a token: 
+Next token is token ATTR_BASETYPE ([ATTRIBUTE] : name=|basetype| value=|UInt8|)
+Shifting token ATTR_BASETYPE ([ATTRIBUTE] : name=|basetype| value=|UInt8|)
+Entering state 57
+
+Stack now 0 1 3 12 15 46 57
+Reducing stack by rule 18 , 
+   $1 = token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|e1|)
+   $2 = token ATTR_BASETYPE ([ATTRIBUTE] : name=|basetype| value=|UInt8|)
+-> $$ = nterm enum_attr_list ([ATTRIBUTE] : name=|name| value=|e1|)
+Entering state 47
+
+Stack now 0 1 3 12 15 47
+Reading a token: 
+Next token is token ENUMCONST_ ([STARTELEMENT] : element=|EnumConst|)
+Shifting token ENUMCONST_ ([STARTELEMENT] : element=|EnumConst|)
+Entering state 58
+
+Stack now 0 1 3 12 15 47 58
+Reading a token: 
+Next token is token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|econst1|)
+Shifting token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|econst1|)
+Entering state 71
+
+Stack now 0 1 3 12 15 47 58 71
+Reading a token: 
+Next token is token ATTR_VALUE ([ATTRIBUTE] : name=|value| value=|1|)
+Shifting token ATTR_VALUE ([ATTRIBUTE] : name=|value| value=|1|)
+Entering state 107
+
+Stack now 0 1 3 12 15 47 58 71 107
+Reducing stack by rule 23 , 
+   $1 = token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|econst1|)
+   $2 = token ATTR_VALUE ([ATTRIBUTE] : name=|value| value=|1|)
+-> $$ = nterm enumconst_attr_list ([ATTRIBUTE] : name=|name| value=|econst1|)
+Entering state 73
+
+Stack now 0 1 3 12 15 47 58 73
+Reading a token: 
+Next token is token _ENUMCONST ([ENDELEMENT] : element=|EnumConst|)
+Shifting token _ENUMCONST ([ENDELEMENT] : element=|EnumConst|)
+Entering state 109
+
+Stack now 0 1 3 12 15 47 58 73 109
+Reducing stack by rule 22 , 
+   $1 = token ENUMCONST_ ([STARTELEMENT] : element=|EnumConst|)
+   $2 = nterm enumconst_attr_list ([ATTRIBUTE] : name=|name| value=|econst1|)
+   $3 = token _ENUMCONST ([ENDELEMENT] : element=|EnumConst|)
+-> $$ = nterm enumconst ([STARTELEMENT] : element=|EnumConst|)
+Entering state 60
+
+Stack now 0 1 3 12 15 47 60
+Reducing stack by rule 20 , 
+   $1 = nterm enumconst ([STARTELEMENT] : element=|EnumConst|)
+-> $$ = nterm enumconst_list ([STARTELEMENT] : element=|EnumConst|)
+Entering state 59
+
+Stack now 0 1 3 12 15 47 59
+Reading a token: 
+Next token is token ENUMCONST_ ([STARTELEMENT] : element=|EnumConst|)
+Shifting token ENUMCONST_ ([STARTELEMENT] : element=|EnumConst|)
+Entering state 58
+
+Stack now 0 1 3 12 15 47 59 58
+Reading a token: 
+Next token is token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|econst2|)
+Shifting token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|econst2|)
+Entering state 71
+
+Stack now 0 1 3 12 15 47 59 58 71
+Reading a token: 
+Next token is token ATTR_VALUE ([ATTRIBUTE] : name=|value| value=|2|)
+Shifting token ATTR_VALUE ([ATTRIBUTE] : name=|value| value=|2|)
+Entering state 107
+
+Stack now 0 1 3 12 15 47 59 58 71 107
+Reducing stack by rule 23 , 
+   $1 = token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|econst2|)
+   $2 = token ATTR_VALUE ([ATTRIBUTE] : name=|value| value=|2|)
+-> $$ = nterm enumconst_attr_list ([ATTRIBUTE] : name=|name| value=|econst2|)
+Entering state 73
+
+Stack now 0 1 3 12 15 47 59 58 73
+Reading a token: 
+Next token is token _ENUMCONST ([ENDELEMENT] : element=|EnumConst|)
+Shifting token _ENUMCONST ([ENDELEMENT] : element=|EnumConst|)
+Entering state 109
+
+Stack now 0 1 3 12 15 47 59 58 73 109
+Reducing stack by rule 22 , 
+   $1 = token ENUMCONST_ ([STARTELEMENT] : element=|EnumConst|)
+   $2 = nterm enumconst_attr_list ([ATTRIBUTE] : name=|name| value=|econst2|)
+   $3 = token _ENUMCONST ([ENDELEMENT] : element=|EnumConst|)
+-> $$ = nterm enumconst ([STARTELEMENT] : element=|EnumConst|)
+Entering state 75
+
+Stack now 0 1 3 12 15 47 59 75
+Reducing stack by rule 21 , 
+   $1 = nterm enumconst_list ([STARTELEMENT] : element=|EnumConst|)
+   $2 = nterm enumconst ([STARTELEMENT] : element=|EnumConst|)
+-> $$ = nterm enumconst_list ([STARTELEMENT] : element=|EnumConst|)
+Entering state 59
+
+Stack now 0 1 3 12 15 47 59
+Reading a token: 
+Next token is token _ENUMERATION ([ENDELEMENT] : element=|Enumeration|)
+Shifting token _ENUMERATION ([ENDELEMENT] : element=|Enumeration|)
+Entering state 74
+
+Stack now 0 1 3 12 15 47 59 74
+Reducing stack by rule 17 , 
+   $1 = token ENUMERATION_ ([STARTELEMENT] : element=|Enumeration|)
+   $2 = nterm enum_attr_list ([ATTRIBUTE] : name=|name| value=|e1|)
+   $3 = nterm enumconst_list ([STARTELEMENT] : element=|EnumConst|)
+   $4 = token _ENUMERATION ([ENDELEMENT] : element=|Enumeration|)
+-> $$ = nterm enumdef ([STARTELEMENT] : element=|Enumeration|)
+Entering state 36
+
+Stack now 0 1 3 12 36
+Reducing stack by rule 12 , 
+   $1 = nterm group_body ([STARTELEMENT] : element=|Dataset|)
+   $2 = nterm enumdef ([STARTELEMENT] : element=|Enumeration|)
+-> $$ = nterm group_body ([STARTELEMENT] : element=|Dataset|)
+Entering state 12
+
+Stack now 0 1 3 12
+Reading a token: 
+Next token is token DIMENSION_ ([STARTELEMENT] : element=|Dimension|)
+Shifting token DIMENSION_ ([STARTELEMENT] : element=|Dimension|)
+Entering state 16
+
+Stack now 0 1 3 12 16
+Reading a token: 
+Next token is token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|d1|)
+Shifting token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|d1|)
+Entering state 48
+
+Stack now 0 1 3 12 16 48
+Reading a token: 
+Next token is token ATTR_SIZE ([ATTRIBUTE] : name=|size| value=|10|)
+Shifting token ATTR_SIZE ([ATTRIBUTE] : name=|size| value=|10|)
+Entering state 61
+
+Stack now 0 1 3 12 16 48 61
+Reducing stack by rule 29 , 
+   $1 = token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|d1|)
+   $2 = token ATTR_SIZE ([ATTRIBUTE] : name=|size| value=|10|)
+-> $$ = nterm dimdef_attr_list ([ATTRIBUTE] : name=|name| value=|d1|)
+Entering state 50
+
+Stack now 0 1 3 12 16 50
+Reducing stack by rule 79 , 
+-> $$ = nterm metadatalist ([ATTRIBUTE] : name=|name| value=|d1|)
+Entering state 63
+
+Stack now 0 1 3 12 16 50 63
+Reading a token: 
+Next token is token _DIMENSION ([ENDELEMENT] : element=|Dimension|)
+Shifting token _DIMENSION ([ENDELEMENT] : element=|Dimension|)
+Entering state 76
+
+Stack now 0 1 3 12 16 50 63 76
+Reducing stack by rule 28 , 
+   $1 = token DIMENSION_ ([STARTELEMENT] : element=|Dimension|)
+   $2 = nterm dimdef_attr_list ([ATTRIBUTE] : name=|name| value=|d1|)
+   $3 = nterm metadatalist ([ATTRIBUTE] : name=|name| value=|d1|)
+   $4 = token _DIMENSION ([ENDELEMENT] : element=|Dimension|)
+-> $$ = nterm dimdef ([STARTELEMENT] : element=|Dimension|)
+Entering state 37
+
+Stack now 0 1 3 12 37
+Reducing stack by rule 13 , 
+   $1 = nterm group_body ([STARTELEMENT] : element=|Dataset|)
+   $2 = nterm dimdef ([STARTELEMENT] : element=|Dimension|)
+-> $$ = nterm group_body ([STARTELEMENT] : element=|Dataset|)
+Entering state 12
+
+Stack now 0 1 3 12
+Reading a token: 
+Next token is token DIMENSION_ ([STARTELEMENT] : element=|Dimension|)
+Shifting token DIMENSION_ ([STARTELEMENT] : element=|Dimension|)
+Entering state 16
+
+Stack now 0 1 3 12 16
+Reading a token: 
+Next token is token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|lat|)
+Shifting token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|lat|)
+Entering state 48
+
+Stack now 0 1 3 12 16 48
+Reading a token: 
+Next token is token ATTR_SIZE ([ATTRIBUTE] : name=|size| value=|20|)
+Shifting token ATTR_SIZE ([ATTRIBUTE] : name=|size| value=|20|)
+Entering state 61
+
+Stack now 0 1 3 12 16 48 61
+Reducing stack by rule 29 , 
+   $1 = token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|lat|)
+   $2 = token ATTR_SIZE ([ATTRIBUTE] : name=|size| value=|20|)
+-> $$ = nterm dimdef_attr_list ([ATTRIBUTE] : name=|name| value=|lat|)
+Entering state 50
+
+Stack now 0 1 3 12 16 50
+Reducing stack by rule 79 , 
+-> $$ = nterm metadatalist ([ATTRIBUTE] : name=|name| value=|lat|)
+Entering state 63
+
+Stack now 0 1 3 12 16 50 63
+Reading a token: 
+Next token is token _DIMENSION ([ENDELEMENT] : element=|Dimension|)
+Shifting token _DIMENSION ([ENDELEMENT] : element=|Dimension|)
+Entering state 76
+
+Stack now 0 1 3 12 16 50 63 76
+Reducing stack by rule 28 , 
+   $1 = token DIMENSION_ ([STARTELEMENT] : element=|Dimension|)
+   $2 = nterm dimdef_attr_list ([ATTRIBUTE] : name=|name| value=|lat|)
+   $3 = nterm metadatalist ([ATTRIBUTE] : name=|name| value=|lat|)
+   $4 = token _DIMENSION ([ENDELEMENT] : element=|Dimension|)
+-> $$ = nterm dimdef ([STARTELEMENT] : element=|Dimension|)
+Entering state 37
+
+Stack now 0 1 3 12 37
+Reducing stack by rule 13 , 
+   $1 = nterm group_body ([STARTELEMENT] : element=|Dataset|)
+   $2 = nterm dimdef ([STARTELEMENT] : element=|Dimension|)
+-> $$ = nterm group_body ([STARTELEMENT] : element=|Dataset|)
+Entering state 12
+
+Stack now 0 1 3 12
+Reading a token: 
+Next token is token DIMENSION_ ([STARTELEMENT] : element=|Dimension|)
+Shifting token DIMENSION_ ([STARTELEMENT] : element=|Dimension|)
+Entering state 16
+
+Stack now 0 1 3 12 16
+Reading a token: 
+Next token is token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|lon|)
+Shifting token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|lon|)
+Entering state 48
+
+Stack now 0 1 3 12 16 48
+Reading a token: 
+Next token is token ATTR_SIZE ([ATTRIBUTE] : name=|size| value=|20|)
+Shifting token ATTR_SIZE ([ATTRIBUTE] : name=|size| value=|20|)
+Entering state 61
+
+Stack now 0 1 3 12 16 48 61
+Reducing stack by rule 29 , 
+   $1 = token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|lon|)
+   $2 = token ATTR_SIZE ([ATTRIBUTE] : name=|size| value=|20|)
+-> $$ = nterm dimdef_attr_list ([ATTRIBUTE] : name=|name| value=|lon|)
+Entering state 50
+
+Stack now 0 1 3 12 16 50
+Reducing stack by rule 79 , 
+-> $$ = nterm metadatalist ([ATTRIBUTE] : name=|name| value=|lon|)
+Entering state 63
+
+Stack now 0 1 3 12 16 50 63
+Reading a token: 
+Next token is token _DIMENSION ([ENDELEMENT] : element=|Dimension|)
+Shifting token _DIMENSION ([ENDELEMENT] : element=|Dimension|)
+Entering state 76
+
+Stack now 0 1 3 12 16 50 63 76
+Reducing stack by rule 28 , 
+   $1 = token DIMENSION_ ([STARTELEMENT] : element=|Dimension|)
+   $2 = nterm dimdef_attr_list ([ATTRIBUTE] : name=|name| value=|lon|)
+   $3 = nterm metadatalist ([ATTRIBUTE] : name=|name| value=|lon|)
+   $4 = token _DIMENSION ([ENDELEMENT] : element=|Dimension|)
+-> $$ = nterm dimdef ([STARTELEMENT] : element=|Dimension|)
+Entering state 37
+
+Stack now 0 1 3 12 37
+Reducing stack by rule 13 , 
+   $1 = nterm group_body ([STARTELEMENT] : element=|Dataset|)
+   $2 = nterm dimdef ([STARTELEMENT] : element=|Dimension|)
+-> $$ = nterm group_body ([STARTELEMENT] : element=|Dataset|)
+Entering state 12
+
+Stack now 0 1 3 12
+Reading a token: 
+Next token is token INT32_ ([STARTELEMENT] : element=|Int32|)
+Shifting token INT32_ ([STARTELEMENT] : element=|Int32|)
+Entering state 26
+
+Stack now 0 1 3 12 26
+Reducing stack by rule 43 , 
+   $1 = token INT32_ ([STARTELEMENT] : element=|Int32|)
+-> $$ = nterm atomictype_ ([STARTELEMENT] : element=|Int32|)
+Entering state 40
+
+Stack now 0 1 3 12 40
+Reading a token: 
+Next token is token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|x|)
+Shifting token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|x|)
+Entering state 54
+
+Stack now 0 1 3 12 40 54
+Reducing stack by rule 69 , 
+-> $$ = nterm variabledef ([ATTRIBUTE] : name=|name| value=|x|)
+Entering state 69
+
+Stack now 0 1 3 12 40 54 69
+Reading a token: 
+Next token is token _INT32 ([ENDELEMENT] : element=|Int32|)
+Shifting token _INT32 ([ENDELEMENT] : element=|Int32|)
+Entering state 94
+
+Stack now 0 1 3 12 40 54 69 94
+Reducing stack by rule 59 , 
+   $1 = token _INT32 ([ENDELEMENT] : element=|Int32|)
+-> $$ = nterm _atomictype ([ENDELEMENT] : element=|Int32|)
+Entering state 104
+
+Stack now 0 1 3 12 40 54 69 104
+Reducing stack by rule 36 , 
+   $1 = nterm atomictype_ ([STARTELEMENT] : element=|Int32|)
+   $2 = token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|x|)
+   $3 = nterm variabledef ([ATTRIBUTE] : name=|name| value=|x|)
+   $4 = nterm _atomictype ([ENDELEMENT] : element=|Int32|)
+-> $$ = nterm simplevariable ([STARTELEMENT] : element=|Int32|)
+Entering state 39
+
+Stack now 0 1 3 12 39
+Reducing stack by rule 34 , 
+   $1 = nterm simplevariable ([STARTELEMENT] : element=|Int32|)
+-> $$ = nterm variable ([STARTELEMENT] : element=|Int32|)
+Entering state 38
+
+Stack now 0 1 3 12 38
+Reducing stack by rule 14 , 
+   $1 = nterm group_body ([STARTELEMENT] : element=|Dataset|)
+   $2 = nterm variable ([STARTELEMENT] : element=|Int32|)
+-> $$ = nterm group_body ([STARTELEMENT] : element=|Dataset|)
+Entering state 12
+
+Stack now 0 1 3 12
+Reading a token: 
+Next token is token FLOAT32_ ([STARTELEMENT] : element=|Float32|)
+Shifting token FLOAT32_ ([STARTELEMENT] : element=|Float32|)
+Entering state 30
+
+Stack now 0 1 3 12 30
+Reducing stack by rule 47 , 
+   $1 = token FLOAT32_ ([STARTELEMENT] : element=|Float32|)
+-> $$ = nterm atomictype_ ([STARTELEMENT] : element=|Float32|)
+Entering state 40
+
+Stack now 0 1 3 12 40
+Reading a token: 
+Next token is token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|lat|)
+Shifting token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|lat|)
+Entering state 54
+
+Stack now 0 1 3 12 40 54
+Reducing stack by rule 69 , 
+-> $$ = nterm variabledef ([ATTRIBUTE] : name=|name| value=|lat|)
+Entering state 69
+
+Stack now 0 1 3 12 40 54 69
+Reading a token: 
+Next token is token DIM_ ([STARTELEMENT] : element=|Dim|)
+Shifting token DIM_ ([STARTELEMENT] : element=|Dim|)
+Entering state 78
+
+Stack now 0 1 3 12 40 54 69 78
+Reading a token: 
+Next token is token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|/lat|)
+Shifting token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|/lat|)
+Entering state 110
+
+Stack now 0 1 3 12 40 54 69 78 110
+Reducing stack by rule 32 , 
+   $1 = token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|/lat|)
+-> $$ = nterm dimref_attr_list ([ATTRIBUTE] : name=|name| value=|/lat|)
+Entering state 112
+
+Stack now 0 1 3 12 40 54 69 78 112
+Reading a token: 
+Next token is token _DIM ([ENDELEMENT] : element=|Dim|)
+Shifting token _DIM ([ENDELEMENT] : element=|Dim|)
+Entering state 118
+
+Stack now 0 1 3 12 40 54 69 78 112 118
+Reducing stack by rule 31 , 
+   $1 = token DIM_ ([STARTELEMENT] : element=|Dim|)
+   $2 = nterm dimref_attr_list ([ATTRIBUTE] : name=|name| value=|/lat|)
+   $3 = token _DIM ([ENDELEMENT] : element=|Dim|)
+-> $$ = nterm dimref ([STARTELEMENT] : element=|Dim|)
+Entering state 103
+
+Stack now 0 1 3 12 40 54 69 103
+Reducing stack by rule 70 , 
+   $1 = nterm variabledef ([ATTRIBUTE] : name=|name| value=|lat|)
+   $2 = nterm dimref ([STARTELEMENT] : element=|Dim|)
+-> $$ = nterm variabledef ([ATTRIBUTE] : name=|name| value=|lat|)
+Entering state 69
+
+Stack now 0 1 3 12 40 54 69
+Reading a token: 
+Next token is token _FLOAT32 ([ENDELEMENT] : element=|Float32|)
+Shifting token _FLOAT32 ([ENDELEMENT] : element=|Float32|)
+Entering state 98
+
+Stack now 0 1 3 12 40 54 69 98
+Reducing stack by rule 63 , 
+   $1 = token _FLOAT32 ([ENDELEMENT] : element=|Float32|)
+-> $$ = nterm _atomictype ([ENDELEMENT] : element=|Float32|)
+Entering state 104
+
+Stack now 0 1 3 12 40 54 69 104
+Reducing stack by rule 36 , 
+   $1 = nterm atomictype_ ([STARTELEMENT] : element=|Float32|)
+   $2 = token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|lat|)
+   $3 = nterm variabledef ([ATTRIBUTE] : name=|name| value=|lat|)
+   $4 = nterm _atomictype ([ENDELEMENT] : element=|Float32|)
+-> $$ = nterm simplevariable ([STARTELEMENT] : element=|Float32|)
+Entering state 39
+
+Stack now 0 1 3 12 39
+Reducing stack by rule 34 , 
+   $1 = nterm simplevariable ([STARTELEMENT] : element=|Float32|)
+-> $$ = nterm variable ([STARTELEMENT] : element=|Float32|)
+Entering state 38
+
+Stack now 0 1 3 12 38
+Reducing stack by rule 14 , 
+   $1 = nterm group_body ([STARTELEMENT] : element=|Dataset|)
+   $2 = nterm variable ([STARTELEMENT] : element=|Float32|)
+-> $$ = nterm group_body ([STARTELEMENT] : element=|Dataset|)
+Entering state 12
+
+Stack now 0 1 3 12
+Reading a token: 
+Next token is token FLOAT32_ ([STARTELEMENT] : element=|Float32|)
+Shifting token FLOAT32_ ([STARTELEMENT] : element=|Float32|)
+Entering state 30
+
+Stack now 0 1 3 12 30
+Reducing stack by rule 47 , 
+   $1 = token FLOAT32_ ([STARTELEMENT] : element=|Float32|)
+-> $$ = nterm atomictype_ ([STARTELEMENT] : element=|Float32|)
+Entering state 40
+
+Stack now 0 1 3 12 40
+Reading a token: 
+Next token is token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|lon|)
+Shifting token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|lon|)
+Entering state 54
+
+Stack now 0 1 3 12 40 54
+Reducing stack by rule 69 , 
+-> $$ = nterm variabledef ([ATTRIBUTE] : name=|name| value=|lon|)
+Entering state 69
+
+Stack now 0 1 3 12 40 54 69
+Reading a token: 
+Next token is token DIM_ ([STARTELEMENT] : element=|Dim|)
+Shifting token DIM_ ([STARTELEMENT] : element=|Dim|)
+Entering state 78
+
+Stack now 0 1 3 12 40 54 69 78
+Reading a token: 
+Next token is token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|/lon|)
+Shifting token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|/lon|)
+Entering state 110
+
+Stack now 0 1 3 12 40 54 69 78 110
+Reducing stack by rule 32 , 
+   $1 = token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|/lon|)
+-> $$ = nterm dimref_attr_list ([ATTRIBUTE] : name=|name| value=|/lon|)
+Entering state 112
+
+Stack now 0 1 3 12 40 54 69 78 112
+Reading a token: 
+Next token is token _DIM ([ENDELEMENT] : element=|Dim|)
+Shifting token _DIM ([ENDELEMENT] : element=|Dim|)
+Entering state 118
+
+Stack now 0 1 3 12 40 54 69 78 112 118
+Reducing stack by rule 31 , 
+   $1 = token DIM_ ([STARTELEMENT] : element=|Dim|)
+   $2 = nterm dimref_attr_list ([ATTRIBUTE] : name=|name| value=|/lon|)
+   $3 = token _DIM ([ENDELEMENT] : element=|Dim|)
+-> $$ = nterm dimref ([STARTELEMENT] : element=|Dim|)
+Entering state 103
+
+Stack now 0 1 3 12 40 54 69 103
+Reducing stack by rule 70 , 
+   $1 = nterm variabledef ([ATTRIBUTE] : name=|name| value=|lon|)
+   $2 = nterm dimref ([STARTELEMENT] : element=|Dim|)
+-> $$ = nterm variabledef ([ATTRIBUTE] : name=|name| value=|lon|)
+Entering state 69
+
+Stack now 0 1 3 12 40 54 69
+Reading a token: 
+Next token is token _FLOAT32 ([ENDELEMENT] : element=|Float32|)
+Shifting token _FLOAT32 ([ENDELEMENT] : element=|Float32|)
+Entering state 98
+
+Stack now 0 1 3 12 40 54 69 98
+Reducing stack by rule 63 , 
+   $1 = token _FLOAT32 ([ENDELEMENT] : element=|Float32|)
+-> $$ = nterm _atomictype ([ENDELEMENT] : element=|Float32|)
+Entering state 104
+
+Stack now 0 1 3 12 40 54 69 104
+Reducing stack by rule 36 , 
+   $1 = nterm atomictype_ ([STARTELEMENT] : element=|Float32|)
+   $2 = token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|lon|)
+   $3 = nterm variabledef ([ATTRIBUTE] : name=|name| value=|lon|)
+   $4 = nterm _atomictype ([ENDELEMENT] : element=|Float32|)
+-> $$ = nterm simplevariable ([STARTELEMENT] : element=|Float32|)
+Entering state 39
+
+Stack now 0 1 3 12 39
+Reducing stack by rule 34 , 
+   $1 = nterm simplevariable ([STARTELEMENT] : element=|Float32|)
+-> $$ = nterm variable ([STARTELEMENT] : element=|Float32|)
+Entering state 38
+
+Stack now 0 1 3 12 38
+Reducing stack by rule 14 , 
+   $1 = nterm group_body ([STARTELEMENT] : element=|Dataset|)
+   $2 = nterm variable ([STARTELEMENT] : element=|Float32|)
+-> $$ = nterm group_body ([STARTELEMENT] : element=|Dataset|)
+Entering state 12
+
+Stack now 0 1 3 12
+Reading a token: 
+Next token is token STRUCTURE_ ([STARTELEMENT] : element=|Structure|)
+Shifting token STRUCTURE_ ([STARTELEMENT] : element=|Structure|)
+Entering state 18
+
+Stack now 0 1 3 12 18
+Reading a token: 
+Next token is token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|y|)
+Shifting token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|y|)
+Entering state 52
+
+Stack now 0 1 3 12 18 52
+Reducing stack by rule 75 , 
+-> $$ = nterm structuredef ([ATTRIBUTE] : name=|name| value=|y|)
+Entering state 64
+
+Stack now 0 1 3 12 18 52 64
+Reading a token: 
+Next token is token OPAQUE_ ([STARTELEMENT] : element=|Opaque|)
+Shifting token OPAQUE_ ([STARTELEMENT] : element=|Opaque|)
+Entering state 34
+
+Stack now 0 1 3 12 18 52 64 34
+Reducing stack by rule 51 , 
+   $1 = token OPAQUE_ ([STARTELEMENT] : element=|Opaque|)
+-> $$ = nterm atomictype_ ([STARTELEMENT] : element=|Opaque|)
+Entering state 40
+
+Stack now 0 1 3 12 18 52 64 40
+Reading a token: 
+Next token is token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|f1|)
+Shifting token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|f1|)
+Entering state 54
+
+Stack now 0 1 3 12 18 52 64 40 54
+Reducing stack by rule 69 , 
+-> $$ = nterm variabledef ([ATTRIBUTE] : name=|name| value=|f1|)
+Entering state 69
+
+Stack now 0 1 3 12 18 52 64 40 54 69
+Reading a token: 
+Next token is token _OPAQUE ([ENDELEMENT] : element=|Opaque|)
+Shifting token _OPAQUE ([ENDELEMENT] : element=|Opaque|)
+Entering state 102
+
+Stack now 0 1 3 12 18 52 64 40 54 69 102
+Reducing stack by rule 67 , 
+   $1 = token _OPAQUE ([ENDELEMENT] : element=|Opaque|)
+-> $$ = nterm _atomictype ([ENDELEMENT] : element=|Opaque|)
+Entering state 104
+
+Stack now 0 1 3 12 18 52 64 40 54 69 104
+Reducing stack by rule 36 , 
+   $1 = nterm atomictype_ ([STARTELEMENT] : element=|Opaque|)
+   $2 = token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|f1|)
+   $3 = nterm variabledef ([ATTRIBUTE] : name=|name| value=|f1|)
+   $4 = nterm _atomictype ([ENDELEMENT] : element=|Opaque|)
+-> $$ = nterm simplevariable ([STARTELEMENT] : element=|Opaque|)
+Entering state 39
+
+Stack now 0 1 3 12 18 52 64 39
+Reducing stack by rule 34 , 
+   $1 = nterm simplevariable ([STARTELEMENT] : element=|Opaque|)
+-> $$ = nterm variable ([STARTELEMENT] : element=|Opaque|)
+Entering state 81
+
+Stack now 0 1 3 12 18 52 64 81
+Reducing stack by rule 77 , 
+   $1 = nterm structuredef ([ATTRIBUTE] : name=|name| value=|y|)
+   $2 = nterm variable ([STARTELEMENT] : element=|Opaque|)
+-> $$ = nterm structuredef ([ATTRIBUTE] : name=|name| value=|y|)
+Entering state 64
+
+Stack now 0 1 3 12 18 52 64
+Reading a token: 
+Next token is token ATTRIBUTE_ ([STARTELEMENT] : element=|Attribute|)
+Shifting token ATTRIBUTE_ ([STARTELEMENT] : element=|Attribute|)
+Entering state 19
+
+Stack now 0 1 3 12 18 52 64 19
+Reducing stack by rule 83 , 
+-> $$ = nterm attribute_attr_list ([STARTELEMENT] : element=|Attribute|)
+Entering state 53
+
+Stack now 0 1 3 12 18 52 64 19 53
+Reading a token: 
+Next token is token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|a1|)
+Shifting token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|a1|)
+Entering state 65
+
+Stack now 0 1 3 12 18 52 64 19 53 65
+Reducing stack by rule 84 , 
+   $1 = nterm attribute_attr_list ([STARTELEMENT] : element=|Attribute|)
+   $2 = token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|a1|)
+-> $$ = nterm attribute_attr_list ([STARTELEMENT] : element=|Attribute|)
+Entering state 53
+
+Stack now 0 1 3 12 18 52 64 19 53
+Reading a token: 
+Next token is token ATTR_TYPE ([ATTRIBUTE] : name=|type| value=|Int32|)
+Shifting token ATTR_TYPE ([ATTRIBUTE] : name=|type| value=|Int32|)
+Entering state 67
+
+Stack now 0 1 3 12 18 52 64 19 53 67
+Reducing stack by rule 85 , 
+   $1 = nterm attribute_attr_list ([STARTELEMENT] : element=|Attribute|)
+   $2 = token ATTR_TYPE ([ATTRIBUTE] : name=|type| value=|Int32|)
+-> $$ = nterm attribute_attr_list ([STARTELEMENT] : element=|Attribute|)
+Entering state 53
+
+Stack now 0 1 3 12 18 52 64 19 53
+Reading a token: 
+Next token is token _ATTRIBUTE ([ENDELEMENT] : element=|Attribute|)
+Reducing stack by rule 25 , 
+-> $$ = nterm namespace_list ([STARTELEMENT] : element=|Attribute|)
+Entering state 68
+
+Stack now 0 1 3 12 18 52 64 19 53 68
+Next token is token _ATTRIBUTE ([ENDELEMENT] : element=|Attribute|)
+Reducing stack by rule 87 , 
+-> $$ = nterm value_list ([STARTELEMENT] : element=|Attribute|)
+Entering state 85
+
+Stack now 0 1 3 12 18 52 64 19 53 68 85
+Next token is token _ATTRIBUTE ([ENDELEMENT] : element=|Attribute|)
+Shifting token _ATTRIBUTE ([ENDELEMENT] : element=|Attribute|)
+Entering state 115
+
+Stack now 0 1 3 12 18 52 64 19 53 68 85 115
+Reducing stack by rule 82 , 
+   $1 = token ATTRIBUTE_ ([STARTELEMENT] : element=|Attribute|)
+   $2 = nterm attribute_attr_list ([STARTELEMENT] : element=|Attribute|)
+   $3 = nterm namespace_list ([STARTELEMENT] : element=|Attribute|)
+   $4 = nterm value_list ([STARTELEMENT] : element=|Attribute|)
+   $5 = token _ATTRIBUTE ([ENDELEMENT] : element=|Attribute|)
+-> $$ = nterm attribute ([STARTELEMENT] : element=|Attribute|)
+Entering state 43
+
+Stack now 0 1 3 12 18 52 64 43
+Reducing stack by rule 81 , 
+   $1 = nterm attribute ([STARTELEMENT] : element=|Attribute|)
+-> $$ = nterm metadata ([STARTELEMENT] : element=|Attribute|)
+Entering state 82
+
+Stack now 0 1 3 12 18 52 64 82
+Reducing stack by rule 78 , 
+   $1 = nterm structuredef ([ATTRIBUTE] : name=|name| value=|y|)
+   $2 = nterm metadata ([STARTELEMENT] : element=|Attribute|)
+-> $$ = nterm structuredef ([ATTRIBUTE] : name=|name| value=|y|)
+Entering state 64
+
+Stack now 0 1 3 12 18 52 64
+Reading a token: 
+Next token is token ATTRIBUTE_ ([STARTELEMENT] : element=|Attribute|)
+Shifting token ATTRIBUTE_ ([STARTELEMENT] : element=|Attribute|)
+Entering state 19
+
+Stack now 0 1 3 12 18 52 64 19
+Reducing stack by rule 83 , 
+-> $$ = nterm attribute_attr_list ([STARTELEMENT] : element=|Attribute|)
+Entering state 53
+
+Stack now 0 1 3 12 18 52 64 19 53
+Reading a token: 
+Next token is token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|a2|)
+Shifting token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|a2|)
+Entering state 65
+
+Stack now 0 1 3 12 18 52 64 19 53 65
+Reducing stack by rule 84 , 
+   $1 = nterm attribute_attr_list ([STARTELEMENT] : element=|Attribute|)
+   $2 = token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|a2|)
+-> $$ = nterm attribute_attr_list ([STARTELEMENT] : element=|Attribute|)
+Entering state 53
+
+Stack now 0 1 3 12 18 52 64 19 53
+Reading a token: 
+Next token is token ATTR_TYPE ([ATTRIBUTE] : name=|type| value=|Float64|)
+Shifting token ATTR_TYPE ([ATTRIBUTE] : name=|type| value=|Float64|)
+Entering state 67
+
+Stack now 0 1 3 12 18 52 64 19 53 67
+Reducing stack by rule 85 , 
+   $1 = nterm attribute_attr_list ([STARTELEMENT] : element=|Attribute|)
+   $2 = token ATTR_TYPE ([ATTRIBUTE] : name=|type| value=|Float64|)
+-> $$ = nterm attribute_attr_list ([STARTELEMENT] : element=|Attribute|)
+Entering state 53
+
+Stack now 0 1 3 12 18 52 64 19 53
+Reading a token: 
+Next token is token VALUE_ ([STARTELEMENT] : element=|Value|)
+Reducing stack by rule 25 , 
+-> $$ = nterm namespace_list ([STARTELEMENT] : element=|Attribute|)
+Entering state 68
+
+Stack now 0 1 3 12 18 52 64 19 53 68
+Next token is token VALUE_ ([STARTELEMENT] : element=|Value|)
+Reducing stack by rule 87 , 
+-> $$ = nterm value_list ([STARTELEMENT] : element=|Attribute|)
+Entering state 85
+
+Stack now 0 1 3 12 18 52 64 19 53 68 85
+Next token is token VALUE_ ([STARTELEMENT] : element=|Value|)
+Shifting token VALUE_ ([STARTELEMENT] : element=|Value|)
+Entering state 114
+
+Stack now 0 1 3 12 18 52 64 19 53 68 85 114
+Reading a token: 
+Next token is token ATTR_VALUE ([ATTRIBUTE] : name=|value| value=|7.5|)
+Shifting token ATTR_VALUE ([ATTRIBUTE] : name=|value| value=|7.5|)
+Entering state 120
+
+Stack now 0 1 3 12 18 52 64 19 53 68 85 114 120
+Reading a token: 
+Next token is token _VALUE ([ENDELEMENT] : element=|Value|)
+Shifting token _VALUE ([ENDELEMENT] : element=|Value|)
+Entering state 123
+
+Stack now 0 1 3 12 18 52 64 19 53 68 85 114 120 123
+Reducing stack by rule 89 , 
+   $1 = token VALUE_ ([STARTELEMENT] : element=|Value|)
+   $2 = token ATTR_VALUE ([ATTRIBUTE] : name=|value| value=|7.5|)
+   $3 = token _VALUE ([ENDELEMENT] : element=|Value|)
+-> $$ = nterm value ([STARTELEMENT] : element=|Value|)
+Entering state 116
+
+Stack now 0 1 3 12 18 52 64 19 53 68 85 116
+Reducing stack by rule 88 , 
+   $1 = nterm value_list ([STARTELEMENT] : element=|Attribute|)
+   $2 = nterm value ([STARTELEMENT] : element=|Value|)
+-> $$ = nterm value_list ([STARTELEMENT] : element=|Attribute|)
+Entering state 85
+
+Stack now 0 1 3 12 18 52 64 19 53 68 85
+Reading a token: 
+Next token is token VALUE_ ([STARTELEMENT] : element=|Value|)
+Shifting token VALUE_ ([STARTELEMENT] : element=|Value|)
+Entering state 114
+
+Stack now 0 1 3 12 18 52 64 19 53 68 85 114
+Reading a token: 
+Next token is token TEXT ([CHARACTERS]  text=|10| translation=|10|)
+Reducing stack by rule 91 , 
+-> $$ = nterm text_list ([STARTELEMENT] : element=|Value|)
+Entering state 121
+
+Stack now 0 1 3 12 18 52 64 19 53 68 85 114 121
+Next token is token TEXT ([CHARACTERS]  text=|10| translation=|10|)
+Shifting token TEXT ([CHARACTERS]  text=|10| translation=|10|)
+Entering state 125
+
+Stack now 0 1 3 12 18 52 64 19 53 68 85 114 121 125
+Reducing stack by rule 92 , 
+   $1 = nterm text_list ([STARTELEMENT] : element=|Value|)
+   $2 = token TEXT ([CHARACTERS]  text=|10| translation=|10|)
+-> $$ = nterm text_list ([STARTELEMENT] : element=|Value|)
+Entering state 121
+
+Stack now 0 1 3 12 18 52 64 19 53 68 85 114 121
+Reading a token: 
+Next token is token _VALUE ([ENDELEMENT] : element=|Value|)
+Shifting token _VALUE ([ENDELEMENT] : element=|Value|)
+Entering state 124
+
+Stack now 0 1 3 12 18 52 64 19 53 68 85 114 121 124
+Reducing stack by rule 90 , 
+   $1 = token VALUE_ ([STARTELEMENT] : element=|Value|)
+   $2 = nterm text_list ([STARTELEMENT] : element=|Value|)
+   $3 = token _VALUE ([ENDELEMENT] : element=|Value|)
+-> $$ = nterm value ([STARTELEMENT] : element=|Value|)
+Entering state 116
+
+Stack now 0 1 3 12 18 52 64 19 53 68 85 116
+Reducing stack by rule 88 , 
+   $1 = nterm value_list ([STARTELEMENT] : element=|Attribute|)
+   $2 = nterm value ([STARTELEMENT] : element=|Value|)
+-> $$ = nterm value_list ([STARTELEMENT] : element=|Attribute|)
+Entering state 85
+
+Stack now 0 1 3 12 18 52 64 19 53 68 85
+Reading a token: 
+Next token is token _ATTRIBUTE ([ENDELEMENT] : element=|Attribute|)
+Shifting token _ATTRIBUTE ([ENDELEMENT] : element=|Attribute|)
+Entering state 115
+
+Stack now 0 1 3 12 18 52 64 19 53 68 85 115
+Reducing stack by rule 82 , 
+   $1 = token ATTRIBUTE_ ([STARTELEMENT] : element=|Attribute|)
+   $2 = nterm attribute_attr_list ([STARTELEMENT] : element=|Attribute|)
+   $3 = nterm namespace_list ([STARTELEMENT] : element=|Attribute|)
+   $4 = nterm value_list ([STARTELEMENT] : element=|Attribute|)
+   $5 = token _ATTRIBUTE ([ENDELEMENT] : element=|Attribute|)
+-> $$ = nterm attribute ([STARTELEMENT] : element=|Attribute|)
+Entering state 43
+
+Stack now 0 1 3 12 18 52 64 43
+Reducing stack by rule 81 , 
+   $1 = nterm attribute ([STARTELEMENT] : element=|Attribute|)
+-> $$ = nterm metadata ([STARTELEMENT] : element=|Attribute|)
+Entering state 82
+
+Stack now 0 1 3 12 18 52 64 82
+Reducing stack by rule 78 , 
+   $1 = nterm structuredef ([ATTRIBUTE] : name=|name| value=|y|)
+   $2 = nterm metadata ([STARTELEMENT] : element=|Attribute|)
+-> $$ = nterm structuredef ([ATTRIBUTE] : name=|name| value=|y|)
+Entering state 64
+
+Stack now 0 1 3 12 18 52 64
+Reading a token: 
+Next token is token DIM_ ([STARTELEMENT] : element=|Dim|)
+Shifting token DIM_ ([STARTELEMENT] : element=|Dim|)
+Entering state 78
+
+Stack now 0 1 3 12 18 52 64 78
+Reading a token: 
+Next token is token ATTR_SIZE ([ATTRIBUTE] : name=|size| value=|*|)
+Shifting token ATTR_SIZE ([ATTRIBUTE] : name=|size| value=|*|)
+Entering state 111
+
+Stack now 0 1 3 12 18 52 64 78 111
+Reducing stack by rule 33 , 
+   $1 = token ATTR_SIZE ([ATTRIBUTE] : name=|size| value=|*|)
+-> $$ = nterm dimref_attr_list ([ATTRIBUTE] : name=|size| value=|*|)
+Entering state 112
+
+Stack now 0 1 3 12 18 52 64 78 112
+Reading a token: 
+Next token is token _DIM ([ENDELEMENT] : element=|Dim|)
+Shifting token _DIM ([ENDELEMENT] : element=|Dim|)
+Entering state 118
+
+Stack now 0 1 3 12 18 52 64 78 112 118
+Reducing stack by rule 31 , 
+   $1 = token DIM_ ([STARTELEMENT] : element=|Dim|)
+   $2 = nterm dimref_attr_list ([ATTRIBUTE] : name=|size| value=|*|)
+   $3 = token _DIM ([ENDELEMENT] : element=|Dim|)
+-> $$ = nterm dimref ([STARTELEMENT] : element=|Dim|)
+Entering state 80
+
+Stack now 0 1 3 12 18 52 64 80
+Reducing stack by rule 76 , 
+   $1 = nterm structuredef ([ATTRIBUTE] : name=|name| value=|y|)
+   $2 = nterm dimref ([STARTELEMENT] : element=|Dim|)
+-> $$ = nterm structuredef ([ATTRIBUTE] : name=|name| value=|y|)
+Entering state 64
+
+Stack now 0 1 3 12 18 52 64
+Reading a token: 
+Next token is token DIM_ ([STARTELEMENT] : element=|Dim|)
+Shifting token DIM_ ([STARTELEMENT] : element=|Dim|)
+Entering state 78
+
+Stack now 0 1 3 12 18 52 64 78
+Reading a token: 
+Next token is token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|/d1|)
+Shifting token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|/d1|)
+Entering state 110
+
+Stack now 0 1 3 12 18 52 64 78 110
+Reducing stack by rule 32 , 
+   $1 = token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|/d1|)
+-> $$ = nterm dimref_attr_list ([ATTRIBUTE] : name=|name| value=|/d1|)
+Entering state 112
+
+Stack now 0 1 3 12 18 52 64 78 112
+Reading a token: 
+Next token is token _DIM ([ENDELEMENT] : element=|Dim|)
+Shifting token _DIM ([ENDELEMENT] : element=|Dim|)
+Entering state 118
+
+Stack now 0 1 3 12 18 52 64 78 112 118
+Reducing stack by rule 31 , 
+   $1 = token DIM_ ([STARTELEMENT] : element=|Dim|)
+   $2 = nterm dimref_attr_list ([ATTRIBUTE] : name=|name| value=|/d1|)
+   $3 = token _DIM ([ENDELEMENT] : element=|Dim|)
+-> $$ = nterm dimref ([STARTELEMENT] : element=|Dim|)
+Entering state 80
+
+Stack now 0 1 3 12 18 52 64 80
+Reducing stack by rule 76 , 
+   $1 = nterm structuredef ([ATTRIBUTE] : name=|name| value=|y|)
+   $2 = nterm dimref ([STARTELEMENT] : element=|Dim|)
+-> $$ = nterm structuredef ([ATTRIBUTE] : name=|name| value=|y|)
+Entering state 64
+
+Stack now 0 1 3 12 18 52 64
+Reading a token: 
+Next token is token DIM_ ([STARTELEMENT] : element=|Dim|)
+Shifting token DIM_ ([STARTELEMENT] : element=|Dim|)
+Entering state 78
+
+Stack now 0 1 3 12 18 52 64 78
+Reading a token: 
+Next token is token ATTR_SIZE ([ATTRIBUTE] : name=|size| value=|10|)
+Shifting token ATTR_SIZE ([ATTRIBUTE] : name=|size| value=|10|)
+Entering state 111
+
+Stack now 0 1 3 12 18 52 64 78 111
+Reducing stack by rule 33 , 
+   $1 = token ATTR_SIZE ([ATTRIBUTE] : name=|size| value=|10|)
+-> $$ = nterm dimref_attr_list ([ATTRIBUTE] : name=|size| value=|10|)
+Entering state 112
+
+Stack now 0 1 3 12 18 52 64 78 112
+Reading a token: 
+Next token is token _DIM ([ENDELEMENT] : element=|Dim|)
+Shifting token _DIM ([ENDELEMENT] : element=|Dim|)
+Entering state 118
+
+Stack now 0 1 3 12 18 52 64 78 112 118
+Reducing stack by rule 31 , 
+   $1 = token DIM_ ([STARTELEMENT] : element=|Dim|)
+   $2 = nterm dimref_attr_list ([ATTRIBUTE] : name=|size| value=|10|)
+   $3 = token _DIM ([ENDELEMENT] : element=|Dim|)
+-> $$ = nterm dimref ([STARTELEMENT] : element=|Dim|)
+Entering state 80
+
+Stack now 0 1 3 12 18 52 64 80
+Reducing stack by rule 76 , 
+   $1 = nterm structuredef ([ATTRIBUTE] : name=|name| value=|y|)
+   $2 = nterm dimref ([STARTELEMENT] : element=|Dim|)
+-> $$ = nterm structuredef ([ATTRIBUTE] : name=|name| value=|y|)
+Entering state 64
+
+Stack now 0 1 3 12 18 52 64
+Reading a token: 
+Next token is token _STRUCTURE ([ENDELEMENT] : element=|Structure|)
+Shifting token _STRUCTURE ([ENDELEMENT] : element=|Structure|)
+Entering state 79
+
+Stack now 0 1 3 12 18 52 64 79
+Reducing stack by rule 74 , 
+   $1 = token STRUCTURE_ ([STARTELEMENT] : element=|Structure|)
+   $2 = token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|y|)
+   $3 = nterm structuredef ([ATTRIBUTE] : name=|name| value=|y|)
+   $4 = token _STRUCTURE ([ENDELEMENT] : element=|Structure|)
+-> $$ = nterm structurevariable ([STARTELEMENT] : element=|Structure|)
+Entering state 41
+
+Stack now 0 1 3 12 41
+Reducing stack by rule 35 , 
+   $1 = nterm structurevariable ([STARTELEMENT] : element=|Structure|)
+-> $$ = nterm variable ([STARTELEMENT] : element=|Structure|)
+Entering state 38
+
+Stack now 0 1 3 12 38
+Reducing stack by rule 14 , 
+   $1 = nterm group_body ([STARTELEMENT] : element=|Dataset|)
+   $2 = nterm variable ([STARTELEMENT] : element=|Structure|)
+-> $$ = nterm group_body ([STARTELEMENT] : element=|Dataset|)
+Entering state 12
+
+Stack now 0 1 3 12
+Reading a token: 
+Next token is token GROUP_ ([STARTELEMENT] : element=|Group|)
+Shifting token GROUP_ ([STARTELEMENT] : element=|Group|)
+Entering state 14
+
+Stack now 0 1 3 12 14
+Reducing stack by rule 3 , 
+-> $$ = nterm group_attr_list ([STARTELEMENT] : element=|Group|)
+Entering state 44
+
+Stack now 0 1 3 12 14 44
+Reading a token: 
+Next token is token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|g1|)
+Shifting token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|g1|)
+Entering state 8
+
+Stack now 0 1 3 12 14 44 8
+Reducing stack by rule 4 , 
+   $1 = nterm group_attr_list ([STARTELEMENT] : element=|Group|)
+   $2 = token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|g1|)
+-> $$ = nterm group_attr_list ([STARTELEMENT] : element=|Group|)
+Entering state 44
+
+Stack now 0 1 3 12 14 44
+Reading a token: 
+Next token is token DIMENSION_ ([STARTELEMENT] : element=|Dimension|)
+Reducing stack by rule 11 , 
+-> $$ = nterm group_body ([STARTELEMENT] : element=|Group|)
+Entering state 55
+
+Stack now 0 1 3 12 14 44 55
+Next token is token DIMENSION_ ([STARTELEMENT] : element=|Dimension|)
+Shifting token DIMENSION_ ([STARTELEMENT] : element=|Dimension|)
+Entering state 16
+
+Stack now 0 1 3 12 14 44 55 16
+Reading a token: 
+Next token is token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|d1|)
+Shifting token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|d1|)
+Entering state 48
+
+Stack now 0 1 3 12 14 44 55 16 48
+Reading a token: 
+Next token is token ATTR_SIZE ([ATTRIBUTE] : name=|size| value=|10|)
+Shifting token ATTR_SIZE ([ATTRIBUTE] : name=|size| value=|10|)
+Entering state 61
+
+Stack now 0 1 3 12 14 44 55 16 48 61
+Reducing stack by rule 29 , 
+   $1 = token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|d1|)
+   $2 = token ATTR_SIZE ([ATTRIBUTE] : name=|size| value=|10|)
+-> $$ = nterm dimdef_attr_list ([ATTRIBUTE] : name=|name| value=|d1|)
+Entering state 50
+
+Stack now 0 1 3 12 14 44 55 16 50
+Reducing stack by rule 79 , 
+-> $$ = nterm metadatalist ([ATTRIBUTE] : name=|name| value=|d1|)
+Entering state 63
+
+Stack now 0 1 3 12 14 44 55 16 50 63
+Reading a token: 
+Next token is token _DIMENSION ([ENDELEMENT] : element=|Dimension|)
+Shifting token _DIMENSION ([ENDELEMENT] : element=|Dimension|)
+Entering state 76
+
+Stack now 0 1 3 12 14 44 55 16 50 63 76
+Reducing stack by rule 28 , 
+   $1 = token DIMENSION_ ([STARTELEMENT] : element=|Dimension|)
+   $2 = nterm dimdef_attr_list ([ATTRIBUTE] : name=|name| value=|d1|)
+   $3 = nterm metadatalist ([ATTRIBUTE] : name=|name| value=|d1|)
+   $4 = token _DIMENSION ([ENDELEMENT] : element=|Dimension|)
+-> $$ = nterm dimdef ([STARTELEMENT] : element=|Dimension|)
+Entering state 37
+
+Stack now 0 1 3 12 14 44 55 37
+Reducing stack by rule 13 , 
+   $1 = nterm group_body ([STARTELEMENT] : element=|Group|)
+   $2 = nterm dimdef ([STARTELEMENT] : element=|Dimension|)
+-> $$ = nterm group_body ([STARTELEMENT] : element=|Group|)
+Entering state 55
+
+Stack now 0 1 3 12 14 44 55
+Reading a token: 
+Next token is token DIMENSION_ ([STARTELEMENT] : element=|Dimension|)
+Shifting token DIMENSION_ ([STARTELEMENT] : element=|Dimension|)
+Entering state 16
+
+Stack now 0 1 3 12 14 44 55 16
+Reading a token: 
+Next token is token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|d2|)
+Shifting token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|d2|)
+Entering state 48
+
+Stack now 0 1 3 12 14 44 55 16 48
+Reading a token: 
+Next token is token ATTR_SIZE ([ATTRIBUTE] : name=|size| value=|20|)
+Shifting token ATTR_SIZE ([ATTRIBUTE] : name=|size| value=|20|)
+Entering state 61
+
+Stack now 0 1 3 12 14 44 55 16 48 61
+Reducing stack by rule 29 , 
+   $1 = token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|d2|)
+   $2 = token ATTR_SIZE ([ATTRIBUTE] : name=|size| value=|20|)
+-> $$ = nterm dimdef_attr_list ([ATTRIBUTE] : name=|name| value=|d2|)
+Entering state 50
+
+Stack now 0 1 3 12 14 44 55 16 50
+Reducing stack by rule 79 , 
+-> $$ = nterm metadatalist ([ATTRIBUTE] : name=|name| value=|d2|)
+Entering state 63
+
+Stack now 0 1 3 12 14 44 55 16 50 63
+Reading a token: 
+Next token is token _DIMENSION ([ENDELEMENT] : element=|Dimension|)
+Shifting token _DIMENSION ([ENDELEMENT] : element=|Dimension|)
+Entering state 76
+
+Stack now 0 1 3 12 14 44 55 16 50 63 76
+Reducing stack by rule 28 , 
+   $1 = token DIMENSION_ ([STARTELEMENT] : element=|Dimension|)
+   $2 = nterm dimdef_attr_list ([ATTRIBUTE] : name=|name| value=|d2|)
+   $3 = nterm metadatalist ([ATTRIBUTE] : name=|name| value=|d2|)
+   $4 = token _DIMENSION ([ENDELEMENT] : element=|Dimension|)
+-> $$ = nterm dimdef ([STARTELEMENT] : element=|Dimension|)
+Entering state 37
+
+Stack now 0 1 3 12 14 44 55 37
+Reducing stack by rule 13 , 
+   $1 = nterm group_body ([STARTELEMENT] : element=|Group|)
+   $2 = nterm dimdef ([STARTELEMENT] : element=|Dimension|)
+-> $$ = nterm group_body ([STARTELEMENT] : element=|Group|)
+Entering state 55
+
+Stack now 0 1 3 12 14 44 55
+Reading a token: 
+Next token is token FLOAT32_ ([STARTELEMENT] : element=|Float32|)
+Shifting token FLOAT32_ ([STARTELEMENT] : element=|Float32|)
+Entering state 30
+
+Stack now 0 1 3 12 14 44 55 30
+Reducing stack by rule 47 , 
+   $1 = token FLOAT32_ ([STARTELEMENT] : element=|Float32|)
+-> $$ = nterm atomictype_ ([STARTELEMENT] : element=|Float32|)
+Entering state 40
+
+Stack now 0 1 3 12 14 44 55 40
+Reading a token: 
+Next token is token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|tempb|)
+Shifting token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|tempb|)
+Entering state 54
+
+Stack now 0 1 3 12 14 44 55 40 54
+Reducing stack by rule 69 , 
+-> $$ = nterm variabledef ([ATTRIBUTE] : name=|name| value=|tempb|)
+Entering state 69
+
+Stack now 0 1 3 12 14 44 55 40 54 69
+Reading a token: 
+Next token is token DIM_ ([STARTELEMENT] : element=|Dim|)
+Shifting token DIM_ ([STARTELEMENT] : element=|Dim|)
+Entering state 78
+
+Stack now 0 1 3 12 14 44 55 40 54 69 78
+Reading a token: 
+Next token is token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|/lat|)
+Shifting token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|/lat|)
+Entering state 110
+
+Stack now 0 1 3 12 14 44 55 40 54 69 78 110
+Reducing stack by rule 32 , 
+   $1 = token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|/lat|)
+-> $$ = nterm dimref_attr_list ([ATTRIBUTE] : name=|name| value=|/lat|)
+Entering state 112
+
+Stack now 0 1 3 12 14 44 55 40 54 69 78 112
+Reading a token: 
+Next token is token _DIM ([ENDELEMENT] : element=|Dim|)
+Shifting token _DIM ([ENDELEMENT] : element=|Dim|)
+Entering state 118
+
+Stack now 0 1 3 12 14 44 55 40 54 69 78 112 118
+Reducing stack by rule 31 , 
+   $1 = token DIM_ ([STARTELEMENT] : element=|Dim|)
+   $2 = nterm dimref_attr_list ([ATTRIBUTE] : name=|name| value=|/lat|)
+   $3 = token _DIM ([ENDELEMENT] : element=|Dim|)
+-> $$ = nterm dimref ([STARTELEMENT] : element=|Dim|)
+Entering state 103
+
+Stack now 0 1 3 12 14 44 55 40 54 69 103
+Reducing stack by rule 70 , 
+   $1 = nterm variabledef ([ATTRIBUTE] : name=|name| value=|tempb|)
+   $2 = nterm dimref ([STARTELEMENT] : element=|Dim|)
+-> $$ = nterm variabledef ([ATTRIBUTE] : name=|name| value=|tempb|)
+Entering state 69
+
+Stack now 0 1 3 12 14 44 55 40 54 69
+Reading a token: 
+Next token is token DIM_ ([STARTELEMENT] : element=|Dim|)
+Shifting token DIM_ ([STARTELEMENT] : element=|Dim|)
+Entering state 78
+
+Stack now 0 1 3 12 14 44 55 40 54 69 78
+Reading a token: 
+Next token is token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|/lon|)
+Shifting token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|/lon|)
+Entering state 110
+
+Stack now 0 1 3 12 14 44 55 40 54 69 78 110
+Reducing stack by rule 32 , 
+   $1 = token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|/lon|)
+-> $$ = nterm dimref_attr_list ([ATTRIBUTE] : name=|name| value=|/lon|)
+Entering state 112
+
+Stack now 0 1 3 12 14 44 55 40 54 69 78 112
+Reading a token: 
+Next token is token _DIM ([ENDELEMENT] : element=|Dim|)
+Shifting token _DIM ([ENDELEMENT] : element=|Dim|)
+Entering state 118
+
+Stack now 0 1 3 12 14 44 55 40 54 69 78 112 118
+Reducing stack by rule 31 , 
+   $1 = token DIM_ ([STARTELEMENT] : element=|Dim|)
+   $2 = nterm dimref_attr_list ([ATTRIBUTE] : name=|name| value=|/lon|)
+   $3 = token _DIM ([ENDELEMENT] : element=|Dim|)
+-> $$ = nterm dimref ([STARTELEMENT] : element=|Dim|)
+Entering state 103
+
+Stack now 0 1 3 12 14 44 55 40 54 69 103
+Reducing stack by rule 70 , 
+   $1 = nterm variabledef ([ATTRIBUTE] : name=|name| value=|tempb|)
+   $2 = nterm dimref ([STARTELEMENT] : element=|Dim|)
+-> $$ = nterm variabledef ([ATTRIBUTE] : name=|name| value=|tempb|)
+Entering state 69
+
+Stack now 0 1 3 12 14 44 55 40 54 69
+Reading a token: 
+Next token is token MAP_ ([STARTELEMENT] : element=|Map|)
+Shifting token MAP_ ([STARTELEMENT] : element=|Map|)
+Entering state 87
+
+Stack now 0 1 3 12 14 44 55 40 54 69 87
+Reading a token: 
+Next token is token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|/lat|)
+Shifting token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|/lat|)
+Entering state 117
+
+Stack now 0 1 3 12 14 44 55 40 54 69 87 117
+Reading a token: 
+Next token is token _MAP ([ENDELEMENT] : element=|Map|)
+Shifting token _MAP ([ENDELEMENT] : element=|Map|)
+Entering state 122
+
+Stack now 0 1 3 12 14 44 55 40 54 69 87 117 122
+Reducing stack by rule 73 , 
+   $1 = token MAP_ ([STARTELEMENT] : element=|Map|)
+   $2 = token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|/lat|)
+   $3 = token _MAP ([ENDELEMENT] : element=|Map|)
+-> $$ = nterm mapref ([STARTELEMENT] : element=|Map|)
+Entering state 105
+
+Stack now 0 1 3 12 14 44 55 40 54 69 105
+Reducing stack by rule 71 , 
+   $1 = nterm variabledef ([ATTRIBUTE] : name=|name| value=|tempb|)
+   $2 = nterm mapref ([STARTELEMENT] : element=|Map|)
+-> $$ = nterm variabledef ([ATTRIBUTE] : name=|name| value=|tempb|)
+Entering state 69
+
+Stack now 0 1 3 12 14 44 55 40 54 69
+Reading a token: 
+Next token is token MAP_ ([STARTELEMENT] : element=|Map|)
+Shifting token MAP_ ([STARTELEMENT] : element=|Map|)
+Entering state 87
+
+Stack now 0 1 3 12 14 44 55 40 54 69 87
+Reading a token: 
+Next token is token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|/lon|)
+Shifting token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|/lon|)
+Entering state 117
+
+Stack now 0 1 3 12 14 44 55 40 54 69 87 117
+Reading a token: 
+Next token is token _MAP ([ENDELEMENT] : element=|Map|)
+Shifting token _MAP ([ENDELEMENT] : element=|Map|)
+Entering state 122
+
+Stack now 0 1 3 12 14 44 55 40 54 69 87 117 122
+Reducing stack by rule 73 , 
+   $1 = token MAP_ ([STARTELEMENT] : element=|Map|)
+   $2 = token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|/lon|)
+   $3 = token _MAP ([ENDELEMENT] : element=|Map|)
+-> $$ = nterm mapref ([STARTELEMENT] : element=|Map|)
+Entering state 105
+
+Stack now 0 1 3 12 14 44 55 40 54 69 105
+Reducing stack by rule 71 , 
+   $1 = nterm variabledef ([ATTRIBUTE] : name=|name| value=|tempb|)
+   $2 = nterm mapref ([STARTELEMENT] : element=|Map|)
+-> $$ = nterm variabledef ([ATTRIBUTE] : name=|name| value=|tempb|)
+Entering state 69
+
+Stack now 0 1 3 12 14 44 55 40 54 69
+Reading a token: 
+Next token is token _FLOAT32 ([ENDELEMENT] : element=|Float32|)
+Shifting token _FLOAT32 ([ENDELEMENT] : element=|Float32|)
+Entering state 98
+
+Stack now 0 1 3 12 14 44 55 40 54 69 98
+Reducing stack by rule 63 , 
+   $1 = token _FLOAT32 ([ENDELEMENT] : element=|Float32|)
+-> $$ = nterm _atomictype ([ENDELEMENT] : element=|Float32|)
+Entering state 104
+
+Stack now 0 1 3 12 14 44 55 40 54 69 104
+Reducing stack by rule 36 , 
+   $1 = nterm atomictype_ ([STARTELEMENT] : element=|Float32|)
+   $2 = token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|tempb|)
+   $3 = nterm variabledef ([ATTRIBUTE] : name=|name| value=|tempb|)
+   $4 = nterm _atomictype ([ENDELEMENT] : element=|Float32|)
+-> $$ = nterm simplevariable ([STARTELEMENT] : element=|Float32|)
+Entering state 39
+
+Stack now 0 1 3 12 14 44 55 39
+Reducing stack by rule 34 , 
+   $1 = nterm simplevariable ([STARTELEMENT] : element=|Float32|)
+-> $$ = nterm variable ([STARTELEMENT] : element=|Float32|)
+Entering state 38
+
+Stack now 0 1 3 12 14 44 55 38
+Reducing stack by rule 14 , 
+   $1 = nterm group_body ([STARTELEMENT] : element=|Group|)
+   $2 = nterm variable ([STARTELEMENT] : element=|Float32|)
+-> $$ = nterm group_body ([STARTELEMENT] : element=|Group|)
+Entering state 55
+
+Stack now 0 1 3 12 14 44 55
+Reading a token: 
+Next token is token ENUM_ ([STARTELEMENT] : element=|Enum|)
+Shifting token ENUM_ ([STARTELEMENT] : element=|Enum|)
+Entering state 17
+
+Stack now 0 1 3 12 14 44 55 17
+Reading a token: 
+Next token is token ATTR_ENUM ([ATTRIBUTE] : name=|enum| value=|/e1|)
+Shifting token ATTR_ENUM ([ATTRIBUTE] : name=|enum| value=|/e1|)
+Entering state 51
+
+Stack now 0 1 3 12 14 44 55 17 51
+Reducing stack by rule 52 , 
+   $1 = token ENUM_ ([STARTELEMENT] : element=|Enum|)
+   $2 = token ATTR_ENUM ([ATTRIBUTE] : name=|enum| value=|/e1|)
+-> $$ = nterm atomictype_ ([STARTELEMENT] : element=|Enum|)
+Entering state 40
+
+Stack now 0 1 3 12 14 44 55 40
+Reading a token: 
+Next token is token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|evar|)
+Shifting token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|evar|)
+Entering state 54
+
+Stack now 0 1 3 12 14 44 55 40 54
+Reducing stack by rule 69 , 
+-> $$ = nterm variabledef ([ATTRIBUTE] : name=|name| value=|evar|)
+Entering state 69
+
+Stack now 0 1 3 12 14 44 55 40 54 69
+Reading a token: 
+Next token is token _ENUM ([ENDELEMENT] : element=|Enum|)
+Shifting token _ENUM ([ENDELEMENT] : element=|Enum|)
+Entering state 86
+
+Stack now 0 1 3 12 14 44 55 40 54 69 86
+Reducing stack by rule 68 , 
+   $1 = token _ENUM ([ENDELEMENT] : element=|Enum|)
+-> $$ = nterm _atomictype ([ENDELEMENT] : element=|Enum|)
+Entering state 104
+
+Stack now 0 1 3 12 14 44 55 40 54 69 104
+Reducing stack by rule 36 , 
+   $1 = nterm atomictype_ ([STARTELEMENT] : element=|Enum|)
+   $2 = token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|evar|)
+   $3 = nterm variabledef ([ATTRIBUTE] : name=|name| value=|evar|)
+   $4 = nterm _atomictype ([ENDELEMENT] : element=|Enum|)
+-> $$ = nterm simplevariable ([STARTELEMENT] : element=|Enum|)
+Entering state 39
+
+Stack now 0 1 3 12 14 44 55 39
+Reducing stack by rule 34 , 
+   $1 = nterm simplevariable ([STARTELEMENT] : element=|Enum|)
+-> $$ = nterm variable ([STARTELEMENT] : element=|Enum|)
+Entering state 38
+
+Stack now 0 1 3 12 14 44 55 38
+Reducing stack by rule 14 , 
+   $1 = nterm group_body ([STARTELEMENT] : element=|Group|)
+   $2 = nterm variable ([STARTELEMENT] : element=|Enum|)
+-> $$ = nterm group_body ([STARTELEMENT] : element=|Group|)
+Entering state 55
+
+Stack now 0 1 3 12 14 44 55
+Reading a token: 
+Next token is token _GROUP ([ENDELEMENT] : element=|Group|)
+Shifting token _GROUP ([ENDELEMENT] : element=|Group|)
+Entering state 70
+
+Stack now 0 1 3 12 14 44 55 70
+Reducing stack by rule 2 , 
+   $1 = token GROUP_ ([STARTELEMENT] : element=|Group|)
+   $2 = nterm group_attr_list ([STARTELEMENT] : element=|Group|)
+   $3 = nterm group_body ([STARTELEMENT] : element=|Group|)
+   $4 = token _GROUP ([ENDELEMENT] : element=|Group|)
+-> $$ = nterm group ([STARTELEMENT] : element=|Group|)
+Entering state 35
+
+Stack now 0 1 3 12 35
+Reducing stack by rule 16 , 
+   $1 = nterm group_body ([STARTELEMENT] : element=|Dataset|)
+   $2 = nterm group ([STARTELEMENT] : element=|Group|)
+-> $$ = nterm group_body ([STARTELEMENT] : element=|Dataset|)
+Entering state 12
+
+Stack now 0 1 3 12
+Reading a token: 
+Next token is token GROUP_ ([STARTELEMENT] : element=|Group|)
+Shifting token GROUP_ ([STARTELEMENT] : element=|Group|)
+Entering state 14
+
+Stack now 0 1 3 12 14
+Reducing stack by rule 3 , 
+-> $$ = nterm group_attr_list ([STARTELEMENT] : element=|Group|)
+Entering state 44
+
+Stack now 0 1 3 12 14 44
+Reading a token: 
+Next token is token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|g.@/\$|)
+Shifting token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|g.@/\$|)
+Entering state 8
+
+Stack now 0 1 3 12 14 44 8
+Reducing stack by rule 4 , 
+   $1 = nterm group_attr_list ([STARTELEMENT] : element=|Group|)
+   $2 = token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|g.@/\$|)
+-> $$ = nterm group_attr_list ([STARTELEMENT] : element=|Group|)
+Entering state 44
+
+Stack now 0 1 3 12 14 44
+Reading a token: 
+Next token is token DIMENSION_ ([STARTELEMENT] : element=|Dimension|)
+Reducing stack by rule 11 , 
+-> $$ = nterm group_body ([STARTELEMENT] : element=|Group|)
+Entering state 55
+
+Stack now 0 1 3 12 14 44 55
+Next token is token DIMENSION_ ([STARTELEMENT] : element=|Dimension|)
+Shifting token DIMENSION_ ([STARTELEMENT] : element=|Dimension|)
+Entering state 16
+
+Stack now 0 1 3 12 14 44 55 16
+Reading a token: 
+Next token is token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|lon/2.\|)
+Shifting token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|lon/2.\|)
+Entering state 48
+
+Stack now 0 1 3 12 14 44 55 16 48
+Reading a token: 
+Next token is token ATTR_SIZE ([ATTRIBUTE] : name=|size| value=|20|)
+Shifting token ATTR_SIZE ([ATTRIBUTE] : name=|size| value=|20|)
+Entering state 61
+
+Stack now 0 1 3 12 14 44 55 16 48 61
+Reducing stack by rule 29 , 
+   $1 = token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|lon/2.\|)
+   $2 = token ATTR_SIZE ([ATTRIBUTE] : name=|size| value=|20|)
+-> $$ = nterm dimdef_attr_list ([ATTRIBUTE] : name=|name| value=|lon/2.\|)
+Entering state 50
+
+Stack now 0 1 3 12 14 44 55 16 50
+Reducing stack by rule 79 , 
+-> $$ = nterm metadatalist ([ATTRIBUTE] : name=|name| value=|lon/2.\|)
+Entering state 63
+
+Stack now 0 1 3 12 14 44 55 16 50 63
+Reading a token: 
+Next token is token _DIMENSION ([ENDELEMENT] : element=|Dimension|)
+Shifting token _DIMENSION ([ENDELEMENT] : element=|Dimension|)
+Entering state 76
+
+Stack now 0 1 3 12 14 44 55 16 50 63 76
+Reducing stack by rule 28 , 
+   $1 = token DIMENSION_ ([STARTELEMENT] : element=|Dimension|)
+   $2 = nterm dimdef_attr_list ([ATTRIBUTE] : name=|name| value=|lon/2.\|)
+   $3 = nterm metadatalist ([ATTRIBUTE] : name=|name| value=|lon/2.\|)
+   $4 = token _DIMENSION ([ENDELEMENT] : element=|Dimension|)
+-> $$ = nterm dimdef ([STARTELEMENT] : element=|Dimension|)
+Entering state 37
+
+Stack now 0 1 3 12 14 44 55 37
+Reducing stack by rule 13 , 
+   $1 = nterm group_body ([STARTELEMENT] : element=|Group|)
+   $2 = nterm dimdef ([STARTELEMENT] : element=|Dimension|)
+-> $$ = nterm group_body ([STARTELEMENT] : element=|Group|)
+Entering state 55
+
+Stack now 0 1 3 12 14 44 55
+Reading a token: 
+Next token is token _GROUP ([ENDELEMENT] : element=|Group|)
+Shifting token _GROUP ([ENDELEMENT] : element=|Group|)
+Entering state 70
+
+Stack now 0 1 3 12 14 44 55 70
+Reducing stack by rule 2 , 
+   $1 = token GROUP_ ([STARTELEMENT] : element=|Group|)
+   $2 = nterm group_attr_list ([STARTELEMENT] : element=|Group|)
+   $3 = nterm group_body ([STARTELEMENT] : element=|Group|)
+   $4 = token _GROUP ([ENDELEMENT] : element=|Group|)
+-> $$ = nterm group ([STARTELEMENT] : element=|Group|)
+Entering state 35
+
+Stack now 0 1 3 12 35
+Reducing stack by rule 16 , 
+   $1 = nterm group_body ([STARTELEMENT] : element=|Dataset|)
+   $2 = nterm group ([STARTELEMENT] : element=|Group|)
+-> $$ = nterm group_body ([STARTELEMENT] : element=|Dataset|)
+Entering state 12
+
+Stack now 0 1 3 12
+Reading a token: 
+Next token is token INT32_ ([STARTELEMENT] : element=|Int32|)
+Shifting token INT32_ ([STARTELEMENT] : element=|Int32|)
+Entering state 26
+
+Stack now 0 1 3 12 26
+Reducing stack by rule 43 , 
+   $1 = token INT32_ ([STARTELEMENT] : element=|Int32|)
+-> $$ = nterm atomictype_ ([STARTELEMENT] : element=|Int32|)
+Entering state 40
+
+Stack now 0 1 3 12 40
+Reading a token: 
+Next token is token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|funny|)
+Shifting token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|funny|)
+Entering state 54
+
+Stack now 0 1 3 12 40 54
+Reducing stack by rule 69 , 
+-> $$ = nterm variabledef ([ATTRIBUTE] : name=|name| value=|funny|)
+Entering state 69
+
+Stack now 0 1 3 12 40 54 69
+Reading a token: 
+Next token is token DIM_ ([STARTELEMENT] : element=|Dim|)
+Shifting token DIM_ ([STARTELEMENT] : element=|Dim|)
+Entering state 78
+
+Stack now 0 1 3 12 40 54 69 78
+Reading a token: 
+Next token is token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|/g\.@\/\\$/l...|)
+Shifting token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|/g\.@\/\\$/l...|)
+Entering state 110
+
+Stack now 0 1 3 12 40 54 69 78 110
+Reducing stack by rule 32 , 
+   $1 = token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|/g\.@\/\\$/l...|)
+-> $$ = nterm dimref_attr_list ([ATTRIBUTE] : name=|name| value=|/g\.@\/\\$/l...|)
+Entering state 112
+
+Stack now 0 1 3 12 40 54 69 78 112
+Reading a token: 
+Next token is token _DIM ([ENDELEMENT] : element=|Dim|)
+Shifting token _DIM ([ENDELEMENT] : element=|Dim|)
+Entering state 118
+
+Stack now 0 1 3 12 40 54 69 78 112 118
+Reducing stack by rule 31 , 
+   $1 = token DIM_ ([STARTELEMENT] : element=|Dim|)
+   $2 = nterm dimref_attr_list ([ATTRIBUTE] : name=|name| value=|/g\.@\/\\$/l...|)
+   $3 = token _DIM ([ENDELEMENT] : element=|Dim|)
+-> $$ = nterm dimref ([STARTELEMENT] : element=|Dim|)
+Entering state 103
+
+Stack now 0 1 3 12 40 54 69 103
+Reducing stack by rule 70 , 
+   $1 = nterm variabledef ([ATTRIBUTE] : name=|name| value=|funny|)
+   $2 = nterm dimref ([STARTELEMENT] : element=|Dim|)
+-> $$ = nterm variabledef ([ATTRIBUTE] : name=|name| value=|funny|)
+Entering state 69
+
+Stack now 0 1 3 12 40 54 69
+Reading a token: 
+Next token is token _INT32 ([ENDELEMENT] : element=|Int32|)
+Shifting token _INT32 ([ENDELEMENT] : element=|Int32|)
+Entering state 94
+
+Stack now 0 1 3 12 40 54 69 94
+Reducing stack by rule 59 , 
+   $1 = token _INT32 ([ENDELEMENT] : element=|Int32|)
+-> $$ = nterm _atomictype ([ENDELEMENT] : element=|Int32|)
+Entering state 104
+
+Stack now 0 1 3 12 40 54 69 104
+Reducing stack by rule 36 , 
+   $1 = nterm atomictype_ ([STARTELEMENT] : element=|Int32|)
+   $2 = token ATTR_NAME ([ATTRIBUTE] : name=|name| value=|funny|)
+   $3 = nterm variabledef ([ATTRIBUTE] : name=|name| value=|funny|)
+   $4 = nterm _atomictype ([ENDELEMENT] : element=|Int32|)
+-> $$ = nterm simplevariable ([STARTELEMENT] : element=|Int32|)
+Entering state 39
+
+Stack now 0 1 3 12 39
+Reducing stack by rule 34 , 
+   $1 = nterm simplevariable ([STARTELEMENT] : element=|Int32|)
+-> $$ = nterm variable ([STARTELEMENT] : element=|Int32|)
+Entering state 38
+
+Stack now 0 1 3 12 38
+Reducing stack by rule 14 , 
+   $1 = nterm group_body ([STARTELEMENT] : element=|Dataset|)
+   $2 = nterm variable ([STARTELEMENT] : element=|Int32|)
+-> $$ = nterm group_body ([STARTELEMENT] : element=|Dataset|)
+Entering state 12
+
+Stack now 0 1 3 12
+Reading a token: 
+Next token is token _DATASET ([ENDELEMENT] : element=|Dataset|)
+Shifting token _DATASET ([ENDELEMENT] : element=|Dataset|)
+Entering state 13
+
+Stack now 0 1 3 12 13
+Reducing stack by rule 1 , 
+   $1 = token DATASET_ ([STARTELEMENT] : element=|Dataset|)
+   $2 = nterm group_attr_list ([STARTELEMENT] : element=|Dataset|)
+   $3 = nterm group_body ([STARTELEMENT] : element=|Dataset|)
+   $4 = token _DATASET ([ENDELEMENT] : element=|Dataset|)
+-> $$ = nterm dataset ([STARTELEMENT] : element=|Dataset|)
+Entering state 2
+
+Stack now 0 2
+Reading a token: 
+Now at end of input.
+
+Shifting token $end ([ENDDOCUMENT] )
+Entering state 4
+
+Stack now 0 2 4
+No error

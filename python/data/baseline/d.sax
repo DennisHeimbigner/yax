@@ -1,0 +1,7 @@
+saxtest: [STARTDOCUMENT] 
+saxtest: [STARTELEMENT] : element=|element|
+saxtest: [CHARACTERS]  text=| abcdefghijklmnopqrstuvwxyz  | translation=| abcdefghijklmnopqrstuvwxyz  |
+saxtest: [CHARACTERS]  text=|\n| translation=|\n|
+saxtest: [ENDELEMENT] : element=|element|
+saxtest: [ENDDOCUMENT] 
+No error

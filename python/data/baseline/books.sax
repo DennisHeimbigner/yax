@@ -1,0 +1,100 @@
+saxtest: [STARTDOCUMENT] 
+saxtest: [STARTELEMENT] : element=|authors|
+saxtest: [CHARACTERS]  text=|\n| translation=|\n|
+saxtest: [CHARACTERS]  text=|  | translation=|  |
+saxtest: [STARTELEMENT] : element=|author|
+saxtest: [ATTRIBUTE] : name=|name| value=|J.K. Rowling|
+saxtest: [CHARACTERS]  text=|\n| translation=|\n|
+saxtest: [CHARACTERS]  text=|    | translation=|    |
+saxtest: [STARTELEMENT] : element=|book|
+saxtest: [ATTRIBUTE] : name=|price| value=|119.99|
+saxtest: [ATTRIBUTE] : name=|title| value=|Harry Potter and the Philosopher's Stone|
+saxtest: [CHARACTERS]  text=|\n| translation=|\n|
+saxtest: [CHARACTERS]  text=|      | translation=|      |
+saxtest: [STARTELEMENT] : element=|description|
+saxtest: [CHARACTERS]  text=|\n| translation=|\n|
+saxtest: [CHARACTERS]  text=|        Harry potter thinks he is an ordinary boy - until he is rescued from a beetle-eyed giant of a man, enrolls at Hogwarts School of Witchcraft and Wizardry, learns to play quidditch and does battle in a deadly duel.| translation=|        Harry potter thinks he is an ordinary boy - until he is rescued from a beetle-eyed giant of a man, enrolls at Hogwarts School of Witchcraft and Wizardry, learns to play quidditch and does battle in a deadly duel.|
+saxtest: [CHARACTERS]  text=|\n| translation=|\n|
+saxtest: [CHARACTERS]  text=|      | translation=|      |
+saxtest: [ENDELEMENT] : element=|description|
+saxtest: [CHARACTERS]  text=|\n| translation=|\n|
+saxtest: [CHARACTERS]  text=|    | translation=|    |
+saxtest: [ENDELEMENT] : element=|book|
+saxtest: [CHARACTERS]  text=|\n| translation=|\n|
+saxtest: [CHARACTERS]  text=|    | translation=|    |
+saxtest: [STARTELEMENT] : element=|book|
+saxtest: [ATTRIBUTE] : name=|price| value=|8.99|
+saxtest: [ATTRIBUTE] : name=|title| value=|Harry Potter and the Chamber of Secrets|
+saxtest: [CHARACTERS]  text=|\n| translation=|\n|
+saxtest: [CHARACTERS]  text=|      | translation=|      |
+saxtest: [STARTELEMENT] : element=|description|
+saxtest: [CHARACTERS]  text=|\n| translation=|\n|
+saxtest: [CHARACTERS]  text=|        When the Chamber of Secrets is opened again at the Hogwarts School for Witchcraft and Wizardry, second-year student Harry Potter finds himself in danger from a dark power that has once more been released on the school.| translation=|        When the Chamber of Secrets is opened again at the Hogwarts School for Witchcraft and Wizardry, second-year student Harry Potter finds himself in danger from a dark power that has once more been released on the school.|
+saxtest: [CHARACTERS]  text=|\n| translation=|\n|
+saxtest: [CHARACTERS]  text=|      | translation=|      |
+saxtest: [ENDELEMENT] : element=|description|
+saxtest: [CHARACTERS]  text=|\n| translation=|\n|
+saxtest: [CHARACTERS]  text=|    | translation=|    |
+saxtest: [ENDELEMENT] : element=|book|
+saxtest: [CHARACTERS]  text=|\n| translation=|\n|
+saxtest: [CHARACTERS]  text=|    | translation=|    |
+saxtest: [STARTELEMENT] : element=|book|
+saxtest: [ATTRIBUTE] : name=|price| value=|12.99|
+saxtest: [ATTRIBUTE] : name=|title| value=|Harry Potter and the Prisoner of Azkaban|
+saxtest: [CHARACTERS]  text=|\n| translation=|\n|
+saxtest: [CHARACTERS]  text=|      | translation=|      |
+saxtest: [STARTELEMENT] : element=|description|
+saxtest: [CHARACTERS]  text=|\n| translation=|\n|
+saxtest: [CHARACTERS]  text=|        Harry Potter, along with his friends, Ron and Hermione, is about to start his third year at Hogwarts School of Witchcraft and Wizardry. Harry can't wait to get back to school after the summer holidays. (Who wouldn't if they lived with the horrible Dursleys?) But when Harry gets to Hogwarts, the atmosphere is tense. There's an escaped mass murderer on the the loose, and the sinister prison guards of Azkaban have been called in to guard the school.| translation=|        Harry Potter, along with his friends, Ron and Hermione, is about to start his third year at Hogwarts School of Witchcraft and Wizardry. Harry can't wait to get back to school after the summer holidays. (Who wouldn't if they lived with the horrible Dursleys?) But when Harry gets to Hogwarts, the atmosphere is tense. There's an escaped mass murderer on the the loose, and the sinister prison guards of Azkaban have been called in to guard the school.|
+saxtest: [CHARACTERS]  text=|\n| translation=|\n|
+saxtest: [CHARACTERS]  text=|      | translation=|      |
+saxtest: [ENDELEMENT] : element=|description|
+saxtest: [CHARACTERS]  text=|\n| translation=|\n|
+saxtest: [CHARACTERS]  text=|    | translation=|    |
+saxtest: [ENDELEMENT] : element=|book|
+saxtest: [CHARACTERS]  text=|\n| translation=|\n|
+saxtest: [CHARACTERS]  text=|  | translation=|  |
+saxtest: [ENDELEMENT] : element=|author|
+saxtest: [CHARACTERS]  text=|\n| translation=|\n|
+saxtest: [CHARACTERS]  text=|  | translation=|  |
+saxtest: [STARTELEMENT] : element=|author|
+saxtest: [ATTRIBUTE] : name=|name| value=|Douglas Adams|
+saxtest: [CHARACTERS]  text=|\n| translation=|\n|
+saxtest: [CHARACTERS]  text=|    | translation=|    |
+saxtest: [STARTELEMENT] : element=|book|
+saxtest: [ATTRIBUTE] : name=|price| value=|15.49|
+saxtest: [ATTRIBUTE] : name=|title| value=|The Hitchhiker's Guide to the Galaxy|
+saxtest: [CHARACTERS]  text=|\n| translation=|\n|
+saxtest: [CHARACTERS]  text=|      | translation=|      |
+saxtest: [STARTELEMENT] : element=|description|
+saxtest: [CHARACTERS]  text=|\n| translation=|\n|
+saxtest: [CHARACTERS]  text=|        Join Douglas Adams's hapless hero Arthur Dent as he travels the galaxy with his intrepid pal Ford Prefect, getting into horrible messes and generally wreaking hilarious havoc.| translation=|        Join Douglas Adams's hapless hero Arthur Dent as he travels the galaxy with his intrepid pal Ford Prefect, getting into horrible messes and generally wreaking hilarious havoc.|
+saxtest: [CHARACTERS]  text=|\n| translation=|\n|
+saxtest: [CHARACTERS]  text=|      | translation=|      |
+saxtest: [ENDELEMENT] : element=|description|
+saxtest: [CHARACTERS]  text=|\n| translation=|\n|
+saxtest: [CHARACTERS]  text=|    | translation=|    |
+saxtest: [ENDELEMENT] : element=|book|
+saxtest: [CHARACTERS]  text=|\n| translation=|\n|
+saxtest: [CHARACTERS]  text=|    | translation=|    |
+saxtest: [STARTELEMENT] : element=|book|
+saxtest: [ATTRIBUTE] : name=|price| value=|14.36|
+saxtest: [ATTRIBUTE] : name=|title| value=|The Restaurant at the End of the Universe |
+saxtest: [CHARACTERS]  text=|\n| translation=|\n|
+saxtest: [CHARACTERS]  text=|      | translation=|      |
+saxtest: [STARTELEMENT] : element=|description|
+saxtest: [CHARACTERS]  text=|\n| translation=|\n|
+saxtest: [CHARACTERS]  text=|        Arthur and Ford, having survived the destruction of Earth by surreptitiously hitching a ride on a Vogon constructor ship, have been kicked off that ship by its commander. Now they find themselves aboard a stolen Improbability Drive ship commanded by Beeblebrox, ex-president of the Imperial Galactic Government and full-time thief.| translation=|        Arthur and Ford, having survived the destruction of Earth by surreptitiously hitching a ride on a Vogon constructor ship, have been kicked off that ship by its commander. Now they find themselves aboard a stolen Improbability Drive ship commanded by Beeblebrox, ex-president of the Imperial Galactic Government and full-time thief.|
+saxtest: [CHARACTERS]  text=|\n| translation=|\n|
+saxtest: [CHARACTERS]  text=|      | translation=|      |
+saxtest: [ENDELEMENT] : element=|description|
+saxtest: [CHARACTERS]  text=|\n| translation=|\n|
+saxtest: [CHARACTERS]  text=|    | translation=|    |
+saxtest: [ENDELEMENT] : element=|book|
+saxtest: [CHARACTERS]  text=|\n| translation=|\n|
+saxtest: [CHARACTERS]  text=|  | translation=|  |
+saxtest: [ENDELEMENT] : element=|author|
+saxtest: [CHARACTERS]  text=|\n| translation=|\n|
+saxtest: [ENDELEMENT] : element=|authors|
+saxtest: [ENDDOCUMENT] 
+No error

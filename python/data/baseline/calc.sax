@@ -1,0 +1,1551 @@
+Starting parse
+
+Entering state 0
+
+Stack now 0
+Reading a token: 
+Next token is token CALC (STARTELEMENT)
+Shifting token CALC (STARTELEMENT)
+Entering state 1
+
+Stack now 0 1
+Reducing stack by rule 2 , 
+-> $$ = nterm exprlist (None)
+Entering state 3
+
+Stack now 0 1 3
+Reading a token: 
+Next token is token EQ (STARTELEMENT)
+Shifting token EQ (STARTELEMENT)
+Entering state 7
+
+Stack now 0 1 3 7
+Reading a token: 
+Next token is token ADD (STARTELEMENT)
+Shifting token ADD (STARTELEMENT)
+Entering state 8
+
+Stack now 0 1 3 7 8
+Reading a token: 
+Next token is token INT (STARTELEMENT)
+Shifting token INT (STARTELEMENT)
+Entering state 14
+
+Stack now 0 1 3 7 8 14
+Reading a token: 
+Next token is token ATTR_N (ATTRIBUTE)
+Shifting token ATTR_N (ATTRIBUTE)
+Entering state 25
+
+Stack now 0 1 3 7 8 14 25
+Reading a token: 
+Next token is token INT_ (ENDELEMENT)
+Shifting token INT_ (ENDELEMENT)
+Entering state 34
+
+Stack now 0 1 3 7 8 14 25 34
+Reducing stack by rule 13 , 
+   $1 = token INT (STARTELEMENT)
+   $2 = token ATTR_N (ATTRIBUTE)
+   $3 = token INT_ (ENDELEMENT)
+-> $$ = nterm integer (1)
+Entering state 16
+
+Stack now 0 1 3 7 8 16
+Reducing stack by rule 11 , 
+   $1 = nterm integer (1)
+-> $$ = nterm expr (1)
+Entering state 19
+
+Stack now 0 1 3 7 8 19
+Reading a token: 
+Next token is token MUL (STARTELEMENT)
+Shifting token MUL (STARTELEMENT)
+Entering state 10
+
+Stack now 0 1 3 7 8 19 10
+Reading a token: 
+Next token is token INT (STARTELEMENT)
+Shifting token INT (STARTELEMENT)
+Entering state 14
+
+Stack now 0 1 3 7 8 19 10 14
+Reading a token: 
+Next token is token ATTR_N (ATTRIBUTE)
+Shifting token ATTR_N (ATTRIBUTE)
+Entering state 25
+
+Stack now 0 1 3 7 8 19 10 14 25
+Reading a token: 
+Next token is token INT_ (ENDELEMENT)
+Shifting token INT_ (ENDELEMENT)
+Entering state 34
+
+Stack now 0 1 3 7 8 19 10 14 25 34
+Reducing stack by rule 13 , 
+   $1 = token INT (STARTELEMENT)
+   $2 = token ATTR_N (ATTRIBUTE)
+   $3 = token INT_ (ENDELEMENT)
+-> $$ = nterm integer (2)
+Entering state 16
+
+Stack now 0 1 3 7 8 19 10 16
+Reducing stack by rule 11 , 
+   $1 = nterm integer (2)
+-> $$ = nterm expr (2)
+Entering state 21
+
+Stack now 0 1 3 7 8 19 10 21
+Reading a token: 
+Next token is token INT (STARTELEMENT)
+Shifting token INT (STARTELEMENT)
+Entering state 14
+
+Stack now 0 1 3 7 8 19 10 21 14
+Reading a token: 
+Next token is token ATTR_N (ATTRIBUTE)
+Shifting token ATTR_N (ATTRIBUTE)
+Entering state 25
+
+Stack now 0 1 3 7 8 19 10 21 14 25
+Reading a token: 
+Next token is token INT_ (ENDELEMENT)
+Shifting token INT_ (ENDELEMENT)
+Entering state 34
+
+Stack now 0 1 3 7 8 19 10 21 14 25 34
+Reducing stack by rule 13 , 
+   $1 = token INT (STARTELEMENT)
+   $2 = token ATTR_N (ATTRIBUTE)
+   $3 = token INT_ (ENDELEMENT)
+-> $$ = nterm integer (3)
+Entering state 16
+
+Stack now 0 1 3 7 8 19 10 21 16
+Reducing stack by rule 11 , 
+   $1 = nterm integer (3)
+-> $$ = nterm expr (3)
+Entering state 30
+
+Stack now 0 1 3 7 8 19 10 21 30
+Reading a token: 
+Next token is token MUL_ (ENDELEMENT)
+Shifting token MUL_ (ENDELEMENT)
+Entering state 39
+
+Stack now 0 1 3 7 8 19 10 21 30 39
+Reducing stack by rule 7 , 
+   $1 = token MUL (STARTELEMENT)
+   $2 = nterm expr (2)
+   $3 = nterm expr (3)
+   $4 = token MUL_ (ENDELEMENT)
+-> $$ = nterm expr (6)
+Entering state 28
+
+Stack now 0 1 3 7 8 19 28
+Reading a token: 
+Next token is token ADD_ (ENDELEMENT)
+Shifting token ADD_ (ENDELEMENT)
+Entering state 37
+
+Stack now 0 1 3 7 8 19 28 37
+Reducing stack by rule 5 , 
+   $1 = token ADD (STARTELEMENT)
+   $2 = nterm expr (1)
+   $3 = nterm expr (6)
+   $4 = token ADD_ (ENDELEMENT)
+-> $$ = nterm expr (7)
+Entering state 18
+
+Stack now 0 1 3 7 18
+Reading a token: 
+Next token is token INT (STARTELEMENT)
+Shifting token INT (STARTELEMENT)
+Entering state 14
+
+Stack now 0 1 3 7 18 14
+Reading a token: 
+Next token is token ATTR_N (ATTRIBUTE)
+Shifting token ATTR_N (ATTRIBUTE)
+Entering state 25
+
+Stack now 0 1 3 7 18 14 25
+Reading a token: 
+Next token is token INT_ (ENDELEMENT)
+Shifting token INT_ (ENDELEMENT)
+Entering state 34
+
+Stack now 0 1 3 7 18 14 25 34
+Reducing stack by rule 13 , 
+   $1 = token INT (STARTELEMENT)
+   $2 = token ATTR_N (ATTRIBUTE)
+   $3 = token INT_ (ENDELEMENT)
+-> $$ = nterm integer (7)
+Entering state 16
+
+Stack now 0 1 3 7 18 16
+Reducing stack by rule 11 , 
+   $1 = nterm integer (7)
+-> $$ = nterm expr (7)
+Entering state 27
+
+Stack now 0 1 3 7 18 27
+Reading a token: 
+Next token is token EQ_ (ENDELEMENT)
+Shifting token EQ_ (ENDELEMENT)
+Entering state 36
+
+Stack now 0 1 3 7 18 27 36
+Reducing stack by rule 4 , 
+   $1 = token EQ (STARTELEMENT)
+   $2 = nterm expr (7)
+   $3 = nterm expr (7)
+   $4 = token EQ_ (ENDELEMENT)
+-> $$ = nterm expr (1)
+Entering state 15
+
+Stack now 0 1 3 15
+Reducing stack by rule 3 , 
+   $1 = nterm exprlist (None)
+   $2 = nterm expr (1)
+-> $$ = nterm exprlist (None)
+Entering state 3
+
+Stack now 0 1 3
+Reading a token: 
+Next token is token EQ (STARTELEMENT)
+Shifting token EQ (STARTELEMENT)
+Entering state 7
+
+Stack now 0 1 3 7
+Reading a token: 
+Next token is token ADD (STARTELEMENT)
+Shifting token ADD (STARTELEMENT)
+Entering state 8
+
+Stack now 0 1 3 7 8
+Reading a token: 
+Next token is token INT (STARTELEMENT)
+Shifting token INT (STARTELEMENT)
+Entering state 14
+
+Stack now 0 1 3 7 8 14
+Reading a token: 
+Next token is token ATTR_N (ATTRIBUTE)
+Shifting token ATTR_N (ATTRIBUTE)
+Entering state 25
+
+Stack now 0 1 3 7 8 14 25
+Reading a token: 
+Next token is token INT_ (ENDELEMENT)
+Shifting token INT_ (ENDELEMENT)
+Entering state 34
+
+Stack now 0 1 3 7 8 14 25 34
+Reducing stack by rule 13 , 
+   $1 = token INT (STARTELEMENT)
+   $2 = token ATTR_N (ATTRIBUTE)
+   $3 = token INT_ (ENDELEMENT)
+-> $$ = nterm integer (1)
+Entering state 16
+
+Stack now 0 1 3 7 8 16
+Reducing stack by rule 11 , 
+   $1 = nterm integer (1)
+-> $$ = nterm expr (1)
+Entering state 19
+
+Stack now 0 1 3 7 8 19
+Reading a token: 
+Next token is token MUL (STARTELEMENT)
+Shifting token MUL (STARTELEMENT)
+Entering state 10
+
+Stack now 0 1 3 7 8 19 10
+Reading a token: 
+Next token is token INT (STARTELEMENT)
+Shifting token INT (STARTELEMENT)
+Entering state 14
+
+Stack now 0 1 3 7 8 19 10 14
+Reading a token: 
+Next token is token ATTR_N (ATTRIBUTE)
+Shifting token ATTR_N (ATTRIBUTE)
+Entering state 25
+
+Stack now 0 1 3 7 8 19 10 14 25
+Reading a token: 
+Next token is token INT_ (ENDELEMENT)
+Shifting token INT_ (ENDELEMENT)
+Entering state 34
+
+Stack now 0 1 3 7 8 19 10 14 25 34
+Reducing stack by rule 13 , 
+   $1 = token INT (STARTELEMENT)
+   $2 = token ATTR_N (ATTRIBUTE)
+   $3 = token INT_ (ENDELEMENT)
+-> $$ = nterm integer (2)
+Entering state 16
+
+Stack now 0 1 3 7 8 19 10 16
+Reducing stack by rule 11 , 
+   $1 = nterm integer (2)
+-> $$ = nterm expr (2)
+Entering state 21
+
+Stack now 0 1 3 7 8 19 10 21
+Reading a token: 
+Next token is token NEG (STARTELEMENT)
+Shifting token NEG (STARTELEMENT)
+Entering state 13
+
+Stack now 0 1 3 7 8 19 10 21 13
+Reading a token: 
+Next token is token INT (STARTELEMENT)
+Shifting token INT (STARTELEMENT)
+Entering state 14
+
+Stack now 0 1 3 7 8 19 10 21 13 14
+Reading a token: 
+Next token is token ATTR_N (ATTRIBUTE)
+Shifting token ATTR_N (ATTRIBUTE)
+Entering state 25
+
+Stack now 0 1 3 7 8 19 10 21 13 14 25
+Reading a token: 
+Next token is token INT_ (ENDELEMENT)
+Shifting token INT_ (ENDELEMENT)
+Entering state 34
+
+Stack now 0 1 3 7 8 19 10 21 13 14 25 34
+Reducing stack by rule 13 , 
+   $1 = token INT (STARTELEMENT)
+   $2 = token ATTR_N (ATTRIBUTE)
+   $3 = token INT_ (ENDELEMENT)
+-> $$ = nterm integer (3)
+Entering state 16
+
+Stack now 0 1 3 7 8 19 10 21 13 16
+Reducing stack by rule 11 , 
+   $1 = nterm integer (3)
+-> $$ = nterm expr (3)
+Entering state 24
+
+Stack now 0 1 3 7 8 19 10 21 13 24
+Reading a token: 
+Next token is token NEG_ (ENDELEMENT)
+Shifting token NEG_ (ENDELEMENT)
+Entering state 33
+
+Stack now 0 1 3 7 8 19 10 21 13 24 33
+Reducing stack by rule 10 , 
+   $1 = token NEG (STARTELEMENT)
+   $2 = nterm expr (3)
+   $3 = token NEG_ (ENDELEMENT)
+-> $$ = nterm expr (-3)
+Entering state 30
+
+Stack now 0 1 3 7 8 19 10 21 30
+Reading a token: 
+Next token is token MUL_ (ENDELEMENT)
+Shifting token MUL_ (ENDELEMENT)
+Entering state 39
+
+Stack now 0 1 3 7 8 19 10 21 30 39
+Reducing stack by rule 7 , 
+   $1 = token MUL (STARTELEMENT)
+   $2 = nterm expr (2)
+   $3 = nterm expr (-3)
+   $4 = token MUL_ (ENDELEMENT)
+-> $$ = nterm expr (-6)
+Entering state 28
+
+Stack now 0 1 3 7 8 19 28
+Reading a token: 
+Next token is token ADD_ (ENDELEMENT)
+Shifting token ADD_ (ENDELEMENT)
+Entering state 37
+
+Stack now 0 1 3 7 8 19 28 37
+Reducing stack by rule 5 , 
+   $1 = token ADD (STARTELEMENT)
+   $2 = nterm expr (1)
+   $3 = nterm expr (-6)
+   $4 = token ADD_ (ENDELEMENT)
+-> $$ = nterm expr (-5)
+Entering state 18
+
+Stack now 0 1 3 7 18
+Reading a token: 
+Next token is token INT (STARTELEMENT)
+Shifting token INT (STARTELEMENT)
+Entering state 14
+
+Stack now 0 1 3 7 18 14
+Reading a token: 
+Next token is token ATTR_N (ATTRIBUTE)
+Shifting token ATTR_N (ATTRIBUTE)
+Entering state 25
+
+Stack now 0 1 3 7 18 14 25
+Reading a token: 
+Next token is token INT_ (ENDELEMENT)
+Shifting token INT_ (ENDELEMENT)
+Entering state 34
+
+Stack now 0 1 3 7 18 14 25 34
+Reducing stack by rule 13 , 
+   $1 = token INT (STARTELEMENT)
+   $2 = token ATTR_N (ATTRIBUTE)
+   $3 = token INT_ (ENDELEMENT)
+-> $$ = nterm integer (-7)
+Entering state 16
+
+Stack now 0 1 3 7 18 16
+Reducing stack by rule 11 , 
+   $1 = nterm integer (-7)
+-> $$ = nterm expr (-7)
+Entering state 27
+
+Stack now 0 1 3 7 18 27
+Reading a token: 
+Next token is token EQ_ (ENDELEMENT)
+Shifting token EQ_ (ENDELEMENT)
+Entering state 36
+
+Stack now 0 1 3 7 18 27 36
+Reducing stack by rule 4 , 
+   $1 = token EQ (STARTELEMENT)
+   $2 = nterm expr (-5)
+   $3 = nterm expr (-7)
+   $4 = token EQ_ (ENDELEMENT)
+-> $$ = nterm expr (0)
+Entering state 15
+
+Stack now 0 1 3 15
+Reducing stack by rule 3 , 
+   $1 = nterm exprlist (None)
+   $2 = nterm expr (0)
+-> $$ = nterm exprlist (None)
+Entering state 3
+
+Stack now 0 1 3
+Reading a token: 
+Next token is token EQ (STARTELEMENT)
+Shifting token EQ (STARTELEMENT)
+Entering state 7
+
+Stack now 0 1 3 7
+Reading a token: 
+Next token is token EXP (STARTELEMENT)
+Shifting token EXP (STARTELEMENT)
+Entering state 12
+
+Stack now 0 1 3 7 12
+Reading a token: 
+Next token is token INT (STARTELEMENT)
+Shifting token INT (STARTELEMENT)
+Entering state 14
+
+Stack now 0 1 3 7 12 14
+Reading a token: 
+Next token is token ATTR_N (ATTRIBUTE)
+Shifting token ATTR_N (ATTRIBUTE)
+Entering state 25
+
+Stack now 0 1 3 7 12 14 25
+Reading a token: 
+Next token is token INT_ (ENDELEMENT)
+Shifting token INT_ (ENDELEMENT)
+Entering state 34
+
+Stack now 0 1 3 7 12 14 25 34
+Reducing stack by rule 13 , 
+   $1 = token INT (STARTELEMENT)
+   $2 = token ATTR_N (ATTRIBUTE)
+   $3 = token INT_ (ENDELEMENT)
+-> $$ = nterm integer (2)
+Entering state 16
+
+Stack now 0 1 3 7 12 16
+Reducing stack by rule 11 , 
+   $1 = nterm integer (2)
+-> $$ = nterm expr (2)
+Entering state 23
+
+Stack now 0 1 3 7 12 23
+Reading a token: 
+Next token is token INT (STARTELEMENT)
+Shifting token INT (STARTELEMENT)
+Entering state 14
+
+Stack now 0 1 3 7 12 23 14
+Reading a token: 
+Next token is token ATTR_N (ATTRIBUTE)
+Shifting token ATTR_N (ATTRIBUTE)
+Entering state 25
+
+Stack now 0 1 3 7 12 23 14 25
+Reading a token: 
+Next token is token INT_ (ENDELEMENT)
+Shifting token INT_ (ENDELEMENT)
+Entering state 34
+
+Stack now 0 1 3 7 12 23 14 25 34
+Reducing stack by rule 13 , 
+   $1 = token INT (STARTELEMENT)
+   $2 = token ATTR_N (ATTRIBUTE)
+   $3 = token INT_ (ENDELEMENT)
+-> $$ = nterm integer (2)
+Entering state 16
+
+Stack now 0 1 3 7 12 23 16
+Reducing stack by rule 11 , 
+   $1 = nterm integer (2)
+-> $$ = nterm expr (2)
+Entering state 32
+
+Stack now 0 1 3 7 12 23 32
+Reading a token: 
+Next token is token EXP_ (ENDELEMENT)
+Shifting token EXP_ (ENDELEMENT)
+Entering state 41
+
+Stack now 0 1 3 7 12 23 32 41
+Reducing stack by rule 9 , 
+   $1 = token EXP (STARTELEMENT)
+   $2 = nterm expr (2)
+   $3 = nterm expr (2)
+   $4 = token EXP_ (ENDELEMENT)
+-> $$ = nterm expr (4)
+Entering state 18
+
+Stack now 0 1 3 7 18
+Reading a token: 
+Next token is token INT (STARTELEMENT)
+Shifting token INT (STARTELEMENT)
+Entering state 14
+
+Stack now 0 1 3 7 18 14
+Reading a token: 
+Next token is token TEXT (CHARACTERS)
+Shifting token TEXT (CHARACTERS)
+Entering state 26
+
+Stack now 0 1 3 7 18 14 26
+Reading a token: 
+Next token is token INT_ (ENDELEMENT)
+Shifting token INT_ (ENDELEMENT)
+Entering state 35
+
+Stack now 0 1 3 7 18 14 26 35
+Reducing stack by rule 14 , 
+   $1 = token INT (STARTELEMENT)
+   $2 = token TEXT (CHARACTERS)
+   $3 = token INT_ (ENDELEMENT)
+-> $$ = nterm integer (4)
+Entering state 16
+
+Stack now 0 1 3 7 18 16
+Reducing stack by rule 11 , 
+   $1 = nterm integer (4)
+-> $$ = nterm expr (4)
+Entering state 27
+
+Stack now 0 1 3 7 18 27
+Reading a token: 
+Next token is token EQ_ (ENDELEMENT)
+Shifting token EQ_ (ENDELEMENT)
+Entering state 36
+
+Stack now 0 1 3 7 18 27 36
+Reducing stack by rule 4 , 
+   $1 = token EQ (STARTELEMENT)
+   $2 = nterm expr (4)
+   $3 = nterm expr (4)
+   $4 = token EQ_ (ENDELEMENT)
+-> $$ = nterm expr (1)
+Entering state 15
+
+Stack now 0 1 3 15
+Reducing stack by rule 3 , 
+   $1 = nterm exprlist (None)
+   $2 = nterm expr (1)
+-> $$ = nterm exprlist (None)
+Entering state 3
+
+Stack now 0 1 3
+Reading a token: 
+Next token is token EQ (STARTELEMENT)
+Shifting token EQ (STARTELEMENT)
+Entering state 7
+
+Stack now 0 1 3 7
+Reading a token: 
+Next token is token NEG (STARTELEMENT)
+Shifting token NEG (STARTELEMENT)
+Entering state 13
+
+Stack now 0 1 3 7 13
+Reading a token: 
+Next token is token NEG (STARTELEMENT)
+Shifting token NEG (STARTELEMENT)
+Entering state 13
+
+Stack now 0 1 3 7 13 13
+Reading a token: 
+Next token is token NEG (STARTELEMENT)
+Shifting token NEG (STARTELEMENT)
+Entering state 13
+
+Stack now 0 1 3 7 13 13 13
+Reading a token: 
+Next token is token INT (STARTELEMENT)
+Shifting token INT (STARTELEMENT)
+Entering state 14
+
+Stack now 0 1 3 7 13 13 13 14
+Reading a token: 
+Next token is token TEXT (CHARACTERS)
+Shifting token TEXT (CHARACTERS)
+Entering state 26
+
+Stack now 0 1 3 7 13 13 13 14 26
+Reading a token: 
+Next token is token INT_ (ENDELEMENT)
+Shifting token INT_ (ENDELEMENT)
+Entering state 35
+
+Stack now 0 1 3 7 13 13 13 14 26 35
+Reducing stack by rule 14 , 
+   $1 = token INT (STARTELEMENT)
+   $2 = token TEXT (CHARACTERS)
+   $3 = token INT_ (ENDELEMENT)
+-> $$ = nterm integer (1)
+Entering state 16
+
+Stack now 0 1 3 7 13 13 13 16
+Reducing stack by rule 11 , 
+   $1 = nterm integer (1)
+-> $$ = nterm expr (1)
+Entering state 24
+
+Stack now 0 1 3 7 13 13 13 24
+Reading a token: 
+Next token is token NEG_ (ENDELEMENT)
+Shifting token NEG_ (ENDELEMENT)
+Entering state 33
+
+Stack now 0 1 3 7 13 13 13 24 33
+Reducing stack by rule 10 , 
+   $1 = token NEG (STARTELEMENT)
+   $2 = nterm expr (1)
+   $3 = token NEG_ (ENDELEMENT)
+-> $$ = nterm expr (-1)
+Entering state 24
+
+Stack now 0 1 3 7 13 13 24
+Reading a token: 
+Next token is token NEG_ (ENDELEMENT)
+Shifting token NEG_ (ENDELEMENT)
+Entering state 33
+
+Stack now 0 1 3 7 13 13 24 33
+Reducing stack by rule 10 , 
+   $1 = token NEG (STARTELEMENT)
+   $2 = nterm expr (-1)
+   $3 = token NEG_ (ENDELEMENT)
+-> $$ = nterm expr (1)
+Entering state 24
+
+Stack now 0 1 3 7 13 24
+Reading a token: 
+Next token is token NEG_ (ENDELEMENT)
+Shifting token NEG_ (ENDELEMENT)
+Entering state 33
+
+Stack now 0 1 3 7 13 24 33
+Reducing stack by rule 10 , 
+   $1 = token NEG (STARTELEMENT)
+   $2 = nterm expr (1)
+   $3 = token NEG_ (ENDELEMENT)
+-> $$ = nterm expr (-1)
+Entering state 18
+
+Stack now 0 1 3 7 18
+Reading a token: 
+Next token is token INT (STARTELEMENT)
+Shifting token INT (STARTELEMENT)
+Entering state 14
+
+Stack now 0 1 3 7 18 14
+Reading a token: 
+Next token is token ATTR_N (ATTRIBUTE)
+Shifting token ATTR_N (ATTRIBUTE)
+Entering state 25
+
+Stack now 0 1 3 7 18 14 25
+Reading a token: 
+Next token is token INT_ (ENDELEMENT)
+Shifting token INT_ (ENDELEMENT)
+Entering state 34
+
+Stack now 0 1 3 7 18 14 25 34
+Reducing stack by rule 13 , 
+   $1 = token INT (STARTELEMENT)
+   $2 = token ATTR_N (ATTRIBUTE)
+   $3 = token INT_ (ENDELEMENT)
+-> $$ = nterm integer (-1)
+Entering state 16
+
+Stack now 0 1 3 7 18 16
+Reducing stack by rule 11 , 
+   $1 = nterm integer (-1)
+-> $$ = nterm expr (-1)
+Entering state 27
+
+Stack now 0 1 3 7 18 27
+Reading a token: 
+Next token is token EQ_ (ENDELEMENT)
+Shifting token EQ_ (ENDELEMENT)
+Entering state 36
+
+Stack now 0 1 3 7 18 27 36
+Reducing stack by rule 4 , 
+   $1 = token EQ (STARTELEMENT)
+   $2 = nterm expr (-1)
+   $3 = nterm expr (-1)
+   $4 = token EQ_ (ENDELEMENT)
+-> $$ = nterm expr (1)
+Entering state 15
+
+Stack now 0 1 3 15
+Reducing stack by rule 3 , 
+   $1 = nterm exprlist (None)
+   $2 = nterm expr (1)
+-> $$ = nterm exprlist (None)
+Entering state 3
+
+Stack now 0 1 3
+Reading a token: 
+Next token is token EQ (STARTELEMENT)
+Shifting token EQ (STARTELEMENT)
+Entering state 7
+
+Stack now 0 1 3 7
+Reading a token: 
+Next token is token SUB (STARTELEMENT)
+Shifting token SUB (STARTELEMENT)
+Entering state 9
+
+Stack now 0 1 3 7 9
+Reading a token: 
+Next token is token SUB (STARTELEMENT)
+Shifting token SUB (STARTELEMENT)
+Entering state 9
+
+Stack now 0 1 3 7 9 9
+Reading a token: 
+Next token is token INT (STARTELEMENT)
+Shifting token INT (STARTELEMENT)
+Entering state 14
+
+Stack now 0 1 3 7 9 9 14
+Reading a token: 
+Next token is token TEXT (CHARACTERS)
+Shifting token TEXT (CHARACTERS)
+Entering state 26
+
+Stack now 0 1 3 7 9 9 14 26
+Reading a token: 
+Next token is token INT_ (ENDELEMENT)
+Shifting token INT_ (ENDELEMENT)
+Entering state 35
+
+Stack now 0 1 3 7 9 9 14 26 35
+Reducing stack by rule 14 , 
+   $1 = token INT (STARTELEMENT)
+   $2 = token TEXT (CHARACTERS)
+   $3 = token INT_ (ENDELEMENT)
+-> $$ = nterm integer (1)
+Entering state 16
+
+Stack now 0 1 3 7 9 9 16
+Reducing stack by rule 11 , 
+   $1 = nterm integer (1)
+-> $$ = nterm expr (1)
+Entering state 20
+
+Stack now 0 1 3 7 9 9 20
+Reading a token: 
+Next token is token INT (STARTELEMENT)
+Shifting token INT (STARTELEMENT)
+Entering state 14
+
+Stack now 0 1 3 7 9 9 20 14
+Reading a token: 
+Next token is token TEXT (CHARACTERS)
+Shifting token TEXT (CHARACTERS)
+Entering state 26
+
+Stack now 0 1 3 7 9 9 20 14 26
+Reading a token: 
+Next token is token INT_ (ENDELEMENT)
+Shifting token INT_ (ENDELEMENT)
+Entering state 35
+
+Stack now 0 1 3 7 9 9 20 14 26 35
+Reducing stack by rule 14 , 
+   $1 = token INT (STARTELEMENT)
+   $2 = token TEXT (CHARACTERS)
+   $3 = token INT_ (ENDELEMENT)
+-> $$ = nterm integer (2)
+Entering state 16
+
+Stack now 0 1 3 7 9 9 20 16
+Reducing stack by rule 11 , 
+   $1 = nterm integer (2)
+-> $$ = nterm expr (2)
+Entering state 29
+
+Stack now 0 1 3 7 9 9 20 29
+Reading a token: 
+Next token is token SUB_ (ENDELEMENT)
+Shifting token SUB_ (ENDELEMENT)
+Entering state 38
+
+Stack now 0 1 3 7 9 9 20 29 38
+Reducing stack by rule 6 , 
+   $1 = token SUB (STARTELEMENT)
+   $2 = nterm expr (1)
+   $3 = nterm expr (2)
+   $4 = token SUB_ (ENDELEMENT)
+-> $$ = nterm expr (-1)
+Entering state 20
+
+Stack now 0 1 3 7 9 20
+Reading a token: 
+Next token is token INT (STARTELEMENT)
+Shifting token INT (STARTELEMENT)
+Entering state 14
+
+Stack now 0 1 3 7 9 20 14
+Reading a token: 
+Next token is token TEXT (CHARACTERS)
+Shifting token TEXT (CHARACTERS)
+Entering state 26
+
+Stack now 0 1 3 7 9 20 14 26
+Reading a token: 
+Next token is token INT_ (ENDELEMENT)
+Shifting token INT_ (ENDELEMENT)
+Entering state 35
+
+Stack now 0 1 3 7 9 20 14 26 35
+Reducing stack by rule 14 , 
+   $1 = token INT (STARTELEMENT)
+   $2 = token TEXT (CHARACTERS)
+   $3 = token INT_ (ENDELEMENT)
+-> $$ = nterm integer (3)
+Entering state 16
+
+Stack now 0 1 3 7 9 20 16
+Reducing stack by rule 11 , 
+   $1 = nterm integer (3)
+-> $$ = nterm expr (3)
+Entering state 29
+
+Stack now 0 1 3 7 9 20 29
+Reading a token: 
+Next token is token SUB_ (ENDELEMENT)
+Shifting token SUB_ (ENDELEMENT)
+Entering state 38
+
+Stack now 0 1 3 7 9 20 29 38
+Reducing stack by rule 6 , 
+   $1 = token SUB (STARTELEMENT)
+   $2 = nterm expr (-1)
+   $3 = nterm expr (3)
+   $4 = token SUB_ (ENDELEMENT)
+-> $$ = nterm expr (-4)
+Entering state 18
+
+Stack now 0 1 3 7 18
+Reading a token: 
+Next token is token INT (STARTELEMENT)
+Shifting token INT (STARTELEMENT)
+Entering state 14
+
+Stack now 0 1 3 7 18 14
+Reading a token: 
+Next token is token TEXT (CHARACTERS)
+Shifting token TEXT (CHARACTERS)
+Entering state 26
+
+Stack now 0 1 3 7 18 14 26
+Reading a token: 
+Next token is token INT_ (ENDELEMENT)
+Shifting token INT_ (ENDELEMENT)
+Entering state 35
+
+Stack now 0 1 3 7 18 14 26 35
+Reducing stack by rule 14 , 
+   $1 = token INT (STARTELEMENT)
+   $2 = token TEXT (CHARACTERS)
+   $3 = token INT_ (ENDELEMENT)
+-> $$ = nterm integer (-4)
+Entering state 16
+
+Stack now 0 1 3 7 18 16
+Reducing stack by rule 11 , 
+   $1 = nterm integer (-4)
+-> $$ = nterm expr (-4)
+Entering state 27
+
+Stack now 0 1 3 7 18 27
+Reading a token: 
+Next token is token EQ_ (ENDELEMENT)
+Shifting token EQ_ (ENDELEMENT)
+Entering state 36
+
+Stack now 0 1 3 7 18 27 36
+Reducing stack by rule 4 , 
+   $1 = token EQ (STARTELEMENT)
+   $2 = nterm expr (-4)
+   $3 = nterm expr (-4)
+   $4 = token EQ_ (ENDELEMENT)
+-> $$ = nterm expr (1)
+Entering state 15
+
+Stack now 0 1 3 15
+Reducing stack by rule 3 , 
+   $1 = nterm exprlist (None)
+   $2 = nterm expr (1)
+-> $$ = nterm exprlist (None)
+Entering state 3
+
+Stack now 0 1 3
+Reading a token: 
+Next token is token EQ (STARTELEMENT)
+Shifting token EQ (STARTELEMENT)
+Entering state 7
+
+Stack now 0 1 3 7
+Reading a token: 
+Next token is token SUB (STARTELEMENT)
+Shifting token SUB (STARTELEMENT)
+Entering state 9
+
+Stack now 0 1 3 7 9
+Reading a token: 
+Next token is token INT (STARTELEMENT)
+Shifting token INT (STARTELEMENT)
+Entering state 14
+
+Stack now 0 1 3 7 9 14
+Reading a token: 
+Next token is token TEXT (CHARACTERS)
+Shifting token TEXT (CHARACTERS)
+Entering state 26
+
+Stack now 0 1 3 7 9 14 26
+Reading a token: 
+Next token is token INT_ (ENDELEMENT)
+Shifting token INT_ (ENDELEMENT)
+Entering state 35
+
+Stack now 0 1 3 7 9 14 26 35
+Reducing stack by rule 14 , 
+   $1 = token INT (STARTELEMENT)
+   $2 = token TEXT (CHARACTERS)
+   $3 = token INT_ (ENDELEMENT)
+-> $$ = nterm integer (1)
+Entering state 16
+
+Stack now 0 1 3 7 9 16
+Reducing stack by rule 11 , 
+   $1 = nterm integer (1)
+-> $$ = nterm expr (1)
+Entering state 20
+
+Stack now 0 1 3 7 9 20
+Reading a token: 
+Next token is token SUB (STARTELEMENT)
+Shifting token SUB (STARTELEMENT)
+Entering state 9
+
+Stack now 0 1 3 7 9 20 9
+Reading a token: 
+Next token is token INT (STARTELEMENT)
+Shifting token INT (STARTELEMENT)
+Entering state 14
+
+Stack now 0 1 3 7 9 20 9 14
+Reading a token: 
+Next token is token TEXT (CHARACTERS)
+Shifting token TEXT (CHARACTERS)
+Entering state 26
+
+Stack now 0 1 3 7 9 20 9 14 26
+Reading a token: 
+Next token is token INT_ (ENDELEMENT)
+Shifting token INT_ (ENDELEMENT)
+Entering state 35
+
+Stack now 0 1 3 7 9 20 9 14 26 35
+Reducing stack by rule 14 , 
+   $1 = token INT (STARTELEMENT)
+   $2 = token TEXT (CHARACTERS)
+   $3 = token INT_ (ENDELEMENT)
+-> $$ = nterm integer (2)
+Entering state 16
+
+Stack now 0 1 3 7 9 20 9 16
+Reducing stack by rule 11 , 
+   $1 = nterm integer (2)
+-> $$ = nterm expr (2)
+Entering state 20
+
+Stack now 0 1 3 7 9 20 9 20
+Reading a token: 
+Next token is token INT (STARTELEMENT)
+Shifting token INT (STARTELEMENT)
+Entering state 14
+
+Stack now 0 1 3 7 9 20 9 20 14
+Reading a token: 
+Next token is token TEXT (CHARACTERS)
+Shifting token TEXT (CHARACTERS)
+Entering state 26
+
+Stack now 0 1 3 7 9 20 9 20 14 26
+Reading a token: 
+Next token is token INT_ (ENDELEMENT)
+Shifting token INT_ (ENDELEMENT)
+Entering state 35
+
+Stack now 0 1 3 7 9 20 9 20 14 26 35
+Reducing stack by rule 14 , 
+   $1 = token INT (STARTELEMENT)
+   $2 = token TEXT (CHARACTERS)
+   $3 = token INT_ (ENDELEMENT)
+-> $$ = nterm integer (3)
+Entering state 16
+
+Stack now 0 1 3 7 9 20 9 20 16
+Reducing stack by rule 11 , 
+   $1 = nterm integer (3)
+-> $$ = nterm expr (3)
+Entering state 29
+
+Stack now 0 1 3 7 9 20 9 20 29
+Reading a token: 
+Next token is token SUB_ (ENDELEMENT)
+Shifting token SUB_ (ENDELEMENT)
+Entering state 38
+
+Stack now 0 1 3 7 9 20 9 20 29 38
+Reducing stack by rule 6 , 
+   $1 = token SUB (STARTELEMENT)
+   $2 = nterm expr (2)
+   $3 = nterm expr (3)
+   $4 = token SUB_ (ENDELEMENT)
+-> $$ = nterm expr (-1)
+Entering state 29
+
+Stack now 0 1 3 7 9 20 29
+Reading a token: 
+Next token is token SUB_ (ENDELEMENT)
+Shifting token SUB_ (ENDELEMENT)
+Entering state 38
+
+Stack now 0 1 3 7 9 20 29 38
+Reducing stack by rule 6 , 
+   $1 = token SUB (STARTELEMENT)
+   $2 = nterm expr (1)
+   $3 = nterm expr (-1)
+   $4 = token SUB_ (ENDELEMENT)
+-> $$ = nterm expr (2)
+Entering state 18
+
+Stack now 0 1 3 7 18
+Reading a token: 
+Next token is token INT (STARTELEMENT)
+Shifting token INT (STARTELEMENT)
+Entering state 14
+
+Stack now 0 1 3 7 18 14
+Reading a token: 
+Next token is token TEXT (CHARACTERS)
+Shifting token TEXT (CHARACTERS)
+Entering state 26
+
+Stack now 0 1 3 7 18 14 26
+Reading a token: 
+Next token is token INT_ (ENDELEMENT)
+Shifting token INT_ (ENDELEMENT)
+Entering state 35
+
+Stack now 0 1 3 7 18 14 26 35
+Reducing stack by rule 14 , 
+   $1 = token INT (STARTELEMENT)
+   $2 = token TEXT (CHARACTERS)
+   $3 = token INT_ (ENDELEMENT)
+-> $$ = nterm integer (2)
+Entering state 16
+
+Stack now 0 1 3 7 18 16
+Reducing stack by rule 11 , 
+   $1 = nterm integer (2)
+-> $$ = nterm expr (2)
+Entering state 27
+
+Stack now 0 1 3 7 18 27
+Reading a token: 
+Next token is token EQ_ (ENDELEMENT)
+Shifting token EQ_ (ENDELEMENT)
+Entering state 36
+
+Stack now 0 1 3 7 18 27 36
+Reducing stack by rule 4 , 
+   $1 = token EQ (STARTELEMENT)
+   $2 = nterm expr (2)
+   $3 = nterm expr (2)
+   $4 = token EQ_ (ENDELEMENT)
+-> $$ = nterm expr (1)
+Entering state 15
+
+Stack now 0 1 3 15
+Reducing stack by rule 3 , 
+   $1 = nterm exprlist (None)
+   $2 = nterm expr (1)
+-> $$ = nterm exprlist (None)
+Entering state 3
+
+Stack now 0 1 3
+Reading a token: 
+Next token is token EQ (STARTELEMENT)
+Shifting token EQ (STARTELEMENT)
+Entering state 7
+
+Stack now 0 1 3 7
+Reading a token: 
+Next token is token EXP (STARTELEMENT)
+Shifting token EXP (STARTELEMENT)
+Entering state 12
+
+Stack now 0 1 3 7 12
+Reading a token: 
+Next token is token INT (STARTELEMENT)
+Shifting token INT (STARTELEMENT)
+Entering state 14
+
+Stack now 0 1 3 7 12 14
+Reading a token: 
+Next token is token ATTR_N (ATTRIBUTE)
+Shifting token ATTR_N (ATTRIBUTE)
+Entering state 25
+
+Stack now 0 1 3 7 12 14 25
+Reading a token: 
+Next token is token INT_ (ENDELEMENT)
+Shifting token INT_ (ENDELEMENT)
+Entering state 34
+
+Stack now 0 1 3 7 12 14 25 34
+Reducing stack by rule 13 , 
+   $1 = token INT (STARTELEMENT)
+   $2 = token ATTR_N (ATTRIBUTE)
+   $3 = token INT_ (ENDELEMENT)
+-> $$ = nterm integer (2)
+Entering state 16
+
+Stack now 0 1 3 7 12 16
+Reducing stack by rule 11 , 
+   $1 = nterm integer (2)
+-> $$ = nterm expr (2)
+Entering state 23
+
+Stack now 0 1 3 7 12 23
+Reading a token: 
+Next token is token EXP (STARTELEMENT)
+Shifting token EXP (STARTELEMENT)
+Entering state 12
+
+Stack now 0 1 3 7 12 23 12
+Reading a token: 
+Next token is token INT (STARTELEMENT)
+Shifting token INT (STARTELEMENT)
+Entering state 14
+
+Stack now 0 1 3 7 12 23 12 14
+Reading a token: 
+Next token is token ATTR_N (ATTRIBUTE)
+Shifting token ATTR_N (ATTRIBUTE)
+Entering state 25
+
+Stack now 0 1 3 7 12 23 12 14 25
+Reading a token: 
+Next token is token INT_ (ENDELEMENT)
+Shifting token INT_ (ENDELEMENT)
+Entering state 34
+
+Stack now 0 1 3 7 12 23 12 14 25 34
+Reducing stack by rule 13 , 
+   $1 = token INT (STARTELEMENT)
+   $2 = token ATTR_N (ATTRIBUTE)
+   $3 = token INT_ (ENDELEMENT)
+-> $$ = nterm integer (2)
+Entering state 16
+
+Stack now 0 1 3 7 12 23 12 16
+Reducing stack by rule 11 , 
+   $1 = nterm integer (2)
+-> $$ = nterm expr (2)
+Entering state 23
+
+Stack now 0 1 3 7 12 23 12 23
+Reading a token: 
+Next token is token INT (STARTELEMENT)
+Shifting token INT (STARTELEMENT)
+Entering state 14
+
+Stack now 0 1 3 7 12 23 12 23 14
+Reading a token: 
+Next token is token ATTR_N (ATTRIBUTE)
+Shifting token ATTR_N (ATTRIBUTE)
+Entering state 25
+
+Stack now 0 1 3 7 12 23 12 23 14 25
+Reading a token: 
+Next token is token INT_ (ENDELEMENT)
+Shifting token INT_ (ENDELEMENT)
+Entering state 34
+
+Stack now 0 1 3 7 12 23 12 23 14 25 34
+Reducing stack by rule 13 , 
+   $1 = token INT (STARTELEMENT)
+   $2 = token ATTR_N (ATTRIBUTE)
+   $3 = token INT_ (ENDELEMENT)
+-> $$ = nterm integer (3)
+Entering state 16
+
+Stack now 0 1 3 7 12 23 12 23 16
+Reducing stack by rule 11 , 
+   $1 = nterm integer (3)
+-> $$ = nterm expr (3)
+Entering state 32
+
+Stack now 0 1 3 7 12 23 12 23 32
+Reading a token: 
+Next token is token EXP_ (ENDELEMENT)
+Shifting token EXP_ (ENDELEMENT)
+Entering state 41
+
+Stack now 0 1 3 7 12 23 12 23 32 41
+Reducing stack by rule 9 , 
+   $1 = token EXP (STARTELEMENT)
+   $2 = nterm expr (2)
+   $3 = nterm expr (3)
+   $4 = token EXP_ (ENDELEMENT)
+-> $$ = nterm expr (8)
+Entering state 32
+
+Stack now 0 1 3 7 12 23 32
+Reading a token: 
+Next token is token EXP_ (ENDELEMENT)
+Shifting token EXP_ (ENDELEMENT)
+Entering state 41
+
+Stack now 0 1 3 7 12 23 32 41
+Reducing stack by rule 9 , 
+   $1 = token EXP (STARTELEMENT)
+   $2 = nterm expr (2)
+   $3 = nterm expr (8)
+   $4 = token EXP_ (ENDELEMENT)
+-> $$ = nterm expr (256)
+Entering state 18
+
+Stack now 0 1 3 7 18
+Reading a token: 
+Next token is token INT (STARTELEMENT)
+Shifting token INT (STARTELEMENT)
+Entering state 14
+
+Stack now 0 1 3 7 18 14
+Reading a token: 
+Next token is token ATTR_N (ATTRIBUTE)
+Shifting token ATTR_N (ATTRIBUTE)
+Entering state 25
+
+Stack now 0 1 3 7 18 14 25
+Reading a token: 
+Next token is token INT_ (ENDELEMENT)
+Shifting token INT_ (ENDELEMENT)
+Entering state 34
+
+Stack now 0 1 3 7 18 14 25 34
+Reducing stack by rule 13 , 
+   $1 = token INT (STARTELEMENT)
+   $2 = token ATTR_N (ATTRIBUTE)
+   $3 = token INT_ (ENDELEMENT)
+-> $$ = nterm integer (256)
+Entering state 16
+
+Stack now 0 1 3 7 18 16
+Reducing stack by rule 11 , 
+   $1 = nterm integer (256)
+-> $$ = nterm expr (256)
+Entering state 27
+
+Stack now 0 1 3 7 18 27
+Reading a token: 
+Next token is token EQ_ (ENDELEMENT)
+Shifting token EQ_ (ENDELEMENT)
+Entering state 36
+
+Stack now 0 1 3 7 18 27 36
+Reducing stack by rule 4 , 
+   $1 = token EQ (STARTELEMENT)
+   $2 = nterm expr (256)
+   $3 = nterm expr (256)
+   $4 = token EQ_ (ENDELEMENT)
+-> $$ = nterm expr (1)
+Entering state 15
+
+Stack now 0 1 3 15
+Reducing stack by rule 3 , 
+   $1 = nterm exprlist (None)
+   $2 = nterm expr (1)
+-> $$ = nterm exprlist (None)
+Entering state 3
+
+Stack now 0 1 3
+Reading a token: 
+Next token is token EQ (STARTELEMENT)
+Shifting token EQ (STARTELEMENT)
+Entering state 7
+
+Stack now 0 1 3 7
+Reading a token: 
+Next token is token EXP (STARTELEMENT)
+Shifting token EXP (STARTELEMENT)
+Entering state 12
+
+Stack now 0 1 3 7 12
+Reading a token: 
+Next token is token EXP (STARTELEMENT)
+Shifting token EXP (STARTELEMENT)
+Entering state 12
+
+Stack now 0 1 3 7 12 12
+Reading a token: 
+Next token is token INT (STARTELEMENT)
+Shifting token INT (STARTELEMENT)
+Entering state 14
+
+Stack now 0 1 3 7 12 12 14
+Reading a token: 
+Next token is token ATTR_N (ATTRIBUTE)
+Shifting token ATTR_N (ATTRIBUTE)
+Entering state 25
+
+Stack now 0 1 3 7 12 12 14 25
+Reading a token: 
+Next token is token INT_ (ENDELEMENT)
+Shifting token INT_ (ENDELEMENT)
+Entering state 34
+
+Stack now 0 1 3 7 12 12 14 25 34
+Reducing stack by rule 13 , 
+   $1 = token INT (STARTELEMENT)
+   $2 = token ATTR_N (ATTRIBUTE)
+   $3 = token INT_ (ENDELEMENT)
+-> $$ = nterm integer (2)
+Entering state 16
+
+Stack now 0 1 3 7 12 12 16
+Reducing stack by rule 11 , 
+   $1 = nterm integer (2)
+-> $$ = nterm expr (2)
+Entering state 23
+
+Stack now 0 1 3 7 12 12 23
+Reading a token: 
+Next token is token INT (STARTELEMENT)
+Shifting token INT (STARTELEMENT)
+Entering state 14
+
+Stack now 0 1 3 7 12 12 23 14
+Reading a token: 
+Next token is token ATTR_N (ATTRIBUTE)
+Shifting token ATTR_N (ATTRIBUTE)
+Entering state 25
+
+Stack now 0 1 3 7 12 12 23 14 25
+Reading a token: 
+Next token is token INT_ (ENDELEMENT)
+Shifting token INT_ (ENDELEMENT)
+Entering state 34
+
+Stack now 0 1 3 7 12 12 23 14 25 34
+Reducing stack by rule 13 , 
+   $1 = token INT (STARTELEMENT)
+   $2 = token ATTR_N (ATTRIBUTE)
+   $3 = token INT_ (ENDELEMENT)
+-> $$ = nterm integer (2)
+Entering state 16
+
+Stack now 0 1 3 7 12 12 23 16
+Reducing stack by rule 11 , 
+   $1 = nterm integer (2)
+-> $$ = nterm expr (2)
+Entering state 32
+
+Stack now 0 1 3 7 12 12 23 32
+Reading a token: 
+Next token is token EXP_ (ENDELEMENT)
+Shifting token EXP_ (ENDELEMENT)
+Entering state 41
+
+Stack now 0 1 3 7 12 12 23 32 41
+Reducing stack by rule 9 , 
+   $1 = token EXP (STARTELEMENT)
+   $2 = nterm expr (2)
+   $3 = nterm expr (2)
+   $4 = token EXP_ (ENDELEMENT)
+-> $$ = nterm expr (4)
+Entering state 23
+
+Stack now 0 1 3 7 12 23
+Reading a token: 
+Next token is token INT (STARTELEMENT)
+Shifting token INT (STARTELEMENT)
+Entering state 14
+
+Stack now 0 1 3 7 12 23 14
+Reading a token: 
+Next token is token ATTR_N (ATTRIBUTE)
+Shifting token ATTR_N (ATTRIBUTE)
+Entering state 25
+
+Stack now 0 1 3 7 12 23 14 25
+Reading a token: 
+Next token is token INT_ (ENDELEMENT)
+Shifting token INT_ (ENDELEMENT)
+Entering state 34
+
+Stack now 0 1 3 7 12 23 14 25 34
+Reducing stack by rule 13 , 
+   $1 = token INT (STARTELEMENT)
+   $2 = token ATTR_N (ATTRIBUTE)
+   $3 = token INT_ (ENDELEMENT)
+-> $$ = nterm integer (3)
+Entering state 16
+
+Stack now 0 1 3 7 12 23 16
+Reducing stack by rule 11 , 
+   $1 = nterm integer (3)
+-> $$ = nterm expr (3)
+Entering state 32
+
+Stack now 0 1 3 7 12 23 32
+Reading a token: 
+Next token is token EXP_ (ENDELEMENT)
+Shifting token EXP_ (ENDELEMENT)
+Entering state 41
+
+Stack now 0 1 3 7 12 23 32 41
+Reducing stack by rule 9 , 
+   $1 = token EXP (STARTELEMENT)
+   $2 = nterm expr (4)
+   $3 = nterm expr (3)
+   $4 = token EXP_ (ENDELEMENT)
+-> $$ = nterm expr (64)
+Entering state 18
+
+Stack now 0 1 3 7 18
+Reading a token: 
+Next token is token INT (STARTELEMENT)
+Shifting token INT (STARTELEMENT)
+Entering state 14
+
+Stack now 0 1 3 7 18 14
+Reading a token: 
+Next token is token ATTR_N (ATTRIBUTE)
+Shifting token ATTR_N (ATTRIBUTE)
+Entering state 25
+
+Stack now 0 1 3 7 18 14 25
+Reading a token: 
+Next token is token INT_ (ENDELEMENT)
+Shifting token INT_ (ENDELEMENT)
+Entering state 34
+
+Stack now 0 1 3 7 18 14 25 34
+Reducing stack by rule 13 , 
+   $1 = token INT (STARTELEMENT)
+   $2 = token ATTR_N (ATTRIBUTE)
+   $3 = token INT_ (ENDELEMENT)
+-> $$ = nterm integer (64)
+Entering state 16
+
+Stack now 0 1 3 7 18 16
+Reducing stack by rule 11 , 
+   $1 = nterm integer (64)
+-> $$ = nterm expr (64)
+Entering state 27
+
+Stack now 0 1 3 7 18 27
+Reading a token: 
+Next token is token EQ_ (ENDELEMENT)
+Shifting token EQ_ (ENDELEMENT)
+Entering state 36
+
+Stack now 0 1 3 7 18 27 36
+Reducing stack by rule 4 , 
+   $1 = token EQ (STARTELEMENT)
+   $2 = nterm expr (64)
+   $3 = nterm expr (64)
+   $4 = token EQ_ (ENDELEMENT)
+-> $$ = nterm expr (1)
+Entering state 15
+
+Stack now 0 1 3 15
+Reducing stack by rule 3 , 
+   $1 = nterm exprlist (None)
+   $2 = nterm expr (1)
+-> $$ = nterm exprlist (None)
+Entering state 3
+
+Stack now 0 1 3
+Reading a token: 
+Next token is token CALC_ (ENDELEMENT)
+Shifting token CALC_ (ENDELEMENT)
+Entering state 6
+
+Stack now 0 1 3 6
+Reducing stack by rule 1 , 
+   $1 = token CALC (STARTELEMENT)
+   $2 = nterm exprlist (None)
+   $3 = token CALC_ (ENDELEMENT)
+-> $$ = nterm calc (None)
+Entering state 2
+
+Stack now 0 2
+Reading a token: 
+Now at end of input.
+
+Shifting token $end (ENDDOCUMENT)
+Entering state 4
+
+Stack now 0 2 4
+result=1
+result=0
+result=1
+result=1
+result=1
+result=1
+result=1
+result=1
+No error

@@ -1,0 +1,81 @@
+<calc>
+
+<eq>
+  <add>
+    <int n="1"/>
+    <mul>
+      <int n="2"/>
+      <int n="3"/>
+    </mul>
+  </add>
+  <int n="7"/>
+</eq>
+<!--
+<eq>
+  <add>
+    <int n="1"/>
+    <mul>
+      <int n="2"/>
+      <neg><int n="3"/></neg>
+    </mul>
+  </add>
+  <int n="-7"/>
+</eq>
+
+<eq>
+  <exp>
+    <int n="2"/>
+    <int n="2"/>
+  </exp>
+  <int>4</int>
+</eq>
+<eq>
+  <neg><neg><neg><int>1</int></neg></neg></neg>
+  <int n="-1"/>
+</eq>
+
+<eq>
+  <sub>
+    <sub>
+      <int>1</int>
+      <int>2</int>
+    </sub>    
+    <int>3</int>
+  </sub>
+  <int>-4</int>
+</eq>
+
+<eq>
+  <sub>
+    <int>1</int>
+    <sub>
+      <int>2</int>
+      <int>3</int>
+    </sub>    
+  </sub>
+  <int>2</int>
+</eq>
+
+<eq>
+  <exp>
+    <int n="2"/>
+    <exp>
+      <int n="2"/>
+      <int n="3"/>
+    </exp>
+  </exp>
+  <int n="256"/>
+</eq>
+-->
+<eq>
+  <exp>
+    <exp>
+      <int n="2"/>
+      <int n="2"/>
+    </exp>
+    <int n="3"/>
+  </exp>
+  <int n="64"/>
+</eq>
+-->
+</calc>

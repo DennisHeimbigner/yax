@@ -1,0 +1,115 @@
+saxtest: [STARTDOCUMENT]
+saxtest: [STARTELEMENT]: element=|authors|
+saxtest: [CHARACTERS] text=|
+  | translation=|
+  |
+saxtest: [STARTELEMENT]: element=|author|
+saxtest: [ATTRIBUTE]: name=|name| value=|J.K. Rowling|
+saxtest: [CHARACTERS] text=|
+    | translation=|
+    |
+saxtest: [STARTELEMENT]: element=|book|
+saxtest: [ATTRIBUTE]: name=|title| value=|Harry Potter and the Philosopher's Stone|
+saxtest: [ATTRIBUTE]: name=|price| value=|119.99|
+saxtest: [CHARACTERS] text=|
+      | translation=|
+      |
+saxtest: [STARTELEMENT]: element=|description|
+saxtest: [CHARACTERS] text=|
+        Harry p...| translation=|
+        Harry p...|
+saxtest: [ENDELEMENT]: element=|description|
+saxtest: [CHARACTERS] text=|
+    | translation=|
+    |
+saxtest: [ENDELEMENT]: element=|book|
+saxtest: [CHARACTERS] text=|
+    | translation=|
+    |
+saxtest: [STARTELEMENT]: element=|book|
+saxtest: [ATTRIBUTE]: name=|title| value=|Harry Potter and the Chamber of Secrets|
+saxtest: [ATTRIBUTE]: name=|price| value=|8.99|
+saxtest: [CHARACTERS] text=|
+      | translation=|
+      |
+saxtest: [STARTELEMENT]: element=|description|
+saxtest: [CHARACTERS] text=|
+        When th...| translation=|
+        When th...|
+saxtest: [ENDELEMENT]: element=|description|
+saxtest: [CHARACTERS] text=|
+    | translation=|
+    |
+saxtest: [ENDELEMENT]: element=|book|
+saxtest: [CHARACTERS] text=|
+    | translation=|
+    |
+saxtest: [STARTELEMENT]: element=|book|
+saxtest: [ATTRIBUTE]: name=|title| value=|Harry Potter and the Prisoner of Azkaban|
+saxtest: [ATTRIBUTE]: name=|price| value=|12.99|
+saxtest: [CHARACTERS] text=|
+      | translation=|
+      |
+saxtest: [STARTELEMENT]: element=|description|
+saxtest: [CHARACTERS] text=|
+        Harry P...| translation=|
+        Harry P...|
+saxtest: [ENDELEMENT]: element=|description|
+saxtest: [CHARACTERS] text=|
+    | translation=|
+    |
+saxtest: [ENDELEMENT]: element=|book|
+saxtest: [CHARACTERS] text=|
+  | translation=|
+  |
+saxtest: [ENDELEMENT]: element=|author|
+saxtest: [CHARACTERS] text=|
+  | translation=|
+  |
+saxtest: [STARTELEMENT]: element=|author|
+saxtest: [ATTRIBUTE]: name=|name| value=|Douglas Adams|
+saxtest: [CHARACTERS] text=|
+    | translation=|
+    |
+saxtest: [STARTELEMENT]: element=|book|
+saxtest: [ATTRIBUTE]: name=|title| value=|The Hitchhiker's Guide to the Galaxy|
+saxtest: [ATTRIBUTE]: name=|price| value=|15.49|
+saxtest: [CHARACTERS] text=|
+      | translation=|
+      |
+saxtest: [STARTELEMENT]: element=|description|
+saxtest: [CHARACTERS] text=|
+        Join Do...| translation=|
+        Join Do...|
+saxtest: [ENDELEMENT]: element=|description|
+saxtest: [CHARACTERS] text=|
+    | translation=|
+    |
+saxtest: [ENDELEMENT]: element=|book|
+saxtest: [CHARACTERS] text=|
+    | translation=|
+    |
+saxtest: [STARTELEMENT]: element=|book|
+saxtest: [ATTRIBUTE]: name=|title| value=|The Restaurant at the End of the Universe |
+saxtest: [ATTRIBUTE]: name=|price| value=|14.36|
+saxtest: [CHARACTERS] text=|
+      | translation=|
+      |
+saxtest: [STARTELEMENT]: element=|description|
+saxtest: [CHARACTERS] text=|
+        Arthur ...| translation=|
+        Arthur ...|
+saxtest: [ENDELEMENT]: element=|description|
+saxtest: [CHARACTERS] text=|
+    | translation=|
+    |
+saxtest: [ENDELEMENT]: element=|book|
+saxtest: [CHARACTERS] text=|
+  | translation=|
+  |
+saxtest: [ENDELEMENT]: element=|author|
+saxtest: [CHARACTERS] text=|
+| translation=|
+|
+saxtest: [ENDELEMENT]: element=|authors|
+saxtest: [ENDDOCUMENT]

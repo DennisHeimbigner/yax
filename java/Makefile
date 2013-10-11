@@ -1,141 +1,122 @@
+# Makefile is used instead of build.xml because
+# IMO, ant's lack of looping or functional map capability,
+# and lack of controllable file comparison (e.g. diff)
+# makes it too hard to use. Your mileage may vary.
 
-basedir=.
-java.dir=${basedir}/java
-c.dir=${basedir}/c
+# Define the path separator
+S=;
+#S=:
 
-build.dir=${java.dir}/build
-out.dir=${java.dir}/out
+# Paths of interest
+SRCDIR=src/yax
+TESTDIR=src/yax/test
+TESTDATA=./data
 
-src.dir=${project.dir}/src
-lib.dir=${project.dir}/libs
-cli.jar=${lib.dir}/commons-cli-1.2.jar
+TESTINPUTS=${TESTDATA}/testinput
+TESTOUTPUTS=${TESTDATA}/testoutput
+TESTBASELINE=${TESTDATA}/baseline
 
-grammars.dir=${shared.dir}/grammars
-data.dir=${shared.dir}/data
-tests.dir=${data.dir}/testdata
-baseline.dir=${data.dir}/baseline
-results.dir=${data.dir}/results
+BUILD=./out
 
-results.dir=${build.dir}/results
+GRAMMARS=dap4.y calc.y
 
-yax.jar=${project.dir}/yax.jar
+SRC= \
+src/yax/Lexeme.java \
+src/yax/LexException.java \
+src/yax/SaxEvent.java \
+src/yax/SaxEventHandler.java \
+src/yax/SaxEventType.java \
+src/yax/KeyWordMap.java \
+src/yax/Util.java
 
-main=yax.Main
-cp=${cli.jar}
-test.cp=${build.dir};${cli.jar}
+JAR=yax.jar
 
-all: test
+CLI=libs/commons-cli-1.2.jar
 
+CP=${BUILD}${S}${CLI}
 
-init:
-	mkdir -p ${build.dir}
-	mkdir -p ${results.dir}
+SAXSRC=src/yax/test/SaxTest.java src/yax/test/TestOptions.java
+SAXTESTS=books comments d expr lextest
 
-build: init
-	javac -d ${build.dir} ${SRC}
-	destdir="${build.dir}"
-	classpath="${cp}"
-	includeantruntime="false"
-	/>
+DAP4SRC=\
+src/yax/test/Dap4Test.java \
+src/yax/test/Dap4EventHandler.java \
+src/yax/test/Dap4Parser.java \
+src/yax/test/TestOptions.java
 
+DAP4TESTS=dap4
 
-jar: depends="build">
-	<jar jarfile="${yax.jar}">
-	<fileset dir="${build.dir}/yax"/>
-	</jar>
+CALCSRC=\
+src/yax/test/CalcTest.java \
+src/yax/test/CalcEventHandler.java \
+src/yax/test/CalcParser.java \
+src/yax/test/TestOptions.java
 
+CALCTESTS=calc
 
-dap4.y:>
-	<copy file="${grammars.dir}/dap4.y.core" tofile="./dap4.y.core"/>
-	<concat destfile="dap4.y">
-	<filelist dir="." files="dap4.y.hdr,dap4.y.core"/>
-	</concat>
-	<replace file="dap4.y" token="YYABORT" value="return YYABORT"/>
-	<replace file="dap4.y" token="YYACCEPT" value="return YYACCEPT"/>
-	<replace file="dap4.y" token="CHECK($$)" value=""/>
-	<replace file="dap4.y" token="&lt;token&gt;" value="&lt;YaxToken&gt;"/>
-	<replace file="dap4.y" token="&lt;list&gt;" value="&lt;List&gt;"/>
-	<replace file="dap4.y" token="&lt;object&gt;" value="&lt;Object&gt;"/>
+XMLSRC=\
+src/yax/test/XmlTest.java \
+src/yax/test/XmlEventHandler.java \
+src/yax/test/XmlParser.java \
+src/yax/test/TestOptions.java
 
+XMLTESTS=books comments d expr lextest
 
-<!-- This is so ugly -->
+.PHONEY: check action action0 action1 saxtest dap4test calctest xmltest
 
-test: depends="jar,testclean">
-	<antcall target="testeach"><param name="TESTCASE" value="d"/></antcall>
+all: ${JAR}
 
+clean:: testclean
+	rm -fr ${JAR} ${BUILD}
 
-testclean:>
-	<delete dir="${results.dir}"/>
-	<mkdir dir="${results.dir}"/>
+testclean::
+	rm -fr ${TESTOUTPUTS}
 
+${JAR}: ${SRC} ${BUILD}
+	javac -classpath "${CP}" -d ${BUILD} ${SRC} 
+	jar cf ${JAR} -C ${BUILD} yax
 
-<!--property name="TESTCASE" value="..."/-->
-<!--property name="EXT" value="..."/-->
-testeach:>
-	<antcall target="exec"><param name="EXT" value="lt"/></antcall>
-	<antcall target="compare"><param name="EXT" value="lt"/></antcall>
+${BUILD}:
+	mkdir -p ${BUILD}
 
+${TESTOUTPUTS}:
+	mkdir -p ${TESTOUTPUTS}
 
-lt:>
-	<java fork="true" classpath="${test.cp}" classname="yax.LexTest"
-	output="${results.dir}/${TESTCASE}.lt">
-	<arg value="-te"/><arg value="${tests.dir}/${TESTCASE}.xml"/>
-	</java>
+TESTSETS=saxtest calctest dap4test xmltest
 
+check:: ${TESTSETS}
 
-expr:>
-	<antcall target="bison"><param name="GRAMMAR" value="expr.y"/></antcall>
-	<java fork="true" classpath="${test.cp}" classname="yax.LexTest"
-	output="${results.dir}/${TESTCASE}.lt">
-	<arg value="-te"/><arg value="${tests.dir}/${TESTCASE}.xml"/>
-	</java>
+saxtest: ${JAR} ${SAXSRC}
+	@javac -classpath "${CP}" -d ${BUILD} ${SAXSRC}
+	@for t in ${SAXTESTS} ; do ${MAKE} TEST=Sax CASE=$$t  FLAGS="-t -xe" action ; done
 
+dap4test: ${JAR} ${DAP4SRC}
+	@javac -classpath "${CP}" -d ${BUILD} ${DAP4SRC}
+	@for t in ${DAP4TESTS} ; do ${MAKE} TEST=Dap4 CASE=$$t  FLAGS="-t -xe" action; done
 
-dap4: depends="dap4.y">
-	<antcall target="bison"><param name="GRAMMAR" value="dap4.y"/></antcall>
+calctest: ${JAR} ${CALCSRC}
+	@javac -classpath "${CP}" -d ${BUILD} ${CALCSRC}
+	@for t in ${CALCTESTS} ; do ${MAKE} TEST=Calc CASE=$$t FLAGS="-t -xe" action ; done
 
+xmltest: ${JAR} ${XMLSRC}
+	@javac -classpath "${CP}" -d ${BUILD} ${XMLSRC}
+	@for t in ${XMLTESTS} ; do ${MAKE} TEST=Xml CASE=$$t FLAGS="" action ; done
 
-diff:>
-	<exec executable="diff" failonerror="false" resultproperty="diff-result">
-	<arg value="-w"/><arg value="-b"/><arg value="-B"/>
-	<arg value="${baseline.dir}/${TESTCASE}.${EXT}"/>
-	<arg value="${results.dir}/${TESTCASE}.${EXT}"/>
-	</exec>
-	<condition property="${EXT}" value="true">
-	<not><equals arg1="${diff-result}" arg2="1"/></not>
-	</condition>
+action: ${TESTOUTPUTS}
+	@rm -f tmp1 tmp2
+	java -cp "${CP}" yax.test.${TEST}Test ${FLAGS}  ${TESTINPUTS}/${CASE}.xml >& tmp1
+	@sed -e 's/(line [0-9][0-9]*)//' < tmp1 > tmp2
+	@LOWER=`echo ${TEST} | tr '[:upper:]' '[:lower:]'` ; \
+	cp tmp2 ${TESTOUTPUTS}/${CASE}.$$LOWER ; \
+	if diff -wBb ${TESTBASELINE}/${CASE}.$$LOWER ${TESTOUTPUTS}/${CASE}.$$LOWER;\
+	then echo "Passed: ${TEST}" ; else echo "Failed: ${TEST}" ; fi
 
+generate::
+	bison -Ljava -t -v -pDap4 -o ${TESTDIR}/Dap4Parser.java ${TESTDIR}/dap4.y
+	bison -Ljava -t -v -pCalc -o ${TESTDIR}/CalcParser.java ${TESTDIR}/calc.y
+	bison -Ljava -t -v -pXml -o ${TESTDIR}/XmlParser.java ${TESTDIR}/xml.y
 
-compare: depends="diff,if-true,if-false"/>
+init::
+	rm -f ${TESTBASELINE}/*
+	cp -f ${TESTOUTPUTS}/* ${TESTBASELINE}
 
-if:>
-	<condition property="${EXT}">
-	<filesmatch file1="${baseline.dir}/${TESTCASE}.${EXT}" file2="${results.dir}/${TESTCASE}.${EXT}"/>
-	</condition>
-
-
-if-true: if="${EXT}">
-	<echo message="*** Pass: ${TESTCASE}.${EXT}"/>
-
-if-false: unless="${EXT}">
-	<echo message="*** Fail: ${TESTCASE}.${EXT}"/>
-
-
-<!--property name="GRAMMAR" value="..."/-->
-bison:>
-	<exec executable="bison">
-	<arg value="-Ljava"/>
-	<arg value="-pDAP4"/>
-	<arg value="dap4.y"/>
-	<arg value="-o"/>
-	<arg value="DAP4Parser.java"/>
-	</exec>
-
-
-clean: depends="testclean">
-	<delete dir="${build.dir}"/>
-	<delete file="tmp"/>
-	<delete file="dap4.y.core"/>
-
-
-</project>

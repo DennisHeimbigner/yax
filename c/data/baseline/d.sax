@@ -1,0 +1,5 @@
+saxtest: [STARTDOCUMENT]
+saxtest: [STARTELEMENT]: element=|element|
+saxtest: [CHARACTERS] text=| abcdefghijklmno...| translation=| abcdefghijklmno...|
+saxtest: [ENDELEMENT]: element=|element|
+saxtest: [ENDDOCUMENT]

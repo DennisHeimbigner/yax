@@ -1,0 +1,14 @@
+saxtest: [STARTDOCUMENT] 
+saxtest: [STARTELEMENT] : element=|minus|
+saxtest: [CHARACTERS]  text=|\n| translation=|\n|
+saxtest: [STARTELEMENT] : element=|number|
+saxtest: [ATTRIBUTE] : name=|value| value=|5|
+saxtest: [ENDELEMENT] : element=|number|
+saxtest: [CHARACTERS]  text=|\n| translation=|\n|
+saxtest: [STARTELEMENT] : element=|number|
+saxtest: [CHARACTERS]  text=|19| translation=|19|
+saxtest: [ENDELEMENT] : element=|number|
+saxtest: [CHARACTERS]  text=|\n| translation=|\n|
+saxtest: [ENDELEMENT] : element=|minus|
+saxtest: [ENDDOCUMENT] 
+No error

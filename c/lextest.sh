@@ -4,9 +4,12 @@
 
 if test "x$1" = "x1" ; then INIT=1; fi
 
+FLAGS="-te"
+
 DATA="./data"
 
-CASES="comments d lextest books expr dap4"
+#CASES="comments d lextest books expr dap4"
+CASES="comments"
 
 if ! test -f ${DATA}/testoutput ; then
   mkdir -p ${DATA}/testoutput

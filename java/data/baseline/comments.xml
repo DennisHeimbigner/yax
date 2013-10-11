@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<!DOCTYPE>
+<element a="5">
+  |
+|  <ielement a="5" x="s">
+  </ielement>  |
+|</element>
+No error

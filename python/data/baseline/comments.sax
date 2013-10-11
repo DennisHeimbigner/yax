@@ -1,0 +1,12 @@
+saxtest: [STARTDOCUMENT] 
+saxtest: [STARTELEMENT] : element=|element|
+saxtest: [ATTRIBUTE] : name=|a| value=|5|
+saxtest: [CHARACTERS]  text=|\n| translation=|\n|
+saxtest: [STARTELEMENT] : element=|element|
+saxtest: [ATTRIBUTE] : name=|a| value=|5|
+saxtest: [ATTRIBUTE] : name=|x| value=|s|
+saxtest: [ENDELEMENT] : element=|element|
+saxtest: [CHARACTERS]  text=|\n| translation=|\n|
+saxtest: [ENDELEMENT] : element=|element|
+saxtest: [ENDDOCUMENT] 
+No error
