@@ -66,9 +66,9 @@ java/src/yax/test/Dap4Parser.java
 java/src/yax/test/CalcTest.java
 java/src/yax/test/CalcEventHandler.java
 java/src/yax/test/CalcParser.java
-src/yax/test/XmlEventHandler.java
-src/yax/test/XmlParser.java
-src/yax/test/XmlTest.java
+java/src/yax/test/XmlEventHandler.java
+java/src/yax/test/XmlParser.java
+java/src/yax/test/XmlTest.java
 
 java/src/yax/test/dap4.y
 java/src/yax/test/calc.y

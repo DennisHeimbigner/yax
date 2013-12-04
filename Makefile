@@ -27,7 +27,4 @@ export::
 	${SH} ./export.sh
 
 install::
-	rm -fr ${EXPORT}/yax/*
 	cp -fr ./export/yax ${EXPORT}
-
-
