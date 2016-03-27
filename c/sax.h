@@ -6,8 +6,6 @@ For details of the license, see http://www.apache.org/licenses/LICENSE-2.0.
 #ifndef _SAX_H_
 #define _SAX_H_ 1
 
-#include <libxml/SAX.h>
-
 #define VERSION "2.00"
 
 #undef TRACE 

@@ -52,7 +52,7 @@ clean:: testclean
 	rm -f libyax.a *.o
 
 testclean::
-	rm -f ./saxtest ./dap4test ./calctest
+	rm -f ./saxtest ./dap4test ./calctest ./xmltest
 
 libyax.a: ${LIBSRC} ${LIBHDRS}
 	${CC} -c ${CFLAGS} ${INCL} ${LIBSRC}

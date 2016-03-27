@@ -3,11 +3,11 @@ This software is released under the terms of the Apache License version 2.
 For details of the license, see http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-%define api.pure full
+%define api.pure true
 %define api.push-pull push
 %error-verbose
 
-%define api.value.type {SaxEvent*}
+/*%define api.value.type union*/
 %parse-param {Dap4EventHandler* handler}
 %printer {if($$ != NULL) fprintf(yyoutput, "%s", saxeventtypename($$->event)); } <>
 
